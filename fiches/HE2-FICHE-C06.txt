@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C06
+Chapitre 6 : Balayage et énumération
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Un port peut être :
+      a) Ouvert, fermé ou filtré
+      b) Chaud ou froid
+      c) Rouge ou vert
+      d) Plein ou vide
+
+ 2. Un port filtré :
+      a) Répond toujours
+      b) Ne répond pas, souvent un pare-feu
+      c) Refuse
+      d) Est ouvert
+
+ 3. Un hôte qui ne répond pas au ping est :
+      a) Forcément absent
+      b) Toujours présent
+      c) Pas forcément absent
+      d) Détruit
+
+ 4. Le balayage UDP est :
+      a) Rapide et sûr
+      b) Interdit
+      c) Inutile
+      d) Plus lent et incertain
+
+ 5. SMBv1 est un protocole :
+      a) Ancien et vulnérable
+      b) Récent et sûr
+      c) Secret
+      d) Chiffré
+
+ 6. SMBv1 repéré fonde le constat :
+      a) T-01
+      b) T-06
+      c) T-11
+      d) T-14
+
+ 7. Une imprimante avec identifiants par défaut rejoint :
+      a) T-01
+      b) T-09
+      c) T-04
+      d) T-12
+
+ 8. On limite le débit du balayage pour :
+      a) Gagner du temps
+      b) Facturer
+      c) Chiffrer
+      d) Ne pas perturber la production
+
+ 9. Un balayage se détecte par :
+      a) De nombreuses connexions refusées d'une source
+      b) Rien
+      c) Un courriel
+      d) Un appel
+
+10. L'énumération précise :
+      a) Le prix
+      b) Services, versions, partages, comptes
+      c) La météo
+      d) Le code
+
+11. Un écart inventaire/balayage est :
+      a) Ignoré
+      b) Un secret
+      c) Un constat en soi
+      d) Une facture
+
+12. Un inventaire continu transforme le balayage en :
+      a) Facture
+      b) Exploit
+      c) Chiffrement
+      d) Surveillance
+
+13. Un port fermé :
+      a) Refuse la connexion
+      b) Répond un service
+      c) Ne répond pas
+      d) Est filtré
+
+14. Un hôte qui filtre le ping peut sembler :
+      a) Présent
+      b) Absent
+      c) Détruit
+      d) Chiffré
+
+15. L'absence de réponse en UDP s'interprète avec :
+      a) Certitude
+      b) Joie
+      c) Prudence
+      d) Vitesse
+
+16. La recommandation pour SMBv1 est :
+      a) Le garder
+      b) Le chiffrer
+      c) L'ignorer
+      d) Le désactiver
+
+17. Une imprimante exposant une interface d'administration est :
+      a) Un risque
+      b) Normale
+      c) Un secret
+      d) Une facture
+
+18. La source d'un balayage se repère par :
+      a) Son courriel
+      b) Ses connexions refusées répétées
+      c) Son nom
+      d) Son prix
+
+19. L'énumération prépare :
+      a) La vente
+      b) La facture
+      c) L'analyse des vulnérabilités
+      d) Le chiffrement
+
+20. Un inventaire continu détecte :
+      a) Les factures
+      b) Les clients
+      c) La météo
+      d) Les expositions nouvelles
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Un port filtré répond toujours par un refus explicite.
+      Vrai / Faux
+
+22. Un hôte qui ne répond pas au ping est forcément absent.
+      Vrai / Faux
+
+23. SMBv1 est un protocole récent, recommandé.
+      Vrai / Faux
+
+24. Une imprimante avec identifiants par défaut rejoint T-01.
+      Vrai / Faux
+
+25. On limite le débit du balayage pour ne pas perturber la production.
+      Vrai / Faux
+
+26. Un balayage se détecte par de nombreuses connexions refusées.
+      Vrai / Faux
+
+27. L'énumération prépare l'analyse des vulnérabilités.
+      Vrai / Faux
+
+28. Le balayage UDP est rapide et parfaitement sûr.
+      Vrai / Faux
+
+29. Un écart entre inventaire et balayage est un constat en soi.
+      Vrai / Faux
+
+30. Un inventaire continu détecte les expositions nouvelles.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Un port qui ne répond pas, souvent à cause d'un pare-feu, est dit ______.
+
+32. Le protocole de partage ancien et vulnérable s'appelle SMB______.
+
+33. SMBv1 repéré au balayage fonde le constat T-______.
+
+34. L'imprimante avec mot de passe par défaut rejoint le constat T-______.
+
+35. Un balayage se détecte par de nombreuses connexions ______.
+
+36. L'______ précise services, versions, partages et comptes.
+
+37. On limite le ______ du balayage pour protéger la production.
+
+38. Un inventaire ______ transforme le balayage en surveillance.
+
+39. Un hôte qui filtre le ping peut sembler ______.
+
+40. L'absence de réponse en ______ s'interprète avec prudence.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

@@ -1,0 +1,292 @@
+% ============================================================================
+% Fichier  : partie1/P01_C03_engagement.tex
+% Titre    : Règles d'Engagement et Éthique de la Mission
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : NIST SP 800-115 (2008), planification ; PTES (pré-engagement) ;
+% codes de déontologie (ISC2, chapitre éthique de SEC3266).
+% ============================================================================
+
+\chapter{Règles d'Engagement et Éthique de la Mission}
+\label{chap:engagement}
+\chaptermark{Règles d'engagement}
+
+\epigraph{%
+    « Ce qui n'est pas écrit dans les règles d'engagement\\
+    est interdit. »%
+}{Principe du cours}
+
+\niveauChapitre{Fondamental}{Chapitres~\ref{chap:ethique}
+et~\ref{chap:droit}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Rédiger les règles d'engagement d'un test.
+    \item Définir un périmètre vérifiable, adresse par adresse.
+    \item Organiser la communication et l'arrêt d'urgence.
+    \item Traiter les données rencontrées et les découvertes fortuites.
+    \item Appliquer les principes déontologiques du testeur.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : que faire quand on trouve, au milieu d'un test, une trace d'attaque réelle~?}
+% ============================================================================
+
+Le 27~octobre, Mme~NGO~MBOCK découvre sur un serveur de Garoua un compte
+« svc\_maj2 » créé le 4~mars~: la trace de l'attaquant de l'Opération
+GAROUA, oubliée lors du nettoyage. Ce n'est pas l'objet du test. Que
+faire~? Les règles d'engagement le disent, si elles ont été bien écrites.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les règles d'engagement (section~\ref{sec:c03-regles}).
+    \item Le périmètre (section~\ref{sec:c03-perimetre}).
+    \item Communiquer et s'arrêter (section~\ref{sec:c03-communiquer}).
+    \item Données et découvertes fortuites (section~\ref{sec:c03-donnees}).
+    \item La déontologie du testeur (section~\ref{sec:c03-deontologie}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Les Règles d'Engagement}
+\label{sec:c03-regles}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Règles d'engagement}~: document qui précise, pour une mission de
+test, ce qui est autorisé, comment, quand, par qui, et ce qu'il faut faire
+en cas d'incident. Il complète la lettre d'autorisation et la rend
+opérationnelle.
+\end{boxdef}
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Rubrique} &
+    \tableauHeader{Contenu}
+}
+Objectifs & Questions auxquelles le test répond, drapeaux à atteindre \\
+Périmètre & Adresses, domaines, applications, comptes~; exclusions \\
+Méthodes & Autorisées (balayage, exploitation contrôlée, hameçonnage
+simulé) et interdites (déni de service, destruction) \\
+Fenêtre & Dates, heures, fuseau horaire~; tests de nuit sur accord \\
+Équipe & Noms des testeurs, adresses IP sources, postes utilisés \\
+Communication & Contacts, canal chiffré, points d'avancement \\
+Arrêt & Mot d'arrêt, motifs d'arrêt, reprise \\
+Données & Ce qu'on peut consulter, ce qu'on ne copie jamais, destruction \\
+Découvertes & Conduite à tenir face à une compromission réelle ou à une
+faille critique \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~3.1. Les rubriques des règles d'engagement}\end{center}
+
+% ============================================================================
+\section{Le Périmètre}
+\label{sec:c03-perimetre}
+% ============================================================================
+
+Un périmètre vérifiable se décrit en adresses et en noms précis, avec leur
+propriétaire. Une plage en notation CIDR (10.20.0.0/16) couvre 65\,536
+adresses~; une exclusion (10.10.50.0/24) en retire 256. Avant chaque
+action, le testeur vérifie que la cible est dedans.
+
+\begin{boxprocedure}
+\textbf{Vérifier qu'une cible est dans le périmètre}
+\begin{enumerate}
+    \item La cible appartient-elle à une plage ou à un domaine listés~?
+    \item Appartient-elle à une exclusion~? Si oui, elle est hors périmètre.
+    \item Le signataire en est-il propriétaire ou exploitant~? (vérifier les
+          registres d'adresses et le contrat d'hébergement)
+    \item La méthode envisagée est-elle autorisée pour cette cible~?
+    \item L'heure est-elle dans la fenêtre~?
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Suivre un lien ou une redirection vers un
+domaine non listé (un prestataire de paiement, un fournisseur en nuage).
+
+\smallskip
+\textbf{Règle~:} un domaine découvert pendant le test n'entre pas dans le
+périmètre de lui-même. On le note et on demande un avenant écrit.
+\end{boxalert}
+
+% ============================================================================
+\section{Communiquer et S'Arrêter}
+\label{sec:c03-communiquer}
+% ============================================================================
+
+\begin{tableaucours}{L{4.0cm}L{8.2cm}}{%
+    \tableauHeader{Situation} &
+    \tableauHeader{Conduite}
+}
+Service ralenti ou arrêté & Arrêt immédiat, appel du contact d'urgence \\
+Faille critique exploitable depuis Internet & Prévenir le client sans
+attendre le rapport \\
+Trace d'une compromission réelle & Arrêt du test sur la cible, appel du
+contact, préservation \\
+Doute sur le périmètre & Ne pas agir~; demander par écrit \\
+Mot d'arrêt prononcé par le client & Arrêt de toutes les actions \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~3.2. Quand prévenir, quand s'arrêter}\end{center}
+
+% ============================================================================
+\section{Données et Découvertes Fortuites}
+\label{sec:c03-donnees}
+% ============================================================================
+
+\begin{boxscenario}{Opération LOGONE. Le compte du 4 mars}
+\textbf{Constatation.} Le 27~octobre à 10~h~12, Mme~NGO~MBOCK trouve,
+membre des administrateurs du domaine, le compte « svc\_maj2 », créé le
+4~mars à 2~h~04 (cours SEC3266, lab de journaux).
+
+\medskip
+\textbf{Conduite.} Elle s'arrête, ne touche pas au compte, note l'heure et
+la preuve, appelle M.~BIKORO, qui appelle M.~KOUNOU à 10~h~25 selon les
+règles d'engagement. LiZbiZ désactive le compte, ouvre un incident et fait
+vérifier l'absence d'autre persistance~; le test reprend le lendemain.
+
+\medskip
+\textbf{Analyse} (confiance élevée). La découverte relève de la réponse aux
+incidents, pas du test. Exploiter ce compte aurait mêlé l'activité de
+l'attaquant et celle du testeur, et détruit des preuves.
+\end{boxscenario}
+
+% ============================================================================
+\section{La Déontologie du Testeur}
+\label{sec:c03-deontologie}
+% ============================================================================
+
+\begin{tableaucours}{L{3.6cm}L{8.6cm}}{%
+    \tableauHeader{Principe} &
+    \tableauHeader{Application}
+}
+Légalité & Rien hors mandat~; rien d'interdit par la loi \\
+Minimisation & Faire le minimum nécessaire pour prouver~; ne pas aller
+au-delà de l'objectif \\
+Confidentialité & Résultats au seul client~; aucune publication sans
+accord \\
+Loyauté & Rapporter tout, y compris ses propres erreurs pendant le test \\
+Compétence & Ne pas employer une technique que l'on ne maîtrise pas sur un
+système de production \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~3.3. Les principes déontologiques du testeur}\end{center}
+
+\begin{boxobjet}{T-15 · Découverte fortuite (hors constats du test)}
+\textbf{Description~:} compte « svc\_maj2 » membre des administrateurs du
+domaine, créé le 4~mars par l'attaquant. \textbf{Preuve~:} liste des
+membres du groupe et date de création (capture du 27~octobre, 10~h~12).
+\textbf{Gravité~:} critique (accès persistant d'un attaquant).
+\textbf{Recommandation~:} désactiver, ouvrir un incident, rechercher toute
+autre persistance. \textbf{Détection~:} la revue des comptes à privilèges
+aurait dû le voir.
+\end{boxobjet}
+
+\begin{boxmetier}{Analyste SOC et équipe rouge}
+\textbf{Distinguer le testeur de l'attaquant.} Les règles d'engagement
+donnent au SOC les adresses sources et les fenêtres du testeur. Toute
+activité hors de ces adresses ou de ces heures se traite comme une attaque
+réelle.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Les règles d'engagement} rendent l'autorisation
+          opérationnelle~: objectifs, périmètre, méthodes, fenêtre, équipe,
+          communication, arrêt, données, découvertes.
+    \item \textbf{Le périmètre} se vérifie adresse par adresse avant chaque
+          action.
+    \item \textbf{On s'arrête et on prévient} en cas d'incident, de faille
+          critique ou de doute.
+    \item \textbf{Une compromission réelle} découverte relève de la réponse
+          aux incidents.
+    \item \textbf{Légalité, minimisation, confidentialité, loyauté,
+          compétence.}
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: rédiger des règles
+d'engagement~; vérifier qu'une cible est dans le périmètre~; dire quand
+s'arrêter et qui prévenir~; traiter une découverte fortuite~; appliquer
+les principes déontologiques.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.1. CIDR \niveaubase}]
+Combien d'adresses comptent 198.51.100.0/27 et 10.10.50.0/24~? L'adresse
+198.51.100.40 est-elle dans la première plage~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.2. Les rubriques \niveaubase}]
+Quelle rubrique des règles d'engagement répond à~: « puis-je tester à
+22~h~? »~; « que faire si le site tombe~? »~; « puis-je copier un fichier
+pour preuve~? »
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.3. Redirection \niveaubase}]
+Le portail de suivi redirige vers « paiement.exemple-prestataire.cm ».
+Pouvez-vous le tester~? Que faites-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.4. Faille critique \niveaumoyen}]
+Vous découvrez le premier jour une faille critique exploitable depuis
+Internet. Attendez-vous le rapport final~? Rédigez le message au client.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.5. Le SOC \niveaumoyen}]
+Faut-il prévenir le SOC d'un test~? Comparez les avantages d'un test annoncé
+et d'un test non annoncé.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.6. Minimisation \niveaumoyen}]
+Donnez trois exemples de gestes qui dépassent le minimum nécessaire pour
+prouver une faille.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.7. Sa propre erreur \niveaumoyen}]
+Un testeur a supprimé par erreur un fichier de configuration. Que dit le
+principe de loyauté~? Que doit-il faire~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.8. Mot d'arrêt \niveaumoyen}]
+Proposez la procédure d'arrêt et de reprise d'un test, avec ses
+responsables.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.9. Des règles complètes \niveauexpert}]
+Rédigez les règles d'engagement de l'Opération MEFOU (portail et API de
+l'ANPP), selon les rubriques du Tableau~3.1.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~3.10. Le dilemme \niveauexpert}]
+Pendant un test, vous trouvez la preuve qu'un salarié détourne des fonds.
+Analysez la situation selon la méthode de résolution d'un dilemme (cours
+SEC3266) et dites ce que vous faites.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item NIST SP~800-115, planification~\cite{nist800115}.
+    \item PTES, phase de pré-engagement~\cite{ptes}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Le cadre posé, il faut une méthode pour conduire le
+test~: le Chapitre~\ref{chap:methodes} présente les méthodologies et les
+référentiels.
+\end{boxinfo}

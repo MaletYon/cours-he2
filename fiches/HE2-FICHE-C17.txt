@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C17
+Chapitre 17 : Tester le nuage et les conteneurs
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Dans le nuage, la faille est presque toujours :
+      a) Celle de la configuration du client
+      b) Celle du fournisseur
+      c) Inexistante
+      d) Chiffrée
+
+ 2. Le modèle de responsabilité partagée répartit :
+      a) Le prix
+      b) Les tâches de sécurité
+      c) La météo
+      d) Les clients
+
+ 3. La configuration des droits relève :
+      a) Du fournisseur
+      b) Du voisin
+      c) Du client
+      d) Du testeur
+
+ 4. Un espace de stockage ouvert au public expose :
+      a) Rien
+      b) La météo
+      c) Le prix
+      d) Fichiers et sauvegardes
+
+ 5. Un service d'administration exposé est :
+      a) Un risque
+      b) Normal
+      c) Chiffré
+      d) Obligatoire
+
+ 6. Un secret peut traîner dans :
+      a) La météo
+      b) Le code, les images, les dépôts
+      c) Le prix
+      d) Le client
+
+ 7. Des droits trop larges transforment :
+      a) Rien
+      b) Le prix
+      c) Une ressource compromise en compromission totale
+      d) La météo
+
+ 8. Un conteneur privilégié permet :
+      a) Rien
+      b) Le chiffrement
+      c) La facture
+      d) Une sortie vers l'hôte
+
+ 9. Une image non à jour embarque :
+      a) Des vulnérabilités connues
+      b) Rien
+      c) La météo
+      d) Le prix
+
+10. Le service de test exposé sur l'Internet est le constat :
+      a) T-01
+      b) T-10
+      c) T-05
+      d) T-14
+
+11. Avant un test en nuage, on lit :
+      a) La météo
+      b) Le prix
+      c) Les règles de test du fournisseur
+      d) Rien
+
+12. Une clé découverte se :
+      a) Utilise partout
+      b) Vend
+      c) Ignore
+      d) Signale et démontre dans le périmètre
+
+13. Le fournisseur sécurise :
+      a) Le socle
+      b) La configuration
+      c) Les données
+      d) Les droits
+
+14. La journalisation désactivée prive de :
+      a) Prix
+      b) Traces en cas d'incident
+      c) Météo
+      d) Clients
+
+15. La parade aux droits trop larges est :
+      a) Rien
+      b) Le chiffrement
+      c) Le moindre privilège
+      d) La paie
+
+16. Un tableau de bord d'orchestration exposé donne :
+      a) Rien
+      b) Le prix
+      c) La météo
+      d) Le contrôle du groupe de conteneurs
+
+17. La recommandation pour T-10 est :
+      a) Restreindre, authentifier, retirer les tests inutiles
+      b) Rien
+      c) Chiffrer
+      d) Supprimer le nuage
+
+18. On ne touche pas, dans le nuage, aux données :
+      a) De test
+      b) Des autres clients
+      c) De LiZbiZ
+      d) Chiffrées
+
+19. La parade aux secrets est :
+      a) Les laisser
+      b) Les publier
+      c) Un coffre de secrets
+      d) Les chiffrer en clair
+
+20. Le chiffrement non activé laisse les données au repos :
+      a) Chiffrées
+      b) Salées
+      c) Signées
+      d) En clair
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Dans le nuage, la faille est presque toujours celle du fournisseur.
+      Vrai / Faux
+
+22. La configuration des droits relève du fournisseur.
+      Vrai / Faux
+
+23. Un espace de stockage ouvert au public n'expose rien.
+      Vrai / Faux
+
+24. Des droits trop larges réduisent l'impact d'une compromission.
+      Vrai / Faux
+
+25. Un conteneur privilégié permet une sortie vers l'hôte.
+      Vrai / Faux
+
+26. T-10 concerne un service de test exposé sur l'Internet.
+      Vrai / Faux
+
+27. Avant un test en nuage, on lit les règles de test du fournisseur.
+      Vrai / Faux
+
+28. On peut toucher aux données des autres clients du fournisseur.
+      Vrai / Faux
+
+29. La parade aux secrets est un coffre de secrets.
+      Vrai / Faux
+
+30. La parade aux droits trop larges est le moindre privilège.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La répartition des tâches de sécurité s'appelle responsabilité ______.
+
+32. Un espace de ______ ouvert au public expose les fichiers.
+
+33. La parade aux droits trop larges est le ______ privilège.
+
+34. Un conteneur ______ permet une sortie vers l'hôte.
+
+35. Le service de test exposé sur l'Internet est le constat T-______.
+
+36. Avant un test en nuage, on lit les ______ du fournisseur.
+
+37. Le fournisseur sécurise le ______.
+
+38. Un ______ peut traîner dans le code, les images, les dépôts.
+
+39. Le chiffrement non activé laisse les données au repos en ______.
+
+40. Une clé découverte se signale et se démontre dans le ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

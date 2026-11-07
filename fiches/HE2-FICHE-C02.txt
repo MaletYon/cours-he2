@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C02
+Chapitre 2 : Le cadre juridique camerounais
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. La loi camerounaise sur la cybersécurité porte le numéro :
+      a) 2010/012
+      b) 2016/007
+      c) 2024/017
+      d) 2019/024
+
+ 2. L'accès frauduleux à un système est :
+      a) Autorisé sans dommage
+      b) Réprimé par la loi
+      c) Un droit
+      d) Sans conséquence
+
+ 3. Le « défi intellectuel » comme motif est :
+      a) Une excuse légale
+      b) Une circonstance atténuante garantie
+      c) Sans effet sur l'infraction
+      d) Un droit
+
+ 4. Le maintien frauduleux dans un système est :
+      a) Permis
+      b) Toléré
+      c) Encouragé
+      d) Réprimé
+
+ 5. Seul peut autoriser un test :
+      a) Le responsable habilité ou le propriétaire
+      b) Un technicien quelconque
+      c) Le testeur
+      d) Un client d'un tiers
+
+ 6. Un système dans le nuage exige en plus :
+      a) Rien
+      b) L'accord du fournisseur et ses règles
+      c) L'accord du voisin
+      d) Un outil
+
+ 7. La protection des données personnelles relève de :
+      a) 2010/012 seule
+      b) Aucune loi
+      c) La loi 2024/017
+      d) Un décret
+
+ 8. Pendant un test, on consulte les données :
+      a) Toutes
+      b) Celles qu'on veut
+      c) Aucune limite
+      d) Seulement ce qui prouve la faille
+
+ 9. Découvrir une faille par hasard autorise :
+      a) Seulement à la constater et signaler
+      b) À l'exploiter
+      c) À la vendre
+      d) À se maintenir
+
+10. Un outil offensif est :
+      a) Toujours illégal
+      b) Neutre, c'est l'usage autorisé qui compte
+      c) Toujours légal
+      d) Interdit de détention
+
+11. Le contrat précise :
+      a) Le prix seul
+      b) La météo
+      c) Périmètre, limites, confidentialité, responsabilités
+      d) Rien
+
+12. Les peines sont fixées par :
+      a) Le testeur
+      b) Le client
+      c) L'usage
+      d) Le texte de la loi
+
+13. Les preuves contenant des données personnelles sont :
+      a) Masquées et détruites en fin
+      b) Diffusées
+      c) Vendues
+      d) Publiées
+
+14. Un employé technique sans mandat peut-il autoriser un test ?
+      a) Oui
+      b) Non
+      c) Parfois
+      d) Toujours
+
+15. L'accord du client couvre-t-il l'infrastructure d'un fournisseur tiers ?
+      a) Oui
+      b) Toujours
+      c) Non
+      d) Jamais besoin
+
+16. Après une découverte hors mandat, on :
+      a) Exploite
+      b) Se maintient
+      c) Copie tout
+      d) Signale sans intrusion supplémentaire
+
+17. La responsabilité vient de :
+      a) L'usage qu'on en fait
+      b) L'outil
+      c) La couleur
+      d) La marque
+
+18. La propriété des livrables est fixée par :
+      a) L'usage
+      b) Le contrat
+      c) La loi seule
+      d) Personne
+
+19. L'infraction d'accès frauduleux existe :
+      a) Seulement avec dommage
+      b) Jamais
+      c) Même sans dommage
+      d) Seulement la nuit
+
+20. La règle du cours sur les données : ne rien copier, masquer, et :
+      a) Publier
+      b) Vendre
+      c) Conserver
+      d) Détruire à la fin
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. La loi 2010/012 ne réprime l'accès frauduleux qu'en cas de dommage.
+      Vrai / Faux
+
+22. Le défi intellectuel est une excuse légale garantie.
+      Vrai / Faux
+
+23. Un technicien sans mandat peut autoriser un test.
+      Vrai / Faux
+
+24. Un système en nuage exige aussi l'accord du fournisseur.
+      Vrai / Faux
+
+25. La loi 2024/017 régit la protection des données personnelles.
+      Vrai / Faux
+
+26. On peut copier toutes les données vues pendant un test.
+      Vrai / Faux
+
+27. Découvrir une faille autorise à s'y maintenir.
+      Vrai / Faux
+
+28. Un outil offensif est neutre ; c'est l'usage autorisé qui le rend licite.
+      Vrai / Faux
+
+29. Le contrat fixe la propriété des livrables.
+      Vrai / Faux
+
+30. Le maintien frauduleux dans un système est réprimé.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La loi camerounaise sur la cybersécurité porte le numéro 2010/______.
+
+32. La loi sur la protection des données personnelles porte le numéro 2024/______.
+
+33. Seul le responsable ______ peut autoriser un test.
+
+34. Un système en nuage exige aussi l'accord du ______.
+
+35. Pendant un test, on ne consulte que ce qui ______ la faille.
+
+36. Après une découverte hors mandat, on se contente de constater et de ______.
+
+37. La responsabilité vient de l'______ de l'outil, non de l'outil.
+
+38. Le document qui fixe périmètre et responsabilités est le ______.
+
+39. L'accès ______ à un système est réprimé.
+
+40. La règle : ne rien copier, masquer, puis ______ à la fin.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

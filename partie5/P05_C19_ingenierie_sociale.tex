@@ -1,0 +1,265 @@
+% ============================================================================
+% Fichier  : partie5/P05_C19_ingenierie_sociale.tex
+% Titre    : Ingénierie Sociale
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : MITRE ATT&CK (T1566 Phishing) ; principes d'éthique des tests
+% d'hameçonnage. Campagne autorisée de l'Opération LOGONE : cas fictif,
+% chiffres cohérents.
+% ============================================================================
+
+\chapter{Ingénierie Sociale}
+\label{chap:social}
+\chaptermark{Ingénierie sociale}
+
+\epigraph{%
+    « On ne teste pas les personnes pour les prendre en défaut~;\\
+    on teste un dispositif pour mieux les protéger. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitre~\ref{chap:droit}~; cours SEC3266,
+chapitre sur le facteur humain.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Définir l'ingénierie sociale et ses principaux leviers.
+    \item Décrire les formes d'hameçonnage.
+    \item Conduire une campagne d'hameçonnage autorisée et éthique.
+    \item Mesurer et interpréter les résultats sans stigmatiser.
+    \item Proposer des mesures techniques et de sensibilisation.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : combien de salariés de LiZbiZ cliquent sur un lien piégé, et qu'en conclure~?}
+% ============================================================================
+
+Avec l'accord de la direction et l'information du personnel sur le principe
+d'un test, NYONG SÉCURITÉ envoie un courriel d'hameçonnage simulé à
+60~salariés. Le but n'est pas de piéger des personnes, mais de mesurer un
+risque et d'améliorer un dispositif. Les chiffres orientent la
+sensibilisation, non les sanctions.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les leviers de l'ingénierie sociale (section~\ref{sec:c19-leviers}).
+    \item Les formes d'hameçonnage (section~\ref{sec:c19-formes}).
+    \item Une campagne éthique (section~\ref{sec:c19-campagne}).
+    \item Mesurer sans stigmatiser (section~\ref{sec:c19-mesure}).
+    \item Les parades (section~\ref{sec:c19-parades}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Les Leviers de l'Ingénierie Sociale}
+\label{sec:c19-leviers}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Ingénierie sociale}~: manipulation d'une personne pour obtenir une
+information, un accès ou une action, en exploitant la confiance, l'autorité,
+l'urgence, la peur ou la serviabilité.
+\end{boxdef}
+
+\begin{tableaucours}{L{3.0cm}L{9.2cm}}{%
+    \tableauHeader{Levier} &
+    \tableauHeader{Exemple}
+}
+Autorité & Un courriel qui se présente comme la direction \\
+Urgence & « Votre compte sera fermé dans une heure » \\
+Peur & « Activité suspecte détectée, cliquez pour vérifier » \\
+Serviabilité & Un faux collègue demande de l'aide \\
+Appât & Une pièce jointe « bulletin de paie » \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~19.1. Leviers de l'ingénierie sociale}\end{center}
+
+% ============================================================================
+\section{Les Formes d'Hameçonnage}
+\label{sec:c19-formes}
+% ============================================================================
+
+\begin{tableaucours}{L{3.6cm}L{8.6cm}}{%
+    \tableauHeader{Forme} &
+    \tableauHeader{Description}
+}
+Hameçonnage de masse & Courriel identique envoyé à un grand nombre \\
+Hameçonnage ciblé & Courriel personnalisé visant une personne précise \\
+Hameçonnage par message court & Par message téléphonique \\
+Hameçonnage vocal & Par appel téléphonique \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~19.2. Formes d'hameçonnage (ATT\&CK T1566)~\cite{mitreattack}}\end{center}
+
+% ============================================================================
+\section{Une Campagne Éthique}
+\label{sec:c19-campagne}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Conduire une campagne d'hameçonnage autorisée}
+\begin{enumerate}
+    \item Accord écrit de la direction~; information préalable du personnel
+          sur le principe (pas sur la date).
+    \item Scénario réaliste mais sans contenu humiliant ni thème sensible.
+    \item Page d'atterrissage pédagogique~: la personne qui clique apprend
+          aussitôt qu'il s'agissait d'un test.
+    \item Collecte limitée~: taux de clic et de saisie, jamais le mot de
+          passe réel.
+    \item Résultats agrégés~; aucune liste nominative de « fautifs ».
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Diffuser la liste des personnes qui ont cliqué.
+
+\smallskip
+\textbf{Règle~:} une campagne mesure un dispositif, pas des individus. On ne
+collecte jamais les mots de passe réels saisis~; on ne nomme personne~; on
+ne tourne pas le test en sanction, sous peine de détruire la confiance et le
+signalement.
+\end{boxalert}
+
+% ============================================================================
+\section{Mesurer sans Stigmatiser}
+\label{sec:c19-mesure}
+% ============================================================================
+
+\begin{boxscenario}{Opération LOGONE. La campagne de 60 courriels}
+\textbf{Constatations.} 60~courriels envoyés. 14~personnes ont cliqué sur le
+lien (23,3~\%). 5~ont commencé à saisir des identifiants sur la page de test
+(la saisie a été interrompue, aucun mot de passe réel n'a été conservé).
+9~personnes ont signalé le courriel à l'informatique.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le taux de clic (23,3~\%) rejoint le
+constat T-11. Le taux de signalement (15~\%) est encourageant et constitue
+le meilleur indicateur à faire progresser. Aucune conclusion individuelle
+n'est tirée.
+\end{boxscenario}
+
+\begin{boxobjet}{T-11 · Taux de clic élevé à l'hameçonnage simulé}
+\textbf{Description~:} 14~clics sur 60 (23,3~\%) lors de la campagne
+autorisée~; 5~débuts de saisie. \textbf{Preuve~:} statistiques agrégées de
+la plateforme de test. \textbf{Gravité~:} moyenne. \textbf{Impact~:} un
+courriel piégé réel ouvrirait un premier accès. \textbf{Recommandation~:}
+sensibilisation régulière, bouton de signalement, second facteur,
+marquage des courriels externes. \textbf{Détection~:} suivi du taux de
+signalement et du taux de clic dans le temps.
+\end{boxobjet}
+
+% ============================================================================
+\section{Les Parades}
+\label{sec:c19-parades}
+% ============================================================================
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Parade} &
+    \tableauHeader{Effet}
+}
+Sensibilisation régulière & Réduit le taux de clic, augmente le signalement \\
+Bouton de signalement & Transforme chaque salarié en capteur \\
+Second facteur & Un mot de passe saisi par erreur ne suffit plus \\
+Marquage des courriels externes & Aide à repérer l'usurpation \\
+Filtrage amont & Bloque une partie des courriels piégés \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~19.3. Parades à l'hameçonnage}\end{center}
+
+\begin{boxmetier}{RSSI et analyste SOC}
+\textbf{Faire du salarié un capteur.} L'objectif d'une campagne n'est pas de
+faire baisser le taux de clic à zéro, impossible, mais de faire monter le
+taux de signalement~: un salarié qui signale vite permet au SOC de réagir
+avant la propagation.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{L'ingénierie sociale} exploite autorité, urgence, peur,
+          serviabilité, appât.
+    \item \textbf{L'hameçonnage} prend plusieurs formes, de la masse au
+          ciblé.
+    \item \textbf{Une campagne éthique} informe, ne collecte pas les mots de
+          passe, ne nomme personne.
+    \item \textbf{On mesure un dispositif}, pas des individus.
+    \item \textbf{Le taux de signalement} est le meilleur indicateur à faire
+          progresser.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: définir l'ingénierie
+sociale et ses leviers~; citer les formes d'hameçonnage~; conduire une
+campagne éthique~; interpréter les résultats sans stigmatiser~; proposer des
+parades.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.1. Leviers \niveaubase}]
+Associez à chaque courriel le levier exploité~: « la direction exige »~;
+« compte fermé dans une heure ».
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.2. Formes \niveaubase}]
+Distinguez hameçonnage de masse et hameçonnage ciblé.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.3. Taux \niveaubase}]
+Calculez le taux de clic et le taux de signalement de la campagne.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.4. Page pédagogique \niveaumoyen}]
+Pourquoi la page d'atterrissage doit-elle être pédagogique et non
+culpabilisante~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.5. Collecte \niveaumoyen}]
+Pourquoi ne conserve-t-on jamais les mots de passe réels saisis~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.6. Signalement \niveaumoyen}]
+Pourquoi le taux de signalement est-il un meilleur objectif que le taux de
+clic~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.7. T-11 \niveaumoyen}]
+Rédigez le plan d'action lié à T-11.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.8. Thèmes sensibles \niveaumoyen}]
+Pourquoi évite-t-on les thèmes sensibles (salaire, santé) dans un scénario
+de test~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.9. Campagne \niveauexpert}]
+Rédigez la note d'information préalable du personnel annonçant le principe
+d'une campagne, sans en révéler la date.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~19.10. Programme \niveauexpert}]
+Proposez un programme annuel de sensibilisation et de mesure pour LiZbiZ.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item MITRE ATT\&CK~\cite{mitreattack}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} L'ensemble de ces techniques se combine dans un
+exercice réaliste~: le Chapitre~\ref{chap:rouge} traite de l'équipe rouge et
+de l'équipe violette.
+\end{boxinfo}

@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C25
+Chapitre 25 : Le laboratoire et la pratique continue
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. On s'entraîne seulement sur ce qu'on a le droit :
+      a) D'attaquer
+      b) De voir
+      c) De vendre
+      d) De chiffrer
+
+ 2. S'entraîner sur un site réel sans autorisation est :
+      a) Permis
+      b) Une infraction
+      c) Recommandé
+      d) Neutre
+
+ 3. Le laboratoire est :
+      a) Relié au réseau réel
+      b) Public
+      c) Isolé du réseau réel
+      d) Supprimé
+
+ 4. Les cibles sont :
+      a) Réelles
+      b) Chiffrées
+      c) Inconnues
+      d) Volontairement vulnérables
+
+ 5. Les instantanés permettent de :
+      a) Revenir à l'état initial
+      b) Facturer
+      c) Chiffrer
+      d) Vendre
+
+ 6. Une épreuve de capture de drapeau offre :
+      a) Rien
+      b) Un cadre autorisé
+      c) La paie
+      d) La météo
+
+ 7. La plateforme du cours est :
+      a) NDAP SUKULU
+      b) Azure
+      c) AWS
+      d) ANTIC
+
+ 8. La sécurité offensive :
+      a) Ne change pas
+      b) Est figée
+      c) Est illégale
+      d) Évolue vite
+
+ 9. On entretient ses compétences par :
+      a) Une pratique régulière
+      b) Rien
+      c) La paie
+      d) La météo
+
+10. Pour chaque chapitre, NDAP SUKULU fournit :
+      a) Une facture
+      b) Une fiche d'auto-évaluation
+      c) La paie
+      d) La météo
+
+11. L'entraînement se fait en laboratoire :
+      a) Ouvert
+      b) Public
+      c) Fermé
+      d) Réel
+
+12. Lors des essais offensifs, le réseau est :
+      a) Connecté à l'Internet
+      b) Public
+      c) Partagé
+      d) Sans connexion au réseau réel
+
+13. On a le droit explicite de tester sur :
+      a) Une plateforme d'entraînement
+      b) Un site réel
+      c) Le concurrent
+      d) La paie
+
+14. Les techniques de fond :
+      a) Changent tout
+      b) Restent
+      c) Disparaissent
+      d) Sont illégales
+
+15. Combien de labs HE2 pour ce cours ?
+      a) 5
+      b) 27
+      c) 10
+      d) 0
+
+16. On tient un :
+      a) Chèque
+      b) Contrat
+      c) Courriel
+      d) Journal d'entraînement
+
+17. Le laboratoire personnel permet de :
+      a) Tout casser sans risque
+      b) Facturer
+      c) Chiffrer
+      d) Vendre
+
+18. On partage au sein d'une :
+      a) Facture
+      b) Communauté
+      c) Météo
+      d) Paie
+
+19. Le code d'accès du cours est :
+      a) GES4062
+      b) INF3226
+      c) SEC4062
+      d) SEC3266
+
+20. La tentation de s'exercer sur un site réel est :
+      a) Un droit
+      b) Neutre
+      c) Recommandée
+      d) Une faute et une infraction
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. On peut s'entraîner sur un site réel si l'on ne cause aucun dommage.
+      Vrai / Faux
+
+22. Le laboratoire est relié au réseau de l'entreprise.
+      Vrai / Faux
+
+23. Les instantanés servent à attaquer d'autres machines.
+      Vrai / Faux
+
+24. La plateforme du cours est un site d'attaque public.
+      Vrai / Faux
+
+25. La sécurité offensive évolue vite.
+      Vrai / Faux
+
+26. NDAP SUKULU fournit une fiche d'auto-évaluation par chapitre.
+      Vrai / Faux
+
+27. Ce cours compte dix labs HE2.
+      Vrai / Faux
+
+28. S'entraîner sur un site réel sans autorisation est permis.
+      Vrai / Faux
+
+29. Les cibles du laboratoire sont volontairement vulnérables.
+      Vrai / Faux
+
+30. Les techniques de fond restent, les détails changent.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. On s'entraîne seulement sur ce qu'on a le droit d'______.
+
+32. Le laboratoire est ______ du réseau réel.
+
+33. Les ______ permettent de revenir à l'état initial.
+
+34. La plateforme du cours s'appelle NDAP ______.
+
+35. Ce cours compte ______ labs HE2.
+
+36. Le code d'accès du cours est ______.
+
+37. On entretient ses compétences par une pratique ______.
+
+38. On tient un ______ d'entraînement.
+
+39. L'entraînement se fait en laboratoire ______.
+
+40. On a le droit explicite de tester sur une ______ d'entraînement.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

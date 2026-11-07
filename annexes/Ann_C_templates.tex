@@ -1,0 +1,62 @@
+%% ============================================================================
+%% Fichier  : annexes/Ann_C_templates.tex
+%% Titre    : Modèles et procédures
+%% Version  : 1.0 -- novembre 2026
+%% ============================================================================
+
+\chapter{Modèles et Procédures}
+\label{ann:templates}
+
+Les modèles ci-dessous reprennent ceux des chapitres, sous une forme prête à
+l'emploi.
+
+\section*{Lettre d'autorisation}
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Rubrique} &
+    \tableauHeader{Contenu}
+}
+Parties & Commanditaire et prestataire, signataires habilités \\
+Périmètre & Adresses et systèmes visés (notation CIDR), exclusions \\
+Dates et horaires & Fenêtres autorisées \\
+Règles d'engagement & Actions permises et interdites, mot d'arrêt \\
+Contacts d'urgence & Joignables jour et nuit \\
+Données et preuves & Minimisation, masquage, destruction en fin \\
+Signature & Responsable habilité, date \\
+\end{tableaucours}
+
+\section*{Fiche de constat}
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Rubrique} &
+    \tableauHeader{Contenu}
+}
+Identifiant et titre & T-xx, titre court \\
+Description & La faiblesse, en termes clairs \\
+Preuve & Requête, capture masquée, relevé \\
+Impact & Ce qu'un attaquant en ferait \\
+Gravité & Cotation justifiée (CVSS ou risque métier) \\
+Recommandation & Correction concrète et vérifiable \\
+Détection & Comment voir l'exploitation en production \\
+\end{tableaucours}
+
+\section*{Procédure de nettoyage de fin de mission}
+
+\begin{enumerate}
+    \item Relire le journal de mission~: tout ce qui a été créé ou modifié.
+    \item Supprimer comptes, fichiers, services, tâches créés.
+    \item Restaurer les configurations modifiées.
+    \item Faire vérifier la suppression par le client.
+    \item Consigner le nettoyage dans le rapport.
+\end{enumerate}
+
+\section*{Plan du rapport}
+
+\begin{enumerate}
+    \item Synthèse pour la direction.
+    \item Contexte et périmètre.
+    \item Démarche et couverture.
+    \item Constats détaillés, cotés.
+    \item Plan de correction priorisé.
+    \item Annexes~: preuves, actions horodatées.
+\end{enumerate}

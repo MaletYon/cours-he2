@@ -1,0 +1,285 @@
+% ============================================================================
+% Fichier  : partie1/P01_C04_methodologies.tex
+% Titre    : Méthodologies et Référentiels
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : NIST SP 800-115 (2008) ; PTES ; OSSTMM 3 (ISECOM) ; OWASP WSTG ;
+% MITRE ATT&CK ; FIRST, CVSS.
+% ============================================================================
+
+\chapter{Méthodologies et Référentiels}
+\label{chap:methodes}
+\chaptermark{Méthodologies et référentiels}
+
+\epigraph{%
+    « Une méthode ne remplace pas le talent~;\\
+    elle empêche d'oublier ce que le talent n'a pas vu. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitres~\ref{chap:ethique}
+à~\ref{chap:engagement}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Décrire les phases d'un test selon le NIST SP~800-115 et le PTES.
+    \item Situer l'OSSTMM, l'OWASP WSTG et les autres guides.
+    \item Utiliser MITRE ATT\&CK pour décrire un comportement d'attaquant.
+    \item Exprimer la gravité d'une faille par le CVSS.
+    \item Tenir le journal de mission qui rend un test reproductible.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : comment être sûr de ne rien avoir oublié~?}
+% ============================================================================
+
+Au premier jour, M.~BIKORO remet à son équipe une liste de vérification
+fondée sur des référentiels publics, et un journal de mission vierge.
+Chaque test y sera noté. Quand LiZbiZ demandera « avez-vous testé la
+messagerie~? », la réponse sera écrite, avec l'heure.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les phases d'un test (section~\ref{sec:c04-phases}).
+    \item Les guides spécialisés (section~\ref{sec:c04-guides}).
+    \item Décrire l'attaquant~: ATT\&CK (section~\ref{sec:c04-attack}).
+    \item Coter la gravité~: CVSS (section~\ref{sec:c04-cvss}).
+    \item Le journal de mission (section~\ref{sec:c04-journal}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Les Phases d'un Test}
+\label{sec:c04-phases}
+% ============================================================================
+
+\begin{tableaucours}{L{3.0cm}L{4.6cm}L{4.6cm}}{%
+    \tableauHeader{Phase} &
+    \tableauHeader{NIST SP~800-115} &
+    \tableauHeader{PTES}
+}
+Préparer & Planification & Pré-engagement \\
+Reconnaître & Découverte & Collecte de renseignements, modélisation des
+menaces \\
+Analyser & Découverte (vulnérabilités) & Analyse des vulnérabilités \\
+Exploiter & Attaque & Exploitation, post-exploitation \\
+Restituer & Rapport & Rapport \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~4.1. Les phases d'un test (d'après le NIST SP~800-115 et le PTES)}\end{center}
+
+Le NIST SP~800-115 décrit les techniques de test et d'évaluation de la
+sécurité de l'information~\cite{nist800115}. Le PTES (\emph{Penetration
+Testing Execution Standard}) détaille sept phases, du pré-engagement au
+rapport~\cite{ptes}. Les phases ne sont pas strictement successives~: une
+découverte en exploitation relance la reconnaissance.
+
+% ============================================================================
+\section{Les Guides Spécialisés}
+\label{sec:c04-guides}
+% ============================================================================
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Référentiel} &
+    \tableauHeader{Apport}
+}
+OSSTMM (ISECOM) & Méthode de mesure de la sécurité opérationnelle, avec
+des métriques de surface d'attaque~\cite{osstmm3} \\
+OWASP WSTG & Guide de test des applications web, scénario par
+scénario~\cite{owaspwstg} \\
+OWASP MASTG et MASVS & Test et exigences des applications mobiles \\
+NIST SP~800-115 & Cadre général, techniques, rapport \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~4.2. Guides de test}\end{center}
+
+% ============================================================================
+\section{Décrire l'Attaquant : ATT\&CK}
+\label{sec:c04-attack}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{MITRE ATT\&CK}~: base de connaissances publique, fondée sur des
+observations réelles, qui décrit les tactiques (le but de l'attaquant à une
+étape) et les techniques (la manière de l'atteindre) des
+adversaires~\cite{mitreattack}.
+\end{boxdef}
+
+\begin{tableaucours}{L{3.6cm}L{8.6cm}}{%
+    \tableauHeader{Tactique} &
+    \tableauHeader{Exemple dans l'Opération GAROUA}
+}
+Accès initial & Comptes valides volés par hameçonnage \\
+Exécution & Lancement d'un outil sur le serveur de fichiers \\
+Persistance & Création du compte svc\_maj2 \\
+Élévation de privilèges & Exploitation d'un serveur non corrigé \\
+Découverte & Balayage du réseau interne \\
+Mouvement latéral & Connexions avec le mot de passe local partagé \\
+Exfiltration & Copie de 40~Go vers un stockage externe \\
+Impact & Chiffrement des serveurs \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~4.3. Quelques tactiques d'ATT\&CK appliquées à l'attaque de mars}\end{center}
+
+Décrire un test en techniques ATT\&CK permet au SOC de vérifier, technique
+par technique, s'il aurait détecté chaque geste (Chapitre~\ref{chap:rouge}).
+
+% ============================================================================
+\section{Coter la Gravité : CVSS}
+\label{sec:c04-cvss}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{CVSS} (\emph{Common Vulnerability Scoring System}), publié par le
+FIRST~: système qui exprime la gravité technique d'une vulnérabilité par un
+score de 0 à 10, calculé à partir de métriques (vecteur d'attaque,
+complexité, privilèges requis, interaction de l'utilisateur, impacts sur la
+confidentialité, l'intégrité et la disponibilité)~\cite{first2019cvss31}.
+\end{boxdef}
+
+\begin{tableaucours}{L{3.0cm}L{2.6cm}}{%
+    \tableauHeader{Score} &
+    \tableauHeader{Qualification}
+}
+0,0 & Aucune \\
+0,1 à 3,9 & Faible \\
+4,0 à 6,9 & Moyenne \\
+7,0 à 8,9 & Élevée \\
+9,0 à 10,0 & Critique \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~4.4. Les qualifications CVSS}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Classer les constats par le seul score CVSS.
+
+\smallskip
+\textbf{Règle~:} le score dit la gravité technique~; la priorité dépend
+aussi de l'exposition, de la valeur de l'actif et de l'exploitation connue
+(Chapitre~\ref{chap:vulnerabilites}). Le score de base se calcule, le
+contexte se juge.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Journal de Mission}
+\label{sec:c04-journal}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Tenir le journal de mission}
+\begin{enumerate}
+    \item Une ligne par action~: heure, testeur, adresse source, cible,
+          outil ou commande, résultat.
+    \item Les captures et les fichiers de preuve, nommés et horodatés.
+    \item Les incidents et les arrêts, avec qui a été prévenu.
+    \item Les tests prévus mais non faits, et pourquoi.
+    \item Conservation selon le contrat, accès restreint.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxscenario}{Opération LOGONE. La question de la messagerie}
+\textbf{Constatation.} Le 5~novembre, M.~KOUNOU demande si la messagerie en
+ligne a été testée. Le journal répond~: test de la configuration
+(authentification, règles de transfert) le 22~octobre de 9~h~10 à 11~h~40,
+aucune faille~; pas de test de l'interface d'administration, hors périmètre.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Sans journal, la réponse aurait été un
+souvenir. Avec lui, c'est une constatation vérifiable.
+\end{boxscenario}
+
+\begin{boxmetier}{Pentesteur}
+\textbf{Écrire au fil de l'eau.} Le journal se tient pendant le test, pas
+le soir. Une action non notée est une action que l'on ne pourra ni
+expliquer au client, ni défendre en cas d'incident.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Préparer, reconnaître, analyser, exploiter, restituer}~:
+          les phases du NIST SP~800-115 et du PTES.
+    \item \textbf{OSSTMM, OWASP WSTG, MASTG} spécialisent la méthode.
+    \item \textbf{ATT\&CK} décrit l'attaquant en tactiques et techniques.
+    \item \textbf{Le CVSS} cote la gravité technique~; la priorité y ajoute
+          le contexte.
+    \item \textbf{Le journal de mission} rend le test vérifiable.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: nommer les phases d'un
+test~; choisir un guide spécialisé~; décrire une attaque en tactiques
+ATT\&CK~; qualifier un score CVSS~; tenir un journal de mission.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.1. Les phases \niveaubase}]
+Dans quelle phase se range~: la lettre d'autorisation~; le balayage des
+ports~; la démonstration d'accès aux administrateurs du domaine~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.2. Qualifier \niveaubase}]
+Qualifiez les scores CVSS 9,8~; 7,5~; 5,3~; 3,1.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.3. Tactiques \niveaubase}]
+Rangez dans les tactiques d'ATT\&CK~: la suppression des sauvegardes~; la
+connexion avec le mot de passe du technicien~; la copie de 40~Go.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.4. Le guide \niveaumoyen}]
+Quel guide utiliser pour tester l'API de l'ANPP~? Et son application mobile~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.5. Le contexte \niveaumoyen}]
+Deux failles ont un score de 8,1~: l'une sur un serveur exposé à Internet,
+l'autre sur un poste isolé. Laquelle corriger d'abord~? Pourquoi~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.6. Le journal \niveaumoyen}]
+Rédigez cinq lignes du journal de mission du 26~octobre (tests internes).
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.7. Non fait \niveaumoyen}]
+Pourquoi noter les tests prévus mais non faits~? Donnez deux raisons
+légitimes de ne pas faire un test prévu.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.8. ATT\&CK et SOC \niveaumoyen}]
+Comment la description d'un test en techniques ATT\&CK aide-t-elle le SOC
+à s'améliorer~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.9. Liste de vérification \niveauexpert}]
+Construisez la liste de vérification des tests internes de l'Opération
+LOGONE, phase par phase.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.10. Comparer \niveauexpert}]
+Comparez le NIST SP~800-115, le PTES et l'OSSTMM~: objet, niveau de détail,
+usage recommandé.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item NIST SP~800-115~\cite{nist800115}~; PTES~\cite{ptes}~; OSSTMM~\cite{osstmm3}.
+    \item MITRE ATT\&CK~\cite{mitreattack}~; CVSS~v3.1~\cite{first2019cvss31}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La Partie~II commence par ce que l'on apprend sans
+toucher aux systèmes~: la reconnaissance passive (Chapitre~\ref{chap:osint}).
+\end{boxinfo}

@@ -1,0 +1,147 @@
+% ============================================================================
+% Fichier  : front/02_mode_emploi.tex
+% Titre    : Mode d'emploi du cours
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+
+\chapter*{Mode d'emploi du cours}
+\addcontentsline{toc}{chapter}{Mode d'emploi du cours}
+\markboth{Mode d'emploi}{Mode d'emploi}
+
+\section*{Structure générale}
+
+Le cours compte un prologue et six parties, soit 26~chapitres, pour
+60~heures en présentiel réparties en trente séances de deux heures. Les
+fiches d'auto-évaluation et les dix laboratoires de NDAP SUKULU sont des
+travaux à faire hors de ces 60~heures.
+
+\begin{tableaucours}{L{1.6cm}L{4.4cm}L{4.4cm}L{1.8cm}}{%
+    \tableauHeader{Partie} &
+    \tableauHeader{Thème} &
+    \tableauHeader{Compétences visées} &
+    \tableauHeader{Niveau}
+}
+Prologue & La lettre d'autorisation & Lire un mandat, séparer constatation
+et opinion & \niveaubase \\
+I & Le cadre du test & Métiers, droit, règles d'engagement, méthodes &
+\niveaubase \\
+II & Reconnaître & Sources ouvertes, balayage, vulnérabilités &
+\niveaumoyen \\
+III & Systèmes et réseaux & Exploitation, réseau, Active Directory,
+privilèges, mots de passe & \niveaumoyen{} à \niveauexpert \\
+IV & Applications et nuage & Web, injections, API, mobile, nuage &
+\niveaumoyen{} à \niveauexpert \\
+V & Au-delà des systèmes & Sans fil, ingénierie sociale, équipe rouge,
+détection & \niveauexpert \\
+VI & Restituer et progresser & Rapport, contre-test, divulgation,
+laboratoire, mesure & \niveaumoyen \\
+\end{tableaucours}
+
+\section*{Les trente séances}
+
+\begin{tableaucours}{L{1.4cm}L{8.4cm}L{2.4cm}}{%
+    \tableauHeader{Séance} &
+    \tableauHeader{Contenu} &
+    \tableauHeader{Partie}
+}
+1 & Prologue~: la lettre d'autorisation & Prologue \\
+2 & Le hacking éthique (Ch.~\ref{chap:ethique}) & I \\
+3 & Le cadre juridique (Ch.~\ref{chap:droit}) & I \\
+4 & Règles d'engagement (Ch.~\ref{chap:engagement}) & I \\
+5 & Méthodologies et référentiels (Ch.~\ref{chap:methodes}) & I \\
+6 & Reconnaissance passive (Ch.~\ref{chap:osint}) & II \\
+7 & Balayage et énumération (Ch.~\ref{chap:balayage}) & II \\
+8 & Analyser et prioriser (Ch.~\ref{chap:vulnerabilites}) & II \\
+9 & L'exploitation (Ch.~\ref{chap:exploitation}) & III \\
+10 & Attaques réseau (Ch.~\ref{chap:reseau}) & III \\
+11--12 & Active Directory (Ch.~\ref{chap:ad}) & III \\
+13 & Élévation de privilèges (Ch.~\ref{chap:privileges}) & III \\
+14 & Post-exploitation (Ch.~\ref{chap:post}) & III \\
+15 & Mots de passe (Ch.~\ref{chap:mdp}) & III \\
+16--17 & Tester une application web (Ch.~\ref{chap:web}) & IV \\
+18 & Injections et contrôle d'accès (Ch.~\ref{chap:injections}) & IV \\
+19 & API et mobile (Ch.~\ref{chap:api}) & IV \\
+20 & Nuage et conteneurs (Ch.~\ref{chap:nuage}) & IV \\
+21 & Sans fil et objets connectés (Ch.~\ref{chap:sansfil}) & V \\
+22 & Ingénierie sociale (Ch.~\ref{chap:social}) & V \\
+23--24 & Équipe rouge et équipe violette (Ch.~\ref{chap:rouge}) & V \\
+25 & Détection et contournement (Ch.~\ref{chap:detection}) & V \\
+26 & Le rapport de test (Ch.~\ref{chap:rapport}) & VI \\
+27 & Contre-test (Ch.~\ref{chap:retest}) & VI \\
+28 & Divulgation coordonnée (Ch.~\ref{chap:divulgation}) & VI \\
+29 & Le laboratoire (Ch.~\ref{chap:labo}) & VI \\
+30 & Mesurer~; synthèse (Ch.~\ref{chap:mesurer}) & VI \\
+\end{tableaucours}
+
+\section*{Les encadrés}
+
+\begin{boxdef}
+\textbf{Définition}. Introduit un terme avec sa définition~; les termes
+définis sont indexés et repris dans le glossaire (Annexe~\ref{ann:glossaire}).
+\end{boxdef}
+
+\begin{boxscenario}{Titre du scénario}
+\textbf{Scénario opérationnel}. Un épisode d'une des opérations du
+cours~: LOGONE (test d'intrusion de LiZbiZ), MBAM (équipe rouge de la BANQUE
+SANAGA), MEFOU (portail et API de l'ANPP).
+\end{boxscenario}
+
+\begin{boxobjet}{T-xx · Intitulé}
+\textbf{Fiche de constat}. Présente un constat de test sous une forme
+constante~: description, preuve, gravité, impact, recommandation,
+détection.
+\end{boxobjet}
+
+\begin{boxprocedure}
+\textbf{Procédure de test}. Dit, pas à pas, ce qu'il faut faire, dans le
+cadre d'une autorisation écrite.
+\end{boxprocedure}
+
+\begin{boxmetier}{Pentesteur}
+\textbf{Application métier}. Traduit le chapitre en gestes concrets pour
+l'un des métiers visés~: pentesteur, auditeur de sécurité, analyste SOC et
+équipe rouge, RSSI.
+\end{boxmetier}
+
+\begin{boxjuris}
+Cite un texte de loi d'après sa version officielle, puis en tire la
+portée pour le testeur.
+\end{boxjuris}
+
+\begin{boxalert}
+\textbf{Violation typique} et \textbf{règle}~: une erreur fréquente, et ce
+qu'il faut faire à la place.
+\end{boxalert}
+
+\begin{boxexo}
+\textbf{Exercice}. Dix par chapitre, gradués en trois niveaux~:
+\niveaubase\ fondamental, \niveaumoyen\ intermédiaire, \niveauexpert\
+expert. Les corrigés figurent dans le livret de correction.
+\end{boxexo}
+
+\section*{Conventions}
+
+\begin{itemize}
+    \item Toute technique est présentée pour des systèmes que l'on est
+          autorisé à tester, avec sa détection et sa parade.
+    \item Chaque analyse indique un niveau de confiance~: faible, moyenne ou
+          élevée, et reste séparée de la constatation.
+    \item Les adresses IP et les noms de domaine des exemples sont fictifs ou
+          réservés à la documentation.
+    \item Les \termecle{termes clés} apparaissent en gras~; les normes
+          s'écrivent \norme{ISO/IEC~29147}, les lois camerounaises
+          \loicam{n°~2010/012}.
+\end{itemize}
+
+\section*{Matériel d'accompagnement}
+
+\begin{itemize}
+    \item \textbf{Annexes}~: glossaire, outils, modèles et procédures,
+          textes juridiques et normatifs, bibliographie commentée, contacts
+          (Annexes~\ref{ann:glossaire} à~\ref{ann:contacts}).
+    \item \textbf{Livret de correction}~: corrigés des exercices et des
+          fiches, réservé au formateur.
+    \item \textbf{NDAP SUKULU}~: fiches d'auto-évaluation et laboratoires,
+          présentés dans la section qui suit.
+\end{itemize}

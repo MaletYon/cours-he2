@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C24
+Chapitre 24 : La divulgation coordonnée
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Informer le seul éditeur est la divulgation :
+      a) Privée
+      b) Complète
+      c) Coordonnée
+      d) Vocale
+
+ 2. Informer puis publier après correction est :
+      a) Privée
+      b) Coordonnée
+      c) Complète immédiate
+      d) Vocale
+
+ 3. Tout publier aussitôt est :
+      a) Coordonnée
+      b) Privée
+      c) Complète et immédiate
+      d) Vocale
+
+ 4. La divulgation coordonnée donne à l'éditeur :
+      a) Rien
+      b) De l'argent
+      c) La météo
+      d) Le temps de corriger
+
+ 5. On signale par :
+      a) Un canal sûr
+      b) Un canal public
+      c) La presse
+      d) La paie
+
+ 6. La réception des signalements est organisée par :
+      a) ISO 29147
+      b) ISO 30111
+      c) ISO 22301
+      d) CVSS
+
+ 7. Le traitement interne est organisé par :
+      a) ISO 29147
+      b) ISO 22301
+      c) ISO 30111
+      d) CVSS
+
+ 8. Découvrir une faille autorise-t-il à y accéder ?
+      a) Oui
+      b) Toujours
+      c) Parfois
+      d) Non
+
+ 9. La loi applicable à l'accès frauduleux est :
+      a) 2010/012
+      b) 2024/017
+      c) 2016/007
+      d) CVSS
+
+10. Un bon signalement est :
+      a) Menaçant
+      b) Factuel, reproductible, courtois
+      c) Secret
+      d) Payant
+
+11. Le compromis responsable est la divulgation :
+      a) Privée
+      b) Complète
+      c) Coordonnée
+      d) Vocale
+
+12. On publie une description :
+      a) Avant le correctif
+      b) Jamais
+      c) Avec un exploit prêt
+      d) Après le correctif
+
+13. On ne publie pas :
+      a) Le code d'exploitation prêt à l'emploi
+      b) La description
+      c) Le délai
+      d) Le contact
+
+14. 29147 et 30111 sont :
+      a) Concurrentes
+      b) Complémentaires
+      c) Identiques
+      d) Illégales
+
+15. Hors mandat, on se contente de :
+      a) Exploiter
+      b) Se maintenir
+      c) Constater et signaler
+      d) Copier
+
+16. Un signalement propose :
+      a) Une menace
+      b) Un prix
+      c) Une météo
+      d) Un délai
+
+17. Le devoir naît de :
+      a) La découverte d'une faille
+      b) La vente
+      c) La paie
+      d) La météo
+
+18. Pour T-09, corriger chez LiZbiZ :
+      a) Suffit
+      b) Ne protège pas les autres
+      c) Est inutile
+      d) Est illégal
+
+19. ISO 29147 organise l'échange avec :
+      a) L'intérieur
+      b) La paie
+      c) Le monde extérieur
+      d) La météo
+
+20. On trouve le contact de sécurité via :
+      a) La presse
+      b) Le hasard
+      c) La paie
+      d) Une page ou politique publiée
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. La divulgation coordonnée publie tout avant de prévenir l'éditeur.
+      Vrai / Faux
+
+22. ISO/IEC 29147 organise la continuité d'activité.
+      Vrai / Faux
+
+23. ISO/IEC 30111 organise la réception publique des signalements.
+      Vrai / Faux
+
+24. Découvrir une faille autorise à y accéder.
+      Vrai / Faux
+
+25. Un bon signalement menace l'éditeur pour obtenir une correction.
+      Vrai / Faux
+
+26. On ne publie pas de code d'exploitation prêt à l'emploi.
+      Vrai / Faux
+
+27. Corriger T-09 chez LiZbiZ ne protège pas les autres organisations.
+      Vrai / Faux
+
+28. 29147 et 30111 sont complémentaires.
+      Vrai / Faux
+
+29. La divulgation complète immédiate expose les utilisateurs avant correctif.
+      Vrai / Faux
+
+30. La loi 2010/012 réprime l'accès frauduleux.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le compromis responsable est la divulgation ______.
+
+32. La réception des signalements est organisée par ISO/IEC ______.
+
+33. Le traitement interne des vulnérabilités est organisé par ISO/IEC ______.
+
+34. Découvrir une faille n'autorise pas à y ______.
+
+35. Un bon signalement est factuel, reproductible et ______.
+
+36. On ne publie pas de ______ d'exploitation prêt à l'emploi.
+
+37. La divulgation coordonnée donne à l'éditeur le temps de ______.
+
+38. La loi camerounaise sur l'accès frauduleux est la 2010/______.
+
+39. Trouver une faille crée le ______ de la faire corriger.
+
+40. 29147 et 30111 sont ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

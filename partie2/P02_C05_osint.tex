@@ -1,0 +1,271 @@
+% ============================================================================
+% Fichier  : partie2/P02_C05_osint.tex
+% Titre    : Reconnaissance Passive et OSINT
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : PTES (collecte de renseignements) ; NIST SP 800-115 ; RFC 6962
+% (Certificate Transparency) ; MITRE ATT&CK (tactique Reconnaissance).
+% Résultats de l'Opération LOGONE : cas fictif.
+% ============================================================================
+
+\chapter{Reconnaissance Passive et OSINT}
+\label{chap:osint}
+\chaptermark{Reconnaissance passive et OSINT}
+
+\epigraph{%
+    « L'attaquant connaît souvent votre système d'information\\
+    mieux que votre inventaire. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitres~\ref{chap:engagement}
+et~\ref{chap:methodes}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Distinguer reconnaissance passive et active.
+    \item Exploiter les sources ouvertes~: DNS, certificats publics,
+          annonces, réseaux professionnels, dépôts de code.
+    \item Construire la surface d'attaque externe d'une organisation.
+    \item Rester dans le cadre légal et éthique de la collecte.
+    \item Transformer les résultats en mesures de réduction de l'exposition.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : que voyait-on de LiZbiZ depuis Internet, sans rien toucher~?}
+% ============================================================================
+
+Les 19 et 20~octobre, M.~TAMO ne se connecte à aucun système de LiZbiZ. Il
+lit ce que le monde peut lire~: les enregistrements DNS, les journaux
+publics de certificats, les offres d'emploi, les profils professionnels des
+salariés. À la fin du deuxième jour, il connaît trois serveurs exposés que
+l'inventaire de M.~KOUNOU ignore.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Passive ou active (section~\ref{sec:c05-passive}).
+    \item Les sources ouvertes (section~\ref{sec:c05-sources}).
+    \item La surface d'attaque externe (section~\ref{sec:c05-surface}).
+    \item Les limites de la collecte (section~\ref{sec:c05-limites}).
+    \item Réduire l'exposition (section~\ref{sec:c05-reduire}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Passive ou Active}
+\label{sec:c05-passive}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Reconnaissance passive}~: collecte d'informations sans interagir
+avec les systèmes de la cible (sources publiques, services tiers).
+\termecle{Reconnaissance active}~: collecte par interaction directe
+(résolution de noms auprès des serveurs de la cible, balayage). Le
+renseignement en sources ouvertes, ou \termecle{OSINT}, rassemble les
+informations publiquement accessibles.
+\end{boxdef}
+
+La reconnaissance passive ne laisse presque aucune trace chez la cible~:
+elle est aussi ce que fait un attaquant avant d'attaquer. ATT\&CK lui
+consacre une tactique entière, la \emph{reconnaissance}~\cite{mitreattack}.
+
+% ============================================================================
+\section{Les Sources Ouvertes}
+\label{sec:c05-sources}
+% ============================================================================
+
+\begin{tableaucours}{L{3.6cm}L{4.2cm}L{4.4cm}}{%
+    \tableauHeader{Source} &
+    \tableauHeader{Ce qu'elle révèle} &
+    \tableauHeader{Exemple chez LiZbiZ}
+}
+Enregistrements DNS & Serveurs, messagerie, services & Serveurs de
+messagerie hébergés en nuage \\
+Journaux de transparence des certificats & Noms de domaine pour lesquels un
+certificat a été émis & 14~sous-domaines de lizbiz.cm \\
+Registres d'adresses & Plages attribuées, hébergeur & La plage
+198.51.100.0/27 \\
+Offres d'emploi & Technologies utilisées & « Administrateur de notre
+pare-feu et de notre passerelle d'accès distant » \\
+Réseaux professionnels & Organigramme, format des adresses &
+prenom.nom@lizbiz.cm \\
+Dépôts de code publics & Configurations, secrets oubliés & Aucun secret
+trouvé \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~5.1. Sources ouvertes et apports}\end{center}
+
+Les journaux de \termecle{transparence des certificats}, définis par la RFC~6962,
+enregistrent publiquement les certificats émis par les autorités
+participantes~\cite{rfc6962}. Ils servent à détecter les certificats émis
+par erreur~; ils révèlent aussi les noms de serveurs qu'une organisation
+croyait discrets.
+
+% ============================================================================
+\section{La Surface d'Attaque Externe}
+\label{sec:c05-surface}
+% ============================================================================
+
+\begin{boxscenario}{Opération LOGONE. Ce que l'inventaire ignorait}
+\textbf{Constatations} (20~octobre). Sur 14~sous-domaines trouvés dans les
+journaux de certificats, 11 figurent à l'inventaire. Trois n'y sont pas~:
+« ancien-portail.lizbiz.cm » (ancienne version du portail de suivi, encore
+en ligne), « test-api.lizbiz.cm » (environnement de test) et
+« vpn2.lizbiz.cm » (ancienne passerelle d'accès distant, non retirée).
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Les trois serveurs oubliés sont
+précisément ceux qui ne reçoivent ni correctifs ni second facteur. Leur
+résolution et leur appartenance à la plage du périmètre restent à vérifier
+avant tout test actif (Chapitre~\ref{chap:engagement}).
+\end{boxscenario}
+
+\begin{boxobjet}{T-03 · Ancienne passerelle d'accès distant non retirée}
+\textbf{Description~:} « vpn2.lizbiz.cm » répond sur Internet et accepte une
+authentification par mot de passe seul. \textbf{Preuve~:} entrée du journal
+de certificats, page de connexion (capture du 21~octobre).
+\textbf{Gravité~:} élevée. \textbf{Impact~:} contournement du second facteur
+de la passerelle principale. \textbf{Recommandation~:} retirer le service,
+révoquer son certificat, inscrire le retrait au processus de fin de vie.
+\textbf{Détection~:} inventaire externe périodique.
+\end{boxobjet}
+
+% ============================================================================
+\section{Les Limites de la Collecte}
+\label{sec:c05-limites}
+% ============================================================================
+
+\begin{boxalert}
+\textbf{Violation typique.} Se connecter à un compte trouvé dans une fuite
+publique « pour vérifier qu'il fonctionne ».
+
+\smallskip
+\textbf{Règle~:} utiliser un identifiant volé, même publié, est un accès
+non autorisé s'il n'est pas prévu par les règles d'engagement. La collecte
+passive s'arrête à la lecture~; on signale la fuite au client.
+\end{boxalert}
+
+La collecte sur les personnes (salariés, dirigeants) touche à des données
+personnelles~: on se limite à ce qui sert le test (format des adresses,
+fonctions exposées), on ne constitue pas de dossier individuel, et on
+détruit les données à la fin de la mission (Chapitre~\ref{chap:droit}).
+
+% ============================================================================
+\section{Réduire l'Exposition}
+\label{sec:c05-reduire}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Mesurer et réduire sa propre exposition}
+\begin{enumerate}
+    \item Surveiller les journaux de certificats pour ses domaines.
+    \item Comparer chaque trimestre la surface externe observée à
+          l'inventaire.
+    \item Retirer les services anciens et les environnements de test exposés.
+    \item Relire les offres d'emploi et les communications techniques
+          publiques.
+    \item Rechercher ses domaines dans les dépôts de code publics.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxmetier}{RSSI}
+\textbf{Faire faire l'OSINT de sa propre organisation.} Le RSSI commande
+chaque trimestre une reconnaissance passive de son organisation~: ce qu'un
+attaquant voit gratuitement, il doit le voir avant lui.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Passive}~: sans toucher la cible~; \textbf{active}~: en
+          interagissant.
+    \item \textbf{DNS, certificats, registres, annonces, réseaux, dépôts}~:
+          les sources ouvertes.
+    \item \textbf{La surface externe observée} se compare à l'inventaire~;
+          les écarts sont souvent les failles.
+    \item \textbf{La collecte s'arrête à la lecture}~; données personnelles
+          minimisées.
+    \item \textbf{Faire l'OSINT de soi-même}, avant l'attaquant.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer reconnaissance
+passive et active~; citer six sources ouvertes~; expliquer la transparence
+des certificats~; comparer surface observée et inventaire~; respecter les
+limites de la collecte.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.1. Passive ou active \niveaubase}]
+Classez~: lire un journal de certificats~; résoudre un nom auprès du
+serveur DNS de la cible~; consulter une offre d'emploi~; balayer un port.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.2. L'écart \niveaubase}]
+Combien de sous-domaines trouvés ne figuraient pas à l'inventaire de
+LiZbiZ~? Quelle part du total~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.3. Les certificats \niveaubase}]
+Pourquoi les journaux de transparence des certificats révèlent-ils des
+serveurs « discrets »~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.4. L'offre d'emploi \niveaumoyen}]
+Réécrivez l'offre d'emploi de LiZbiZ pour qu'elle reste attractive sans
+révéler ses technologies de sécurité.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.5. Le compte publié \niveaumoyen}]
+Vous trouvez dans une fuite publique l'adresse et le mot de passe d'un
+salarié de LiZbiZ. Que faites-vous, et que ne faites-vous pas~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.6. Les personnes \niveaumoyen}]
+Quelles informations sur les salariés le testeur peut-il collecter pour une
+campagne d'hameçonnage simulée, et lesquelles doit-il s'interdire~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.7. T-03 \niveaumoyen}]
+Expliquez pourquoi l'ancienne passerelle annule l'effet du second facteur
+de la passerelle principale.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.8. La procédure \niveaumoyen}]
+Transformez la procédure « mesurer et réduire sa propre exposition » en
+indicateur clé de risque avec des seuils (cours GES4062).
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.9. L'ANPP \niveauexpert}]
+Préparez le plan de reconnaissance passive de l'Opération MEFOU~: sources,
+informations attendues, limites.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~5.10. ATT\&CK \niveauexpert}]
+Pour la tactique « reconnaissance » d'ATT\&CK, proposez trois mesures
+défensives qui la rendent plus difficile ou plus visible.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item RFC~6962~\cite{rfc6962}~; MITRE ATT\&CK~\cite{mitreattack}.
+    \item PTES, collecte de renseignements~\cite{ptes}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La reconnaissance active commence par le balayage.
+C'est l'objet du Chapitre~\ref{chap:balayage}.
+\end{boxinfo}

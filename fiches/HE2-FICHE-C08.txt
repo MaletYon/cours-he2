@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C08
+Chapitre 8 : L'exploitation : principes et cadres
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Une vulnérabilité est :
+      a) Une faiblesse
+      b) Un moyen d'attaque
+      c) Une charge
+      d) Un succès
+
+ 2. Un exploit est :
+      a) Une faiblesse
+      b) Un moyen de tirer parti d'une faiblesse
+      c) Une charge
+      d) Un rapport
+
+ 3. La charge utile est :
+      a) La faiblesse
+      b) Le prix
+      c) Ce qu'on fait exécuter
+      d) Le rapport
+
+ 4. On démontre l'exploitation par :
+      a) Une destruction
+      b) Un vol
+      c) Un chiffrement
+      d) Une preuve inoffensive
+
+ 5. Un exploit risquant d'interrompre le service :
+      a) Ne se lance qu'avec accord explicite
+      b) Se lance toujours
+      c) Est recommandé
+      d) Est anodin
+
+ 6. On décide d'exploiter selon :
+      a) Le prix
+      b) Le risque, la valeur de preuve, l'autorisation
+      c) La couleur
+      d) La date
+
+ 7. Un exploit non maîtrisé se lance :
+      a) Sur la production
+      b) Jamais nulle part
+      c) D'abord en laboratoire
+      d) Au hasard
+
+ 8. Un ancien système toujours connecté est :
+      a) Sans risque
+      b) Un secret
+      c) Une facture
+      d) Une porte, un risque réel
+
+ 9. L'exécution de code sur l'ancien portail est le constat :
+      a) T-09
+      b) T-01
+      c) T-11
+      d) T-14
+
+10. On note si l'exploitation a été :
+      a) Facturée
+      b) Détectée
+      c) Vendue
+      d) Chiffrée
+
+11. Parfois on choisit de :
+      a) Toujours exploiter
+      b) Détruire
+      c) Ne pas démontrer si risque trop élevé
+      d) Ignorer
+
+12. Une technique incertaine s'essaie d'abord :
+      a) En production
+      b) Chez le client
+      c) Nulle part
+      d) En laboratoire fermé
+
+13. On distingue la faille de son :
+      a) Exploitation
+      b) Prix
+      c) Nom
+      d) Client
+
+14. La preuve minimale évite :
+      a) Le succès
+      b) De modifier ou lire les données réelles
+      c) Le rapport
+      d) La détection
+
+15. Un déni de service hors accord est :
+      a) Permis
+      b) Recommandé
+      c) Interdit
+      d) Neutre
+
+16. Parfois, décrire l'impact :
+      a) Ne suffit jamais
+      b) Est interdit
+      c) Est inutile
+      d) Suffit
+
+17. Avant la production, on essaie l'exploit en :
+      a) Laboratoire
+      b) Réunion
+      c) Vente
+      d) Rapport
+
+18. Un système « qui ne sert plus » mais connecté se :
+      a) Ignore
+      b) Rapporte comme risque
+      c) Vend
+      d) Détruit
+
+19. Une exploitation réussie mais invisible est :
+      a) Un seul constat
+      b) Un succès total
+      c) Un double constat
+      d) Neutre
+
+20. Le laboratoire protège :
+      a) Le prix
+      b) Le client
+      c) La météo
+      d) La production
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Un exploit est la faiblesse elle-même.
+      Vrai / Faux
+
+22. On démontre l'exploitation en supprimant des données.
+      Vrai / Faux
+
+23. Un exploit risquant d'interrompre le service se lance toujours.
+      Vrai / Faux
+
+24. Un exploit non maîtrisé s'essaie d'abord sur la production.
+      Vrai / Faux
+
+25. Un ancien système toujours connecté reste une porte.
+      Vrai / Faux
+
+26. T-09 concerne l'exécution de code sur l'ancien portail.
+      Vrai / Faux
+
+27. Une exploitation réussie mais invisible est un double constat.
+      Vrai / Faux
+
+28. On peut choisir de ne pas démontrer si le risque est trop élevé.
+      Vrai / Faux
+
+29. Une technique incertaine se teste d'abord en production.
+      Vrai / Faux
+
+30. La preuve minimale évite de modifier les données réelles.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le moyen de tirer parti d'une faiblesse est l'______.
+
+32. Ce qu'un exploit fait exécuter est la charge ______.
+
+33. On démontre par une preuve ______.
+
+34. L'exécution de code sur l'ancien portail est le constat T-______.
+
+35. Un exploit non maîtrisé s'essaie d'abord en ______.
+
+36. Un déni de service ne se lance qu'avec accord ______.
+
+37. Une exploitation réussie mais ______ est un double constat.
+
+38. Le laboratoire fermé protège la ______.
+
+39. Une ______ est une faiblesse exploitable.
+
+40. Parfois, ______ l'impact suffit sans exploiter.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

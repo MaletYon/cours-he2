@@ -1,0 +1,246 @@
+% ============================================================================
+% Fichier  : partie5/P05_C21_detection.tex
+% Titre    : Se Faire Détecter : le Point de Vue du Défenseur
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : MITRE ATT&CK ; journaux de sécurité Windows ; principes de
+% détection. Ce chapitre prend le point de vue défensif : il n'enseigne
+% aucune technique d'évasion. Opérations LOGONE et MBAM : cas fictifs.
+% ============================================================================
+
+\chapter{Se Faire Détecter : le Point de Vue du Défenseur}
+\label{chap:detection}
+\chaptermark{Le point de vue du défenseur}
+
+\epigraph{%
+    « Le meilleur testeur offensif est celui qui apprend au défenseur\\
+    à le voir la prochaine fois. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire à expert}{Chapitre~\ref{chap:rouge}~;
+Chapitre~\ref{chap:post}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Comprendre comment un défenseur détecte chaque étape d'une
+          attaque.
+    \item Relier les techniques offensives étudiées à leurs traces.
+    \item Construire une matrice de couverture de détection.
+    \item Écrire une règle de détection à partir d'une technique jouée.
+    \item Faire du testeur offensif un contributeur à la défense.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+\begin{boiteRemarque}{Orientation défensive}
+Ce chapitre prend délibérément le point de vue du défenseur. Il n'enseigne
+pas à contourner la détection~: il enseigne à la mesurer et à l'améliorer.
+Le testeur éthique joue ses techniques \emph{au vu et au su} du défenseur,
+pour renforcer ce dernier.
+\end{boiteRemarque}
+
+% ============================================================================
+\section*{Question directrice : pour chaque technique jouée, le défenseur disposait-il d'une trace et d'une règle~?}
+% ============================================================================
+
+Dans l'Opération MBAM, 30~techniques ont été jouées, 18~détectées, dont la
+moitié seulement en direct. La question de ce chapitre est systématique~:
+pour chacune des techniques étudiées dans ce cours, quelle est sa trace, et
+quelle règle la transforme en alerte~?
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Voir chaque étape (section~\ref{sec:c21-etapes}).
+    \item Des techniques aux traces (section~\ref{sec:c21-traces}).
+    \item La matrice de couverture (section~\ref{sec:c21-matrice}).
+    \item Écrire une règle (section~\ref{sec:c21-regle}).
+    \item Le testeur, allié du défenseur (section~\ref{sec:c21-allie}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Voir Chaque Étape}
+\label{sec:c21-etapes}
+% ============================================================================
+
+\begin{tableaucours}{L{3.6cm}L{4.4cm}L{4.2cm}}{%
+    \tableauHeader{Étape} &
+    \tableauHeader{Trace typique} &
+    \tableauHeader{Source}
+}
+Balayage & Nombreuses connexions refusées & Pare-feu, flux réseau \\
+Hameçonnage & Courriel signalé, clic sur lien connu & Messagerie, mandataire
+web \\
+Authentification suspecte & Connexion inhabituelle, NTLM depuis un poste
+anormal & Journaux du domaine \\
+Mouvement latéral & Service distant installé, session réseau & Événements
+7045, 4624 \\
+Persistance & Compte créé, tâche planifiée & Événements 4720, 4698 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~21.1. Voir chaque étape d'une attaque}\end{center}
+
+% ============================================================================
+\section{Des Techniques aux Traces}
+\label{sec:c21-traces}
+% ============================================================================
+
+Chaque technique des Parties~III à~V laisse une trace, déjà signalée dans
+son chapitre. Le défenseur regroupe ces traces par source de journal et
+s'assure que chacune est bien collectée~: une trace non journalisée est une
+technique invisible.
+
+% ============================================================================
+\section{La Matrice de Couverture}
+\label{sec:c21-matrice}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Matrice de couverture de détection}~: tableau qui croise les
+techniques (par exemple celles d'ATT\&CK) avec l'état de la détection~: trace
+collectée, règle existante, règle testée. Elle montre les trous.
+\end{boxdef}
+
+\begin{boxprocedure}
+\textbf{Construire une matrice de couverture}
+\begin{enumerate}
+    \item Lister les techniques jouées ou attendues.
+    \item Pour chacune, noter la trace et sa source.
+    \item Indiquer si la trace est collectée.
+    \item Indiquer si une règle existe, et si elle a été testée.
+    \item Prioriser les trous selon la gravité de la technique.
+\end{enumerate}
+\end{boxprocedure}
+
+% ============================================================================
+\section{Écrire une Règle}
+\label{sec:c21-regle}
+% ============================================================================
+
+Une règle de détection s'exprime d'abord en français~: \emph{quelle
+condition, sur quelle source, déclenche quelle alerte}. On la teste en
+rejouant la technique (phase violette), on mesure les fausses alertes, puis
+on l'ajuste. Le lab HE2-LAB-09 fait écrire et tester de telles règles.
+
+\begin{boxscenario}{Opération LOGONE. Les règles qui manquaient}
+\textbf{Constatation.} Les traces de la connexion anormale du compte de la
+facturation et de son ajout à un groupe à privilèges existaient, mais aucune
+règle ne les transformait en alerte.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Après restitution, deux règles ont été
+écrites et testées~: « compte à privilèges se connectant depuis un poste
+ordinaire » et « ajout d'un compte à un groupe sensible hors fenêtre de
+maintenance ». La détection ne coûtait pas d'outil nouveau, seulement des
+règles.
+\end{boxscenario}
+
+% ============================================================================
+\section{Le Testeur, Allié du Défenseur}
+\label{sec:c21-allie}
+% ============================================================================
+
+\begin{boxmetier}{Analyste SOC / Red Team}
+\textbf{Livrer les traces, pas seulement les failles.} À la fin d'une
+mission, l'analyste remet au défenseur la liste horodatée de ses actions~:
+c'est le meilleur jeu de test pour vérifier et compléter la détection.
+\end{boxmetier}
+
+\begin{boxalert}
+\textbf{Violation typique.} Se vanter d'être « resté invisible » sans aider
+le défenseur à le devenir moins.
+
+\smallskip
+\textbf{Règle~:} rester discret est un moyen de mesurer la détection, pas une
+fin. Le testeur éthique livre toujours ce qu'il faut pour que le défenseur
+le détecte la fois suivante.
+\end{boxalert}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Chaque étape} d'une attaque laisse une trace, dans une
+          source précise.
+    \item \textbf{Une trace non collectée} rend la technique invisible.
+    \item \textbf{La matrice de couverture} montre les trous de détection.
+    \item \textbf{Une règle} s'énonce en français, se teste, s'ajuste.
+    \item \textbf{Le testeur} livre ses actions horodatées pour nourrir la
+          défense.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: relier une étape à sa
+trace et à sa source~; expliquer pourquoi une trace doit être collectée~;
+construire une matrice de couverture~; énoncer une règle de détection~;
+décrire l'apport du testeur à la défense.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.1. Traces \niveaubase}]
+Donnez la trace et la source de~: un balayage~; la création d'un compte.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.2. Invisible \niveaubase}]
+Pourquoi une technique dont la trace n'est pas collectée est-elle
+invisible~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.3. Matrice \niveaubase}]
+Quelles colonnes comporte une matrice de couverture de détection~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.4. Règle en français \niveaumoyen}]
+Énoncez en français la règle qui détecte un compte à privilèges se
+connectant depuis un poste ordinaire.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.5. Fausses alertes \niveaumoyen}]
+Pourquoi faut-il mesurer les fausses alertes d'une règle avant de la
+déployer~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.6. En direct ou après coup \niveaumoyen}]
+Que faut-il changer pour détecter en direct une technique aujourd'hui vue
+seulement après coup~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.7. LOGONE \niveaumoyen}]
+À partir du scénario, proposez une troisième règle utile pour LiZbiZ.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.8. Livraison \niveaumoyen}]
+Pourquoi la liste horodatée des actions du testeur est-elle un bon jeu de
+test pour le SOC~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.9. Couverture complète \niveauexpert}]
+Construisez la matrice de couverture des techniques des Chapitres~\ref{chap:reseau}
+à~\ref{chap:post}.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.10. Programme \niveauexpert}]
+Proposez un programme d'amélioration continue de la détection fondé sur des
+exercices violets trimestriels.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item MITRE ATT\&CK~\cite{mitreattack}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Toutes ces conclusions doivent être restituées~: la
+Partie~VI commence par le Chapitre~\ref{chap:rapport}, consacré au rapport.
+\end{boxinfo}

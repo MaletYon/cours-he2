@@ -1,0 +1,221 @@
+% ============================================================================
+% Fichier  : partie6/P06_C25_laboratoire.tex
+% Titre    : Le Laboratoire et la Pratique Continue
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : pratiques d'entraînement en sécurité offensive ; cadre légal des
+% laboratoires. NDAP SUKULU : plateforme d'entraînement du cours.
+% ============================================================================
+
+\chapter{Le Laboratoire et la Pratique Continue}
+\label{chap:labo}
+\chaptermark{Le laboratoire et la pratique continue}
+
+\epigraph{%
+    « On n'apprend pas à tester en lisant~;\\
+    on apprend dans un laboratoire que l'on a le droit d'attaquer. »%
+}{Principe du cours}
+
+\niveauChapitre{Tous niveaux}{L'ensemble du cours.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Comprendre pourquoi l'entraînement se fait en laboratoire fermé.
+    \item Monter un laboratoire personnel légal.
+    \item Utiliser les plateformes d'entraînement et les épreuves.
+    \item Entretenir ses compétences dans la durée et dans la légalité.
+    \item Situer la plateforme NDAP SUKULU du cours.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : où s'entraîner sans jamais enfreindre la loi~?}
+% ============================================================================
+
+Les techniques de ce cours ne se pratiquent que sur des systèmes que l'on a
+le droit d'attaquer. La tentation de « s'exercer » sur un site réel est une
+faute et une infraction. Ce chapitre montre où et comment s'entraîner
+légalement, et présente la plateforme du cours.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Pourquoi un laboratoire fermé (section~\ref{sec:c25-pourquoi}).
+    \item Monter son laboratoire (section~\ref{sec:c25-monter}).
+    \item Plateformes et épreuves (section~\ref{sec:c25-plateformes}).
+    \item Entretenir ses compétences (section~\ref{sec:c25-entretien}).
+    \item La plateforme NDAP SUKULU (section~\ref{sec:c25-ndap}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Pourquoi un Laboratoire Fermé}
+\label{sec:c25-pourquoi}
+% ============================================================================
+
+\begin{boxalert}
+\textbf{Violation typique.} S'entraîner sur un site réel « juste pour voir ».
+
+\smallskip
+\textbf{Règle~:} tout essai sur un système dont on n'a pas l'autorisation
+écrite est une infraction (Chapitre~\ref{chap:droit}), quelles que soient
+l'intention et l'absence de dommage. L'entraînement se fait en laboratoire
+fermé, isolé du réseau réel.
+\end{boxalert}
+
+% ============================================================================
+\section{Monter son Laboratoire}
+\label{sec:c25-monter}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Monter un laboratoire personnel légal}
+\begin{enumerate}
+    \item Un hyperviseur sur sa propre machine~; un réseau virtuel isolé.
+    \item Des machines cibles prévues pour l'entraînement (volontairement
+          vulnérables, fournies à cet effet).
+    \item Aucune connexion de ce réseau au réseau réel ni à l'Internet lors
+          des essais offensifs.
+    \item Des instantanés pour revenir à l'état initial.
+    \item Un journal d'entraînement pour suivre ses progrès.
+\end{enumerate}
+\end{boxprocedure}
+
+% ============================================================================
+\section{Plateformes et Épreuves}
+\label{sec:c25-plateformes}
+% ============================================================================
+
+Des plateformes en ligne proposent des cibles légales à attaquer et des
+épreuves de capture de drapeau. Elles offrent un cadre autorisé~: on y a le
+droit explicite de tester. Elles complètent le laboratoire personnel et
+permettent de se mesurer.
+
+\begin{tableaucours}{L{4.0cm}L{8.2cm}}{%
+    \tableauHeader{Cadre} &
+    \tableauHeader{Usage}
+}
+Laboratoire personnel & Apprendre à son rythme, tout casser sans risque \\
+Plateforme d'entraînement en ligne & Cibles variées, légales, mises à jour \\
+Épreuve de capture de drapeau & Se mesurer, travailler en équipe, sous
+pression \\
+Plateforme du cours (NDAP SUKULU) & Fiches, labs et exercices alignés sur ce
+cours \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~25.1. Cadres d'entraînement légaux}\end{center}
+
+% ============================================================================
+\section{Entretenir ses Compétences}
+\label{sec:c25-entretien}
+% ============================================================================
+
+La sécurité offensive évolue vite. Les techniques de fond (reconnaissance,
+accès, élévation, latéralité, restitution) restent~; les détails changent.
+On entretient ses compétences par une pratique régulière, une veille
+mesurée, et le partage au sein d'une communauté.
+
+\begin{boxmetier}{Pentesteur, analyste SOC / Red Team, RSSI}
+\textbf{Pratiquer, dans la durée et la légalité.} Le professionnel réserve
+un temps régulier au laboratoire, documente ses essais, et ne cède jamais à
+la facilité d'un essai « réel » non autorisé~: sa réputation et sa liberté
+en dépendent.
+\end{boxmetier}
+
+% ============================================================================
+\section{La Plateforme NDAP SUKULU}
+\label{sec:c25-ndap}
+% ============================================================================
+
+Le cours s'appuie sur la plateforme \sigle{NDAP SUKULU}~: pour chaque
+chapitre, une fiche d'auto-évaluation~; pour les chapitres pratiques, un lab
+qui fait manipuler des pièces (relevés, historiques, journaux) dans un cadre
+entièrement fermé. Les dix labs du cours (HE2-LAB-01 à~10) couvrent le
+périmètre, l'OSINT, le balayage, la priorisation, l'annuaire, l'élévation,
+l'audit de mots de passe, l'historique web, la couverture de détection et le
+calcul de gravité.
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{On s'entraîne} seulement sur ce qu'on a le droit
+          d'attaquer.
+    \item \textbf{Le laboratoire fermé} est isolé du réseau réel.
+    \item \textbf{Plateformes et épreuves} offrent des cibles légales.
+    \item \textbf{On entretient} ses compétences par une pratique régulière.
+    \item \textbf{NDAP SUKULU} aligne fiches et labs sur le cours.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: expliquer pourquoi
+l'entraînement est en laboratoire fermé~; monter un laboratoire légal~;
+citer les cadres d'entraînement~; organiser l'entretien de mes
+compétences~; décrire NDAP SUKULU.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.1. Légalité \niveaubase}]
+Pourquoi ne s'entraîne-t-on jamais sur un site réel sans autorisation~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.2. Isolation \niveaubase}]
+Pourquoi le réseau du laboratoire doit-il être isolé du réseau réel~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.3. Cadres \niveaubase}]
+Citez trois cadres d'entraînement légaux.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.4. Instantanés \niveaumoyen}]
+À quoi servent les instantanés dans un laboratoire~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.5. Capture de drapeau \niveaumoyen}]
+Qu'apporte une épreuve de capture de drapeau par rapport au laboratoire
+personnel~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.6. Veille \niveaumoyen}]
+Comment organiser une veille mesurée sans s'y noyer~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.7. Journal \niveaumoyen}]
+Que consigne-t-on dans un journal d'entraînement~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.8. NDAP SUKULU \niveaumoyen}]
+Décrivez ce que la plateforme du cours apporte à chaque chapitre.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.9. Montage \niveauexpert}]
+Décrivez le montage complet d'un laboratoire personnel pour pratiquer les
+Parties~III et~IV.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.10. Plan annuel \niveauexpert}]
+Proposez votre plan d'entraînement sur un an pour entretenir les compétences
+du cours.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item Les dix labs de NDAP SUKULU pour ce cours.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Reste à savoir mesurer la valeur de tout cela~: le
+Chapitre~\ref{chap:mesurer} clôt le cours sur la mesure de la sécurité
+offensive.
+\end{boxinfo}

@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C21
+Chapitre 21 : Se faire détecter : le point de vue du défenseur
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Ce chapitre enseigne à :
+      a) Mesurer et améliorer la détection
+      b) Contourner la détection
+      c) Attaquer
+      d) Facturer
+
+ 2. Un balayage se voit par :
+      a) Rien
+      b) De nombreuses connexions refusées
+      c) La paie
+      d) La météo
+
+ 3. Une création de compte se voit par l'événement :
+      a) 7045
+      b) 4698
+      c) 4720
+      d) 1102
+
+ 4. Une trace non collectée rend la technique :
+      a) Visible
+      b) Chiffrée
+      c) Facturée
+      d) Invisible
+
+ 5. La matrice de couverture croise techniques et :
+      a) État de la détection
+      b) Prix
+      c) Météo
+      d) Clients
+
+ 6. Elle montre :
+      a) Les factures
+      b) Les trous de détection
+      c) La météo
+      d) Les prix
+
+ 7. Une règle s'énonce d'abord :
+      a) En code
+      b) En chiffres
+      c) En français
+      d) En anglais
+
+ 8. Avant de déployer, on mesure :
+      a) Le prix
+      b) La météo
+      c) La couleur
+      d) Les fausses alertes
+
+ 9. Le testeur livre au défenseur :
+      a) La liste horodatée de ses actions
+      b) Rien
+      c) La facture
+      d) La météo
+
+10. Rester discret est :
+      a) Une fin
+      b) Un moyen de mesurer
+      c) Un exploit
+      d) Une vente
+
+11. Un mouvement latéral laisse :
+      a) Rien
+      b) La paie
+      c) Des traces d'ouverture de session et de services
+      d) La météo
+
+12. Le défenseur regroupe les traces par :
+      a) Prix
+      b) Couleur
+      c) Client
+      d) Source de journal
+
+13. Les colonnes incluent :
+      a) Trace, source, règle, état
+      b) Le prix
+      c) La météo
+      d) La couleur
+
+14. On teste une règle en :
+      a) Facturant
+      b) Rejouant la technique
+      c) Chiffrant
+      d) Vendant
+
+15. La liste horodatée sert de :
+      a) Facture
+      b) Météo
+      c) Jeu de test pour le SOC
+      d) Prix
+
+16. Dans LOGONE, il manquait surtout :
+      a) Des journaux
+      b) Des serveurs
+      c) Des postes
+      d) Des règles
+
+17. Deux règles écrites après visaient :
+      a) Le compte à privilèges anormal et l'ajout à un groupe
+      b) La paie
+      c) La météo
+      d) Le prix
+
+18. La persistance se voit par :
+      a) Rien
+      b) Comptes créés, tâches planifiées
+      c) La paie
+      d) La météo
+
+19. Le testeur éthique joue ses techniques :
+      a) En cachette
+      b) Jamais
+      c) Au vu du défenseur
+      d) Au hasard
+
+20. Une règle trop bruyante est :
+      a) Déployée
+      b) Chiffrée
+      c) Vendue
+      d) Désactivée ou ignorée
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Ce chapitre enseigne à contourner la détection.
+      Vrai / Faux
+
+22. Une trace non collectée reste visible du défenseur.
+      Vrai / Faux
+
+23. La matrice de couverture liste les factures du test.
+      Vrai / Faux
+
+24. Une règle de détection s'énonce d'abord en français.
+      Vrai / Faux
+
+25. Le testeur livre au défenseur la liste horodatée de ses actions.
+      Vrai / Faux
+
+26. Rester discret est une fin en soi.
+      Vrai / Faux
+
+27. On teste une règle en rejouant la technique.
+      Vrai / Faux
+
+28. Dans LOGONE, il manquait surtout des règles, pas des journaux.
+      Vrai / Faux
+
+29. Une règle trop bruyante finit désactivée ou ignorée.
+      Vrai / Faux
+
+30. Ce chapitre enseigne des techniques d'évasion de la détection.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Une trace non ______ rend la technique invisible.
+
+32. Le tableau qui croise techniques et détection est la matrice de ______.
+
+33. Une règle de détection s'énonce d'abord en ______.
+
+34. Avant de déployer une règle, on mesure les fausses ______.
+
+35. Le testeur livre la liste ______ de ses actions.
+
+36. Une création de compte se voit par l'événement ______.
+
+37. Dans LOGONE, il manquait surtout des ______.
+
+38. Le testeur éthique joue ses techniques au vu du ______.
+
+39. Le défenseur regroupe les traces par ______ de journal.
+
+40. On teste une règle en ______ la technique.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C23
+Chapitre 23 : Le contre-test
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Le contre-test vérifie :
+      a) Que chaque faiblesse a été traitée
+      b) Le prix
+      c) La météo
+      d) La couleur
+
+ 2. Il rejoue :
+      a) Un nouveau test
+      b) Le test qui avait révélé la faille
+      c) Rien
+      d) La paie
+
+ 3. Masquer une bannière de version est :
+      a) Une correction de fond
+      b) Une mise à jour
+      c) Un palliatif
+      d) Un chiffrement
+
+ 4. On vérifie :
+      a) Le symptôme
+      b) Le prix
+      c) La météo
+      d) La cause
+
+ 5. Les états d'un constat incluent :
+      a) Fermé, partiel, palliatif, rouvert
+      b) Vendu
+      c) Chiffré
+      d) Payé
+
+ 6. Combien de constats fermés au contre-test ?
+      a) 3
+      b) 9
+      c) 14
+      d) 0
+
+ 7. Le constat rouvert est :
+      a) T-01
+      b) T-02
+      c) T-10
+      d) T-05
+
+ 8. La clôture détruit :
+      a) Le rapport
+      b) Les preuves utiles
+      c) Le contrat
+      d) Les données de test
+
+ 9. Le contre-test est une condition de :
+      a) Clôture
+      b) Vente
+      c) Paie
+      d) Météo
+
+10. Bloquer une adresse corrige-t-il un défaut d'accès ?
+      a) Oui
+      b) Non
+      c) Toujours
+      d) Parfois
+
+11. T-07 corrigé sur les serveurs mais pas les postes est :
+      a) Fermé
+      b) Rouvert
+      c) Partiel
+      d) Non traité
+
+12. Les deux failles critiques sont :
+      a) Rouvertes
+      b) Partielles
+      c) Palliatives
+      d) Fermées
+
+13. Sans contre-test, un rapport reste :
+      a) Une liste de promesses
+      b) Prouvé
+      c) Faux
+      d) Chiffré
+
+14. Un constat fermé réapparu est :
+      a) Partiel
+      b) Rouvert
+      c) Palliatif
+      d) Non traité
+
+15. Le constat palliatif est :
+      a) T-01
+      b) T-05
+      c) T-13
+      d) T-10
+
+16. On rédige un :
+      a) Nouveau contrat
+      b) Chèque
+      c) Courriel
+      d) Addendum au rapport
+
+17. Seule corrige la version vulnérable :
+      a) La mise à jour
+      b) Le masquage
+      c) Le blocage
+      d) Le chiffrement
+
+18. Combien de constats partiels ?
+      a) 1
+      b) 3
+      c) 9
+      d) 14
+
+19. On convient d'un suivi pour les constats :
+      a) Fermés
+      b) Palliatifs
+      c) Partiels
+      d) Rouverts
+
+20. Le contre-test se fait dans :
+      a) D'autres conditions
+      b) Le nuage
+      c) La paie
+      d) Les mêmes conditions
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Le contre-test est un test entièrement nouveau sur un autre périmètre.
+      Vrai / Faux
+
+22. Masquer une bannière de version est une correction de fond.
+      Vrai / Faux
+
+23. On vérifie le symptôme, pas la cause.
+      Vrai / Faux
+
+24. Les 14 constats ont été fermés au contre-test de LOGONE.
+      Vrai / Faux
+
+25. Le constat T-10 a été rouvert.
+      Vrai / Faux
+
+26. Le contre-test peut être une condition de clôture.
+      Vrai / Faux
+
+27. Les deux failles critiques ont été fermées.
+      Vrai / Faux
+
+28. T-07 corrigé sur les serveurs mais pas les postes est à l'état partiel.
+      Vrai / Faux
+
+29. Sans contre-test, un rapport reste une liste de promesses.
+      Vrai / Faux
+
+30. Bloquer une adresse corrige un défaut d'accès.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La vérification des corrections après coup est le ______.
+
+32. Masquer une bannière de version est un ______.
+
+33. On vérifie la ______, pas le symptôme.
+
+34. ______ constats ont été fermés au contre-test.
+
+35. Le constat ______ a été rouvert.
+
+36. Le constat palliatif de LOGONE est T-______.
+
+37. On rédige un ______ au rapport avec les états.
+
+38. Un constat fermé qui réapparaît est ______.
+
+39. Le contre-test peut être une condition de ______.
+
+40. Le contre-test se fait dans les ______ conditions.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

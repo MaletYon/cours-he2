@@ -1,0 +1,265 @@
+% ============================================================================
+% Fichier  : partie2/P02_C07_vulnerabilites.tex
+% Titre    : Analyser et Prioriser les Vulnérabilités
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : FIRST, CVSS v3.1 et EPSS ; CISA, catalogue Known Exploited
+% Vulnerabilities ; programme CVE (MITRE) ; NIST SP 800-40 Rev. 4.
+% Résultats de l'Opération LOGONE : cas fictif.
+% ============================================================================
+
+\chapter{Analyser et Prioriser les Vulnérabilités}
+\label{chap:vulnerabilites}
+\chaptermark{Analyser et prioriser}
+
+\epigraph{%
+    « Un rapport de trois cents failles\\
+    est un rapport qu'on ne lira pas. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitres~\ref{chap:methodes}
+et~\ref{chap:balayage}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Utiliser un scanner de vulnérabilités et en connaître les limites.
+    \item Écarter les faux positifs par la vérification.
+    \item Comprendre les identifiants CVE et les catalogues de failles
+          exploitées.
+    \item Prioriser par la gravité, l'exploitation connue, l'exposition et
+          la valeur de l'actif.
+    \item Présenter une liste courte, ordonnée et justifiée.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : par quoi commencer, parmi 312 résultats~?}
+% ============================================================================
+
+Le scanner lancé le 26~octobre sur les réseaux de Garoua produit 312
+résultats. M.~KOUNOU n'a ni le temps ni l'équipe de tout corriger. Mme~NGO
+MBOCK doit lui remettre une liste courte~: ce qui est vrai, ce qui est
+dangereux, et dans quel ordre.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les scanners de vulnérabilités (section~\ref{sec:c07-scanners}).
+    \item Vérifier~: faux positifs et faux négatifs (section~\ref{sec:c07-verifier}).
+    \item CVE et catalogues (section~\ref{sec:c07-cve}).
+    \item Prioriser (section~\ref{sec:c07-prioriser}).
+    \item Présenter (section~\ref{sec:c07-presenter}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Les Scanners de Vulnérabilités}
+\label{sec:c07-scanners}
+% ============================================================================
+
+Un \termecle{scanner de vulnérabilités} compare les services et les
+versions observés à une base de failles connues, et tente parfois des
+vérifications. Il peut travailler \emph{sans authentification} (vue
+d'attaquant externe) ou \emph{avec authentification} (il lit les versions
+installées~: bien plus précis).
+
+\begin{tableaucours}{L{3.6cm}L{8.6cm}}{%
+    \tableauHeader{Limite} &
+    \tableauHeader{Conséquence}
+}
+Déduction par la version & Une version corrigée par un rétroportage peut
+être signalée vulnérable \\
+Bases incomplètes & Les failles de configuration et de logique sont mal vues \\
+Absence de contexte & Le scanner ne sait pas ce qui est critique pour le
+métier \\
+Bruit & Des centaines de résultats de faible intérêt \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~7.1. Limites des scanners}\end{center}
+
+% ============================================================================
+\section{Vérifier : Faux Positifs et Faux Négatifs}
+\label{sec:c07-verifier}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Faux positif}~: faille signalée qui n'existe pas.
+\termecle{Faux négatif}~: faille présente que l'outil n'a pas signalée. Le
+premier fait perdre du temps~; le second donne une fausse assurance.
+\end{boxdef}
+
+\begin{boxscenario}{Opération LOGONE. De 312 à 41}
+\textbf{Constatations.} Sur 312~résultats bruts~: 158 sont des
+informations sans gravité~; 96 sont des doublons (même faille sur plusieurs
+hôtes, regroupée)~; 17 sont des faux positifs (versions corrigées par
+rétroportage). Restent 41~vulnérabilités distinctes et vérifiées, dont 3
+figurent au catalogue des failles exploitées.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le travail du testeur n'est pas de
+recopier le scanner, mais de transformer ses résultats en constats vrais et
+ordonnés.
+\end{boxscenario}
+
+% ============================================================================
+\section{CVE et Catalogues}
+\label{sec:c07-cve}
+% ============================================================================
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Référence} &
+    \tableauHeader{Rôle}
+}
+CVE & Identifiant public unique d'une vulnérabilité (programme CVE, MITRE)~\cite{mitrecve} \\
+CVSS & Gravité technique, de 0 à 10 (FIRST)~\cite{first2019cvss31} \\
+EPSS & Probabilité estimée d'exploitation dans les 30~jours (FIRST)~\cite{firstepss} \\
+Catalogue KEV & Liste des vulnérabilités dont l'exploitation est avérée (CISA)~\cite{cisakev} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~7.2. Les références utiles à la priorisation}\end{center}
+
+% ============================================================================
+\section{Prioriser}
+\label{sec:c07-prioriser}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Une règle de priorisation (convention du cours)}
+\begin{enumerate}
+    \item \textbf{Priorité~1}~: exploitation avérée (catalogue KEV) et actif
+          exposé à Internet ou critique~; ou CVSS d'au moins 9 sur un actif
+          exposé.
+    \item \textbf{Priorité~2}~: CVSS d'au moins 7 sur un actif interne
+          critique, ou probabilité d'exploitation élevée.
+    \item \textbf{Priorité~3}~: le reste, traité dans le cycle normal des
+          correctifs (cours SEC3266, Chapitre sur les systèmes).
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Trier uniquement par le score CVSS décroissant.
+
+\smallskip
+\textbf{Règle~:} une faille de score 7,5 exploitée activement sur la
+passerelle passe avant une faille de score 9,1 sur un poste isolé, sans
+exploitation connue. On croise gravité, exploitation, exposition et valeur.
+\end{boxalert}
+
+% ============================================================================
+\section{Présenter}
+\label{sec:c07-presenter}
+% ============================================================================
+
+\begin{boxobjet}{T-06 · SMBv1 actif sur deux serveurs de Garoua}
+\textbf{Description~:} le protocole SMBv1, obsolète, est accepté par
+FS-02 et APP-01. \textbf{Preuve~:} négociation du protocole (relevé du
+26~octobre). \textbf{Gravité~:} élevée (vulnérabilités connues de SMBv1,
+exploitées par le passé à grande échelle). \textbf{Impact~:} exécution de
+code à distance si un correctif manque. \textbf{Recommandation~:}
+désactiver SMBv1, vérifier les clients qui en dépendent.
+\textbf{Détection~:} journaliser les négociations SMBv1.
+\end{boxobjet}
+
+\begin{boxmetier}{RSSI}
+\textbf{Demander peu, mais juste.} Le RSSI attend du rapport une liste de
+priorité~1 courte et argumentée, qu'il peut faire corriger dans le mois, et
+une annexe complète pour le cycle normal.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Un scanner} compare des versions à une base~; avec
+          authentification, il est plus précis.
+    \item \textbf{On vérifie}~: faux positifs écartés, faux négatifs
+          recherchés à la main.
+    \item \textbf{CVE, CVSS, EPSS, KEV}~: identifier, coter, estimer,
+          savoir ce qui est exploité.
+    \item \textbf{On priorise} en croisant gravité, exploitation, exposition
+          et valeur.
+    \item \textbf{On présente} une liste courte de priorité~1 et une annexe.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: dire les limites d'un
+scanner~; distinguer faux positif et faux négatif~; expliquer CVE, CVSS,
+EPSS et KEV~; appliquer une règle de priorisation~; rédiger un constat.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.1. Les chiffres \niveaubase}]
+Vérifiez que 312 résultats moins les informations, les doublons et les faux
+positifs laissent 41~vulnérabilités.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.2. Faux positif \niveaubase}]
+Pourquoi une version corrigée par rétroportage est-elle souvent signalée à
+tort~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.3. Les références \niveaubase}]
+Associez à chaque question la bonne référence (CVE, CVSS, EPSS, KEV)~:
+« est-elle exploitée~? »~; « quelle gravité~? »~; « quel nom~? »~; « quelle
+probabilité d'être exploitée bientôt~? »
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.4. Prioriser \niveaumoyen}]
+Appliquez la règle du cours à~: CVSS 7,5 au catalogue KEV sur la
+passerelle~; CVSS 9,1 sans exploitation sur un poste isolé~; CVSS 5,3 sur le
+portail.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.5. Authentifié \niveaumoyen}]
+Pourquoi un balayage authentifié réduit-il les faux positifs~? Quelles
+précautions exige-t-il~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.6. Faux négatifs \niveaumoyen}]
+Citez trois types de failles qu'un scanner voit mal, et comment le testeur
+les recherche.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.7. T-06 \niveaumoyen}]
+Quels clients pourraient encore dépendre de SMBv1 chez LiZbiZ~? Comment le
+vérifier avant de le désactiver~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.8. Regrouper \niveaumoyen}]
+Pourquoi regrouper une même faille présente sur 40~hôtes en un seul
+constat~? Que faut-il indiquer pour ne rien perdre~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.9. Une politique \niveauexpert}]
+Rédigez la politique de priorisation des vulnérabilités de LiZbiZ, avec les
+délais associés à chaque priorité.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.10. Mesurer \niveauexpert}]
+Proposez trois indicateurs du processus de gestion des vulnérabilités et
+leurs seuils.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item FIRST, CVSS~\cite{first2019cvss31} et EPSS~\cite{firstepss}~;
+          CISA, catalogue KEV~\cite{cisakev}.
+    \item NIST SP~800-40 Rev.~4~\cite{nist80040}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Une faille vérifiée se démontre par l'exploitation,
+dans un cadre maîtrisé. La Partie~III commence par ses principes
+(Chapitre~\ref{chap:exploitation}).
+\end{boxinfo}

@@ -1,0 +1,233 @@
+% ============================================================================
+% Fichier  : partie5/P05_C18_sans_fil.tex
+% Titre    : Sans-Fil et Objets Connectés
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : documentation publique Wi-Fi (WPA2/WPA3) ; MITRE ATT&CK ;
+% bonnes pratiques objets connectés. Entrepôt de Douala de LiZbiZ : cas
+% fictif.
+% ============================================================================
+
+\chapter{Sans-Fil et Objets Connectés}
+\label{chap:sansfil}
+\chaptermark{Sans-fil et objets connectés}
+
+\epigraph{%
+    « Le réseau filaire s'arrête aux murs~;\\
+    le réseau sans-fil franchit la rue. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitre~\ref{chap:reseau}~; notions de
+réseaux radio.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Décrire les faiblesses des réseaux sans-fil d'entreprise.
+    \item Comprendre le point d'accès pirate et le portail jumeau.
+    \item Reconnaître les risques des objets connectés.
+    \item Tester un réseau sans-fil dans un cadre légal et autorisé.
+    \item Rédiger les constats et les mesures de cloisonnement.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : jusqu'où porte le réseau de l'entrepôt, et qui peut l'écouter~?}
+% ============================================================================
+
+L'entrepôt de Douala utilise un réseau sans-fil pour ses lecteurs de codes
+et ses imprimantes d'étiquettes. Depuis le parking, Mme~NGO~MBOCK capte le
+signal. Ce chapitre explique les risques du sans-fil et des objets
+connectés, et comment les tester sans intercepter les communications de
+tiers.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les faiblesses du sans-fil (section~\ref{sec:c18-faiblesses}).
+    \item Point d'accès pirate et portail jumeau (section~\ref{sec:c18-jumeau}).
+    \item Les objets connectés (section~\ref{sec:c18-objets}).
+    \item Tester légalement (section~\ref{sec:c18-legal}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Les Faiblesses du Sans-Fil}
+\label{sec:c18-faiblesses}
+% ============================================================================
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Faiblesse} &
+    \tableauHeader{Risque}
+}
+Clé partagée faible & Déchiffrement du trafic après capture \\
+Protocole ancien & Attaques connues sur le chiffrement \\
+Réseau invité relié au réseau interne & Un visiteur atteint les serveurs \\
+Absence de cloisonnement & Un lecteur compromis atteint la bureautique \\
+Identifiants par défaut sur les bornes & Prise de contrôle de la borne \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~18.1. Faiblesses des réseaux sans-fil}\end{center}
+
+% ============================================================================
+\section{Point d'Accès Pirate et Portail Jumeau}
+\label{sec:c18-jumeau}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Point d'accès pirate}~: borne non autorisée branchée sur le
+réseau de l'entreprise, qui ouvre une porte dérobée.
+\termecle{Portail jumeau}~: fausse borne qui imite le nom du réseau légitime
+pour capter les connexions et les identifiants des usagers.
+\end{boxdef}
+
+\begin{boxalert}
+\textbf{Violation typique.} Monter un portail jumeau sur le lieu de travail
+et capter les connexions des salariés.
+
+\smallskip
+\textbf{Règle~:} capter les communications d'autrui est une infraction
+pénale (Chapitre~\ref{chap:droit}). Un test de portail jumeau n'est permis
+que sur un réseau et des comptes dédiés au test, avec accord écrit, sans
+toucher aux usagers réels.
+\end{boxalert}
+
+% ============================================================================
+\section{Les Objets Connectés}
+\label{sec:c18-objets}
+% ============================================================================
+
+Les objets connectés (lecteurs, imprimantes, caméras, capteurs) partagent
+des faiblesses récurrentes~: identifiants par défaut, micrologiciel non mis
+à jour, services d'administration ouverts, absence de chiffrement. Branchés
+sur le même réseau que la bureautique, ils deviennent un point d'entrée.
+
+\begin{boxscenario}{Opération LOGONE. L'imprimante d'étiquettes}
+\textbf{Constatation.} À Douala, les imprimantes d'étiquettes conservent le
+mot de passe d'administration par défaut et sont sur le même réseau que les
+postes. L'une d'elles expose une interface web d'administration.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Une imprimante compromise sert de
+point d'appui discret~; le constat rejoint T-04 (identifiants par défaut).
+La correction tient surtout au cloisonnement du réseau des objets.
+\end{boxscenario}
+
+\begin{boxobjet}{T-04 · Identifiants par défaut sur des équipements}
+\textbf{Description~:} imprimantes et une borne gardent leur mot de passe
+d'administration d'usine. \textbf{Preuve~:} accès aux interfaces
+d'administration (sans modification). \textbf{Gravité~:} moyenne.
+\textbf{Impact~:} prise de contrôle d'équipements, point d'appui sur le
+réseau. \textbf{Recommandation~:} changer les mots de passe, cloisonner le
+réseau des objets, inventorier. \textbf{Détection~:} connexions
+d'administration depuis des adresses inhabituelles.
+\end{boxobjet}
+
+% ============================================================================
+\section{Tester Légalement}
+\label{sec:c18-legal}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Encadrer un test sans-fil}
+\begin{enumerate}
+    \item Autorisation écrite précisant les réseaux visés et le lieu.
+    \item Réseau et comptes dédiés au test pour tout essai de capture.
+    \item Pas d'interception des communications de tiers.
+    \item Inventaire des objets connectés avant les essais.
+    \item Restitution des équipements dans leur état initial.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxmetier}{Pentesteur et administrateur réseau}
+\textbf{Cloisonner d'abord.} La meilleure réponse au risque sans-fil et
+objets n'est pas l'audit répété, mais le cloisonnement~: un réseau séparé
+pour les objets, un réseau invité coupé du réseau interne.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Le sans-fil franchit les murs}~; sa portée dépasse le
+          bâtiment.
+    \item \textbf{Point d'accès pirate} et \textbf{portail jumeau} sont les
+          deux menaces majeures.
+    \item \textbf{Les objets connectés} cumulent identifiants par défaut et
+          absence de mise à jour.
+    \item \textbf{Capter les communications d'autrui} est une infraction~;
+          on teste sur des réseaux dédiés.
+    \item \textbf{Le cloisonnement} est la première parade.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: citer les faiblesses du
+sans-fil~; définir point d'accès pirate et portail jumeau~; décrire les
+risques des objets connectés~; encadrer légalement un test sans-fil.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.1. Portée \niveaubase}]
+Pourquoi le réseau sans-fil de l'entrepôt est-il captable depuis le
+parking~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.2. Jumeau \niveaubase}]
+Quelle est la différence entre un point d'accès pirate et un portail
+jumeau~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.3. Objets \niveaubase}]
+Citez trois faiblesses récurrentes des objets connectés.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.4. Légalité \niveaumoyen}]
+Pourquoi un test de portail jumeau sur les salariés réels est-il interdit~?
+Comment le mener légalement~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.5. T-04 \niveaumoyen}]
+Rédigez la correction de T-04 pour l'entrepôt de Douala.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.6. Cloisonnement \niveaumoyen}]
+Décrivez le cloisonnement réseau à mettre en place pour les objets
+connectés.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.7. Réseau invité \niveaumoyen}]
+Pourquoi un réseau invité relié au réseau interne est-il dangereux~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.8. Inventaire \niveaumoyen}]
+Pourquoi commence-t-on un test d'objets connectés par un inventaire~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.9. Plan \niveauexpert}]
+Rédigez le plan d'un test sans-fil autorisé pour l'entrepôt, de
+l'autorisation à la restitution.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.10. Architecture \niveauexpert}]
+Proposez une architecture réseau qui sépare bureautique, objets et invités.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item MITRE ATT\&CK~\cite{mitreattack}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La faiblesse la plus universelle n'est pas technique~:
+le Chapitre~\ref{chap:social} traite de l'ingénierie sociale.
+\end{boxinfo}

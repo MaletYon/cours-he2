@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C11
+Chapitre 11 : Élévation de privilèges
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. L'élévation verticale donne :
+      a) Plus de droits
+      b) Un autre compte de même niveau
+      c) Moins de droits
+      d) Rien
+
+ 2. Le mouvement horizontal donne :
+      a) Plus de droits
+      b) Un autre compte de même niveau
+      c) L'administration
+      d) Rien
+
+ 3. Un sudo trop large permet souvent :
+      a) Rien
+      b) De chiffrer
+      c) D'ouvrir un interpréteur
+      d) De facturer
+
+ 4. Un programme SUID s'exécute avec :
+      a) Les droits de l'appelant
+      b) Aucun droit
+      c) Les droits du DG
+      d) Les droits de son propriétaire
+
+ 5. Un fichier SUID root dans /tmp est :
+      a) Suspect
+      b) Normal
+      c) Sûr
+      d) Invisible
+
+ 6. Un chemin de service sans guillemets, avec espaces, est :
+      a) Sûr
+      b) Interprété par morceaux
+      c) Chiffré
+      d) Normal
+
+ 7. Un mot de passe administrateur local partagé est :
+      a) Bon
+      b) Obligatoire
+      c) Un risque
+      d) Chiffré
+
+ 8. Le mot de passe administrateur local en clair dans un script est :
+      a) T-01
+      b) T-05
+      c) T-09
+      d) T-02
+
+ 9. On lit un relevé en commençant par :
+      a) Les comptes et droits délégués
+      b) Le noyau
+      c) La météo
+      d) Le prix
+
+10. On garde pour la fin :
+      a) Les comptes
+      b) Le noyau
+      c) Les fichiers
+      d) Les tâches
+
+11. Une tâche planifiée modifiable par d'autres est :
+      a) Sûre
+      b) Chiffrée
+      c) Un vecteur d'élévation
+      d) Normale
+
+12. Une capacité excessive d'un binaire peut :
+      a) Facturer
+      b) Chiffrer
+      c) Rien
+      d) Contourner des contrôles
+
+13. Un service dont le binaire est modifiable est :
+      a) Un vecteur d'élévation
+      b) Sûr
+      c) Chiffré
+      d) Normal
+
+14. Combien de postes gardent l'ancien mot de passe commun ?
+      a) 5
+      b) 23
+      c) 50
+      d) 160
+
+15. La faille du noyau se :
+      a) Exploite d'abord
+      b) Ignore
+      c) Rapporte sans exploiter sauf accord
+      d) Chiffre
+
+16. La parade à l'administrateur local partagé est :
+      a) Rien
+      b) Le chiffrement
+      c) La suppression
+      d) Un mot de passe unique par machine
+
+17. La parade au sudo trop large est :
+      a) Restreindre aux commandes nécessaires
+      b) Rien
+      c) Supprimer sudo
+      d) Chiffrer
+
+18. La recommandation pour T-02 inclut :
+      a) Rien
+      b) Supprimer le script et changer le mot de passe
+      c) Chiffrer le poste
+      d) Ignorer
+
+19. On cherche d'abord les vecteurs :
+      a) De noyau
+      b) Chiffrés
+      c) De configuration
+      d) Invisibles
+
+20. Chercher les secrets se fait dans :
+      a) Les serveurs seuls
+      b) La météo
+      c) Le prix
+      d) Partages, scripts, stratégies, dépôts
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'élévation verticale donne un autre compte de même niveau.
+      Vrai / Faux
+
+22. Un fichier SUID root dans /tmp est normal.
+      Vrai / Faux
+
+23. Un mot de passe administrateur local partagé est une bonne pratique.
+      Vrai / Faux
+
+24. T-02 concerne un mot de passe administrateur local en clair dans un script.
+      Vrai / Faux
+
+25. On commence un relevé par l'exploitation du noyau.
+      Vrai / Faux
+
+26. 23 postes gardent l'ancien mot de passe commun.
+      Vrai / Faux
+
+27. Un sudo trop large peut permettre d'ouvrir un interpréteur.
+      Vrai / Faux
+
+28. Un chemin de service sans guillemets avec espaces est interprété par morceaux.
+      Vrai / Faux
+
+29. La faille du noyau s'exploite toujours en premier.
+      Vrai / Faux
+
+30. La parade à l'administrateur local partagé est un mot de passe unique par machine.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. L'élévation qui donne plus de droits est dite ______.
+
+32. Un programme qui s'exécute avec les droits de son propriétaire porte le bit ______.
+
+33. Le mot de passe administrateur local en clair est le constat T-______.
+
+34. ______ postes gardent l'ancien mot de passe commun.
+
+35. On garde la faille du ______ pour la fin.
+
+36. La parade à l'administrateur local partagé est un mot de passe ______ par machine.
+
+37. La parade au sudo trop large est de le ______ aux commandes nécessaires.
+
+38. On cherche les secrets dans les partages, scripts, stratégies et ______.
+
+39. Le passage à un autre compte de même niveau est le mouvement ______.
+
+40. Une tâche ______ modifiable par d'autres est un vecteur d'élévation.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

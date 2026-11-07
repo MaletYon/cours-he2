@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C01
+Chapitre 1 : Le hacking éthique : définitions, métiers, types de tests
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Le hacking éthique est :
+      a) Une recherche autorisée de faiblesses pour renforcer
+      b) Une attaque illégale
+      c) Un jeu
+      d) Un crime
+
+ 2. Un test d'intrusion vise à :
+      a) Trouver toutes les failles d'un scanner
+      b) Démontrer ce qu'un attaquant ferait
+      c) Vendre un produit
+      d) Former le personnel
+
+ 3. Le balayage, l'audit et le test d'intrusion :
+      a) Sont identiques
+      b) Sont interdits
+      c) Répondent à des besoins différents
+      d) Se valent
+
+ 4. LiZbiZ, qui veut savoir si un attaquant devient administrateur, a besoin :
+      a) D'un balayage
+      b) D'un audit comptable
+      c) D'une formation
+      d) D'un test d'intrusion
+
+ 5. Une approche « boîte noire » signifie :
+      a) Aucune information de départ
+      b) Documentation complète
+      c) Accès administrateur
+      d) Code source fourni
+
+ 6. Une approche « boîte blanche » signifie :
+      a) Aucune information
+      b) Documentation complète fournie
+      c) Test illégal
+      d) Test à l'aveugle
+
+ 7. Le meilleur compromis fréquent est :
+      a) La boîte noire pure
+      b) La boîte blanche seule
+      c) La boîte grise
+      d) Aucune
+
+ 8. Le métier qui pilote la sécurité d'une organisation est :
+      a) Le pentesteur
+      b) Le comptable
+      c) Le juriste
+      d) Le RSSI
+
+ 9. Le métier qui réalise les tests d'intrusion est :
+      a) Le pentesteur
+      b) Le RSSI
+      c) Le DG
+      d) L'auditeur financier
+
+10. L'analyste qui surveille et détecte est :
+      a) Le pentesteur
+      b) L'analyste SOC
+      c) Le développeur
+      d) Le commercial
+
+11. L'équipe rouge est :
+      a) Défensive
+      b) Juridique
+      c) Offensive, par objectifs
+      d) Comptable
+
+12. L'équipe violette fait travailler ensemble :
+      a) Deux pentesteurs
+      b) Deux clients
+      c) Deux juristes
+      d) Offensive et défensive
+
+13. Un programme de primes aux failles :
+      a) Complète les tests par une communauté
+      b) Remplace les tests
+      c) Est illégal
+      d) Ne sert à rien
+
+14. Le contrôle CIS 18 concerne :
+      a) La comptabilité
+      b) Les tests d'intrusion
+      c) Le marketing
+      d) La paie
+
+15. Un test d'intrusion prouve :
+      a) Que le système est sûr pour toujours
+      b) Rien
+      c) Ce qu'un attaquant comparable aurait pu faire
+      d) L'absence totale de faille
+
+16. Un test est borné par :
+      a) Rien
+      b) La loi seule
+      c) Le prix seul
+      d) Le temps, le périmètre et l'effort
+
+17. La valeur finale d'un test est :
+      a) Le rapport
+      b) L'exploit
+      c) L'outil
+      d) La vitesse
+
+18. Un bon testeur allie :
+      a) Force et vitesse
+      b) Compétence technique, éthique et clarté d'écriture
+      c) Discrétion et ruse
+      d) Audace seule
+
+19. Un audit compare le système à :
+      a) Un autre système
+      b) Un concurrent
+      c) Un référentiel
+      d) Rien
+
+20. La discrétion est essentielle pour :
+      a) L'équipe violette
+      b) L'audit
+      c) Le balayage
+      d) L'équipe rouge
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Le hacking éthique se pratique sans autorisation.
+      Vrai / Faux
+
+22. Un balayage et un test d'intrusion sont la même chose.
+      Vrai / Faux
+
+23. En boîte noire, le testeur reçoit la documentation complète.
+      Vrai / Faux
+
+24. Le RSSI pilote la sécurité de l'organisation.
+      Vrai / Faux
+
+25. L'équipe violette est transparente.
+      Vrai / Faux
+
+26. Un programme de primes remplace entièrement les tests mandatés.
+      Vrai / Faux
+
+27. Un test prouve que le système est sûr pour toujours.
+      Vrai / Faux
+
+28. Le livrable qui donne sa valeur au test est le rapport.
+      Vrai / Faux
+
+29. L'analyste SOC surveille et détecte.
+      Vrai / Faux
+
+30. L'équipe rouge cherche le plus de failles possibles, sans discrétion.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Une approche sans information de départ s'appelle boîte ______.
+
+32. Le responsable de la sécurité des systèmes d'information s'abrège ______.
+
+33. L'équipe offensive est dite équipe ______.
+
+34. L'équipe qui fait coopérer offensive et défensive est dite ______.
+
+35. Le contrôle CIS numéro ______ concerne les tests d'intrusion.
+
+36. Un ______ compare le système à un référentiel.
+
+37. Le livrable final d'un test est le ______.
+
+38. Un test est borné par le temps, le périmètre et l'______.
+
+39. Le professionnel qui réalise les tests est le ______.
+
+40. Le compromis fréquent entre boîte noire et blanche est la boîte ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

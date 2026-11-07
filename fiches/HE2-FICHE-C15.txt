@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C15
+Chapitre 15 : Injections et contrôle d'accès
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Une injection confond :
+      a) La donnée et la commande
+      b) Deux serveurs
+      c) Deux clients
+      d) Le prix
+
+ 2. La parade commune est de :
+      a) Chiffrer
+      b) Séparer la donnée de la commande
+      c) Facturer
+      d) Supprimer
+
+ 3. La parade à l'injection de base de données est :
+      a) Le chiffrement
+      b) La suppression
+      c) Les requêtes préparées
+      d) La météo
+
+ 4. La parade au script dans le navigateur est :
+      a) Rien
+      b) La facture
+      c) La vente
+      d) L'échappement à la sortie
+
+ 5. La référence directe à un objet donne accès à :
+      a) L'objet d'autrui
+      b) Son objet
+      c) Rien
+      d) La météo
+
+ 6. Le portail affiche un colis sans vérifier :
+      a) Le prix
+      b) Sa propriété
+      c) La météo
+      d) La couleur
+
+ 7. L'accès indirect aux colis d'autrui est le constat :
+      a) T-01
+      b) T-09
+      c) T-05
+      d) T-14
+
+ 8. T-05 est-il une injection ?
+      a) Oui
+      b) Toujours
+      c) Parfois
+      d) Non, un défaut d'accès
+
+ 9. Un client qui lit le colis d'un autre, c'est un défaut :
+      a) Horizontal
+      b) Vertical
+      c) Chiffré
+      d) Normal
+
+10. Un client qui appelle une fonction d'agent, c'est un défaut :
+      a) Horizontal
+      b) Vertical
+      c) Chiffré
+      d) Normal
+
+11. On prouve une injection par :
+      a) Une destruction
+      b) Un vol
+      c) Une preuve inoffensive
+      d) Un chiffrement
+
+12. La preuve minimale d'un IDOR utilise :
+      a) Toute la base
+      b) Un exploit
+      c) Rien
+      d) Deux comptes et un objet voisin
+
+13. La séparation donnée/commande se fait par :
+      a) Requêtes préparées, échappement, validation
+      b) Le hasard
+      c) La couleur
+      d) Le prix
+
+14. L'injection de commande système vise :
+      a) Le navigateur
+      b) Un interpréteur du serveur
+      c) Le client
+      d) La météo
+
+15. La correction de T-05 est :
+      a) Rien
+      b) Chiffrer
+      c) Vérifier côté serveur la propriété de l'objet
+      d) Supprimer le portail
+
+16. La détection de T-05 : un compte qui consulte :
+      a) Ses colis
+      b) La météo
+      c) Le prix
+      d) De nombreux colis d'autrui
+
+17. Le défaut horizontal concerne :
+      a) Un autre utilisateur
+      b) Une fonction réservée
+      c) Le serveur
+      d) La météo
+
+18. On s'arrête à la preuve :
+      a) Jamais
+      b) Première
+      c) Dernière
+      d) Au hasard
+
+19. L'impact d'une faille d'accès se :
+      a) Collecte
+      b) Vend
+      c) Décrit
+      d) Chiffre
+
+20. Un script renvoyé par la page met en danger :
+      a) Le serveur
+      b) Le prix
+      c) La météo
+      d) Un autre visiteur
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Une injection est un défaut de chiffrement du disque.
+      Vrai / Faux
+
+22. La référence directe à un objet n'expose que ses propres données.
+      Vrai / Faux
+
+23. T-05 est une injection de base de données.
+      Vrai / Faux
+
+24. Un client qui lit le colis d'un autre, c'est un défaut vertical.
+      Vrai / Faux
+
+25. On prouve une injection par une preuve inoffensive.
+      Vrai / Faux
+
+26. La preuve minimale d'un IDOR utilise deux comptes et un objet voisin.
+      Vrai / Faux
+
+27. La correction de T-05 est de vérifier la propriété côté serveur.
+      Vrai / Faux
+
+28. La parade à l'injection de base de données est les requêtes préparées.
+      Vrai / Faux
+
+29. L'impact d'une faille d'accès se collecte en téléchargeant toute la base.
+      Vrai / Faux
+
+30. Un script renvoyé par la page met en danger un autre visiteur.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Une injection confond la donnée et la ______.
+
+32. L'accès indirect aux colis d'autrui est le constat T-______.
+
+33. Un client qui lit l'objet d'un autre, c'est un défaut d'accès ______.
+
+34. Un client qui appelle une fonction d'agent, c'est un défaut ______.
+
+35. La parade à l'injection de base de données est les requêtes ______.
+
+36. La preuve minimale d'un IDOR utilise ______ comptes.
+
+37. La correction de T-05 vérifie la ______ de l'objet côté serveur.
+
+38. L'impact d'une faille d'accès se ______, il ne se collecte pas.
+
+39. Un ______ renvoyé par la page met en danger un autre visiteur.
+
+40. La parade commune aux injections est de ______ donnée et commande.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

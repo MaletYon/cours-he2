@@ -1,0 +1,55 @@
+%% ============================================================================
+%% Fichier  : annexes/Ann_A_glossaire.tex
+%% Titre    : Glossaire
+%% Version  : 1.0 -- novembre 2026
+%% ============================================================================
+
+\chapter{Glossaire}
+\label{ann:glossaire}
+
+Ce glossaire reprend, sous une forme abrégée, les notions définies dans les
+chapitres. Le renvoi indique le chapitre où la notion est présentée.
+
+\begin{description}
+    \item[Active Directory] Annuaire des réseaux Windows~: comptes, groupes, machines et droits d'un domaine (Ch.~\ref{chap:ad}).
+    \item[Charge utile] Ce qu'un exploit fait exécuter après avoir déclenché la faille (Ch.~\ref{chap:exploitation}).
+    \item[Contre-test] Vérification, après correction, que chaque faiblesse rapportée a bien été traitée (Ch.~\ref{chap:retest}).
+    \item[CVSS] Système commun de notation des vulnérabilités, de 0 à 10 (Ch.~\ref{chap:vulnerabilites}).
+    \item[Divulgation coordonnée] Signalement d'une faille à l'éditeur, suivi d'une publication après correction ou délai convenu (Ch.~\ref{chap:divulgation}).
+    \item[Élévation de privilèges] Obtention de droits supérieurs à ceux du compte de départ (Ch.~\ref{chap:privileges}).
+    \item[Empoisonnement de résolution] Réponse frauduleuse à une requête de résolution de nom diffusée, qui détourne la connexion de la victime (Ch.~\ref{chap:reseau}).
+    \item[Énumération] Recueil détaillé des services, comptes et partages exposés, après le balayage (Ch.~\ref{chap:balayage}).
+    \item[Équipe rouge] Exercice offensif visant un objectif précis, discrètement, pour mesurer la détection (Ch.~\ref{chap:rouge}).
+    \item[Équipe violette] Démarche où offensive et défensive travaillent ensemble pour améliorer la détection (Ch.~\ref{chap:rouge}).
+    \item[Exploit] Moyen technique de tirer parti d'une vulnérabilité (Ch.~\ref{chap:exploitation}).
+    \item[Faux négatif] Vulnérabilité réelle qu'un outil ne signale pas (Ch.~\ref{chap:vulnerabilites}).
+    \item[Faux positif] Alerte d'un outil sans vulnérabilité réelle (Ch.~\ref{chap:vulnerabilites}).
+    \item[Hacking éthique] Recherche autorisée de faiblesses dans un système, pour le renforcer, dans un cadre légal et sans dommage (Ch.~\ref{chap:ethique}).
+    \item[Ingénierie sociale] Manipulation d'une personne pour obtenir une information, un accès ou une action (Ch.~\ref{chap:social}).
+    \item[Injection] Faille où une donnée fournie est interprétée comme une commande, faute de séparation (Ch.~\ref{chap:injections}).
+    \item[Interface de programmation (API)] Points d'entrée par lesquels des programmes échangent des données (Ch.~\ref{chap:api}).
+    \item[Kerberoasting] Vol d'un ticket de service Kerberos, cassé hors ligne si le mot de passe du compte de service est faible (Ch.~\ref{chap:ad}).
+    \item[Matrice de couverture de détection] Tableau croisant les techniques avec l'état de leur détection (Ch.~\ref{chap:detection}).
+    \item[MITRE ATT\&CK] Base de connaissances des tactiques et techniques des attaquants (Ch.~\ref{chap:methodes}).
+    \item[Modèle d'administration par niveaux] Organisation qui interdit d'utiliser un compte à privilèges sur une machine de niveau inférieur (Ch.~\ref{chap:ad}).
+    \item[Modèle de responsabilité partagée] Répartition des tâches de sécurité entre le fournisseur de nuage et le client (Ch.~\ref{chap:nuage}).
+    \item[Mouvement horizontal] Passage d'un compte à un autre de même niveau (Ch.~\ref{chap:privileges}).
+    \item[Mouvement latéral] Prise de contrôle d'autres machines du réseau avec des identifiants valides (Ch.~\ref{chap:post}).
+    \item[OSINT] Renseignement tiré de sources ouvertes, sans solliciter la cible (Ch.~\ref{chap:osint}).
+    \item[Point d'accès pirate] Borne non autorisée branchée sur le réseau de l'entreprise (Ch.~\ref{chap:sansfil}).
+    \item[Portail jumeau] Fausse borne qui imite le réseau légitime pour capter les connexions (Ch.~\ref{chap:sansfil}).
+    \item[Preuve de concept] Démonstration minimale et inoffensive qu'une faille est réelle (Ch.~\ref{chap:exploitation}).
+    \item[Reconnaissance active] Collecte d'informations en sollicitant directement la cible (Ch.~\ref{chap:osint}).
+    \item[Reconnaissance passive] Collecte d'informations sans solliciter la cible (Ch.~\ref{chap:osint}).
+    \item[Référence directe non contrôlée à un objet] Accès à l'objet d'autrui en changeant un identifiant visible, faute de contrôle (Ch.~\ref{chap:injections}).
+    \item[Règles d'engagement] Cadre convenu d'une mission~: périmètre, horaires, actions permises, contacts, mot d'arrêt (Ch.~\ref{chap:engagement}).
+    \item[Requête HTTP] Message du client au serveur~: méthode, chemin, en-têtes, corps (Ch.~\ref{chap:web}).
+    \item[Réponse HTTP] Message du serveur au client~: code, en-têtes, corps (Ch.~\ref{chap:web}).
+    \item[Session] État conservé entre requêtes, souvent par un cookie (Ch.~\ref{chap:web}).
+    \item[Signature SMB] Mécanisme qui lie les échanges de partage et empêche leur relais (Ch.~\ref{chap:reseau}).
+    \item[Test d'intrusion] Simulation autorisée d'attaque pour démontrer ce qu'un attaquant ferait (Ch.~\ref{chap:ethique}).
+    \item[Top 10 de l'OWASP] Classement des grandes familles de risques des applications web ou des API (Ch.~\ref{chap:web}, \ref{chap:api}).
+    \item[Transparence des certificats] Journaux publics des certificats émis, utiles pour cartographier la surface (Ch.~\ref{chap:osint}).
+    \item[Verdict à trois valeurs (OUI, NON, NEK)] Réponse d'audit~: vérifiée, réfutée, ou indéterminée faute de preuves (Ch.~\ref{chap:mesurer}).
+    \item[Web Security Testing Guide (WSTG)] Guide de l'OWASP organisant le test d'une application web en catégories (Ch.~\ref{chap:web}).
+\end{description}

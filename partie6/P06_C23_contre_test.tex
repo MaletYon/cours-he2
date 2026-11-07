@@ -1,0 +1,212 @@
+% ============================================================================
+% Fichier  : partie6/P06_C23_contre_test.tex
+% Titre    : Le Contre-Test
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : pratiques de retest ; gestion des vulnérabilités. Contre-test de
+% l'Opération LOGONE (novembre 2026) : cas fictif.
+% ============================================================================
+
+\chapter{Le Contre-Test}
+\label{chap:retest}
+\chaptermark{Le contre-test}
+
+\epigraph{%
+    « Une faille n'est corrigée que lorsqu'un second test le prouve. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitre~\ref{chap:rapport}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Définir le contre-test et sa place dans le cycle.
+    \item Vérifier qu'une correction ferme réellement la faille.
+    \item Distinguer correction de fond et palliatif.
+    \item Documenter l'état de chaque constat après correction.
+    \item Clore une mission proprement.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : les corrections de LiZbiZ ont-elles vraiment fermé les failles~?}
+% ============================================================================
+
+Trois semaines après le rapport, M.~KOUNOU annonce que « tout est corrigé ».
+NYONG SÉCURITÉ revient vérifier, constat par constat. Certaines failles sont
+bien fermées, d'autres seulement masquées, une a été rouverte par une
+nouvelle configuration. Le contre-test établit la vérité.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Qu'est-ce qu'un contre-test (section~\ref{sec:c23-definition}).
+    \item Fond ou palliatif (section~\ref{sec:c23-fond}).
+    \item L'état des constats (section~\ref{sec:c23-etats}).
+    \item Clore la mission (section~\ref{sec:c23-cloture}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Qu'est-ce qu'un Contre-Test}
+\label{sec:c23-definition}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Contre-test}~: vérification, après correction, que chaque faiblesse
+rapportée a bien été traitée, en rejouant le test qui l'avait révélée, dans
+les mêmes conditions.
+\end{boxdef}
+
+% ============================================================================
+\section{Fond ou Palliatif}
+\label{sec:c23-fond}
+% ============================================================================
+
+\begin{boxalert}
+\textbf{Violation typique.} Déclarer une faille corrigée parce qu'un symptôme
+a disparu.
+
+\smallskip
+\textbf{Règle~:} on vérifie la cause, pas le symptôme. Masquer une bannière
+de version ne corrige pas la version~; bloquer une adresse ne corrige pas le
+défaut d'accès. On distingue clairement la correction de fond du palliatif
+temporaire.
+\end{boxalert}
+
+% ============================================================================
+\section{L'État des Constats}
+\label{sec:c23-etats}
+% ============================================================================
+
+\begin{boxscenario}{Opération LOGONE. Le contre-test de novembre}
+\textbf{Constatations.} Sur les 14~constats~: 9~fermés (dont T-01 et T-02,
+critiques), 3~partiellement traités (T-07 corrigé sur les serveurs mais pas
+les postes~; T-08 en cours~; T-11, sensibilisation engagée), 1~palliatif
+(T-13, bannières masquées mais versions inchangées), 1~rouvert (T-10, un
+nouveau service de test exposé).
+
+\medskip
+\textbf{Analyse} (confiance élevée). Les deux failles critiques sont bien
+fermées. Le constat rouvert montre l'intérêt d'un contre-test~: sans lui, la
+réexposition serait passée inaperçue.
+\end{boxscenario}
+
+\begin{tableaucours}{L{3.2cm}L{9.0cm}}{%
+    \tableauHeader{État} &
+    \tableauHeader{Signification}
+}
+Fermé & La faille ne se reproduit plus~; correction de fond vérifiée \\
+Partiel & Une partie du périmètre reste exposée \\
+Palliatif & Symptôme masqué, cause non traitée \\
+Rouvert & La faille, fermée, est réapparue \\
+Non traité & Aucune correction \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~23.1. États d'un constat au contre-test}\end{center}
+
+% ============================================================================
+\section{Clore la Mission}
+\label{sec:c23-cloture}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Clore une mission}
+\begin{enumerate}
+    \item Rejouer chaque test et noter l'état du constat.
+    \item Rédiger un addendum au rapport avec les états.
+    \item Distinguer fond et palliatif pour chaque correction.
+    \item Convenir d'un suivi pour les constats partiels.
+    \item Détruire les données de test et restituer les accès.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxmetier}{Auditeur de sécurité et RSSI}
+\textbf{Le contre-test ferme la boucle.} Sans contre-test, un rapport reste
+une liste de promesses. Le RSSI inscrit le contre-test au contrat et en fait
+la condition de clôture.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Le contre-test} rejoue le test après correction.
+    \item \textbf{On vérifie la cause}, pas le symptôme.
+    \item \textbf{Chaque constat} reçoit un état~: fermé, partiel, palliatif,
+          rouvert, non traité.
+    \item \textbf{Un constat rouvert} justifie à lui seul le contre-test.
+    \item \textbf{La clôture} documente les états et détruit les données.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: définir le contre-test~;
+distinguer fond et palliatif~; attribuer un état à un constat~; rédiger un
+addendum~; clore une mission.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.1. Définition \niveaubase}]
+Qu'est-ce qu'un contre-test~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.2. Fond ou palliatif \niveaubase}]
+Masquer une bannière de version est-il une correction de fond ou un
+palliatif~? Pourquoi~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.3. États \niveaubase}]
+Donnez les cinq états possibles d'un constat au contre-test.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.4. T-10 rouvert \niveaumoyen}]
+Comment un constat fermé peut-il être rouvert~? Que recommander~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.5. Partiel \niveaumoyen}]
+T-07 est corrigé sur les serveurs mais pas les postes. Quel état, et quel
+suivi~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.6. Addendum \niveaumoyen}]
+Rédigez l'addendum de contre-test pour T-01 et T-13.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.7. Condition de clôture \niveaumoyen}]
+Pourquoi faire du contre-test une condition de clôture au contrat~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.8. Bilan \niveaumoyen}]
+Dressez le bilan chiffré du contre-test de LOGONE.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.9. Procédure \niveauexpert}]
+Proposez une procédure de contre-test réutilisable pour les futures missions
+de NYONG SÉCURITÉ.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.10. Indicateur \niveauexpert}]
+Définissez un indicateur de qualité de correction, calculé à partir des
+états de contre-test.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item PTES~\cite{ptes}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Lorsqu'une faille touche un produit utilisé par
+d'autres, sa correction dépasse le client~: le Chapitre~\ref{chap:divulgation}
+traite de la divulgation coordonnée.
+\end{boxinfo}

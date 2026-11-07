@@ -1,0 +1,261 @@
+% ============================================================================
+% Fichier  : partie6/P06_C22_rapport.tex
+% Titre    : Le Rapport de Test d'Intrusion
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : PTES (phase de restitution) ; CVSS 3.1 pour la cotation ;
+% pratiques de rapport. Les 14 constats de l'Opération LOGONE : cas fictif,
+% cohérents avec les chapitres précédents.
+% ============================================================================
+
+\chapter{Le Rapport de Test d'Intrusion}
+\label{chap:rapport}
+\chaptermark{Le rapport de test d'intrusion}
+
+\epigraph{%
+    « Un test d'intrusion ne vaut que par son rapport~;\\
+    le reste n'est qu'une collection de preuves. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Toutes les parties
+précédentes~; Chapitre~\ref{chap:methodes}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Décrire la structure d'un rapport de test d'intrusion.
+    \item Rédiger une synthèse pour la direction et un détail technique.
+    \item Coter chaque constat et le hiérarchiser.
+    \item Rédiger un constat complet~: description, preuve, impact,
+          recommandation.
+    \item Présenter les 14~constats de l'Opération LOGONE comme modèle.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : comment transformer dix jours de test en un document utile à la direction et aux techniciens~?}
+% ============================================================================
+
+Le test de LiZbiZ est terminé~: 14~constats, des preuves, des notes. Il faut
+maintenant un document que M.~ETEME lira en dix minutes et que M.~KOUNOU
+suivra ligne à ligne pour corriger. Ce chapitre construit ce document.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item La structure du rapport (section~\ref{sec:c22-structure}).
+    \item Deux lecteurs, deux niveaux (section~\ref{sec:c22-lecteurs}).
+    \item Coter et hiérarchiser (section~\ref{sec:c22-cotation}).
+    \item L'anatomie d'un constat (section~\ref{sec:c22-constat}).
+    \item Les 14 constats de LOGONE (section~\ref{sec:c22-logone}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{La Structure du Rapport}
+\label{sec:c22-structure}
+% ============================================================================
+
+\begin{tableaucours}{L{4.0cm}L{8.2cm}}{%
+    \tableauHeader{Partie} &
+    \tableauHeader{Contenu}
+}
+Synthèse pour la direction & Verdict, risques majeurs, recommandations
+prioritaires, sans jargon \\
+Contexte et périmètre & Objectifs, limites, dates, règles d'engagement \\
+Démarche & Méthode suivie, outils, degré de couverture \\
+Constats détaillés & Un par faiblesse, coté et documenté \\
+Plan de correction & Actions priorisées, responsables, échéances \\
+Annexes & Preuves, liste des actions horodatées, périmètre technique \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~22.1. Structure d'un rapport de test d'intrusion}\end{center}
+
+% ============================================================================
+\section{Deux Lecteurs, Deux Niveaux}
+\label{sec:c22-lecteurs}
+% ============================================================================
+
+\begin{boxalert}
+\textbf{Violation typique.} Un rapport uniquement technique, illisible pour
+la direction, ou une synthèse vague, inutilisable par les techniciens.
+
+\smallskip
+\textbf{Règle~:} la synthèse parle risque et décision~; le détail parle
+technique et correction. Les deux disent la même vérité, à deux niveaux.
+\end{boxalert}
+
+% ============================================================================
+\section{Coter et Hiérarchiser}
+\label{sec:c22-cotation}
+% ============================================================================
+
+Chaque constat reçoit une gravité. On peut s'appuyer sur le système commun
+de notation des vulnérabilités (CVSS~3.1, Chapitre~\ref{chap:vulnerabilites})
+pour les failles techniques, et sur une appréciation du risque métier pour
+le reste. La gravité combine la facilité d'exploitation et l'impact.
+
+\begin{tableaucours}{L{2.4cm}L{3.0cm}L{6.6cm}}{%
+    \tableauHeader{Gravité} &
+    \tableauHeader{Nombre} &
+    \tableauHeader{Exigence de traitement}
+}
+Critique & 2 & Correction immédiate \\
+Élevée & 4 & Sous quelques jours \\
+Moyenne & 5 & Planifiée au trimestre \\
+Faible & 3 & Au fil de l'eau \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~22.2. Répartition des 14 constats de LOGONE}\end{center}
+
+% ============================================================================
+\section{L'Anatomie d'un Constat}
+\label{sec:c22-constat}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Rédiger un constat}
+\begin{enumerate}
+    \item Identifiant et titre court.
+    \item Description~: la faiblesse, en termes clairs.
+    \item Preuve~: ce qui l'établit (requête, capture masquée, relevé).
+    \item Impact~: ce qu'un attaquant en ferait.
+    \item Gravité~: cotation justifiée.
+    \item Recommandation~: la correction, concrète et vérifiable.
+    \item Détection~: comment voir l'exploitation en production.
+\end{enumerate}
+\end{boxprocedure}
+
+Tous les encadrés « Fiche de constat » des chapitres précédents suivent
+exactement cette anatomie.
+
+% ============================================================================
+\section{Les 14 Constats de LOGONE}
+\label{sec:c22-logone}
+% ============================================================================
+
+\begin{tableaucours}{L{1.2cm}L{6.4cm}L{2.0cm}L{2.2cm}}{%
+    \tableauHeader{Id} &
+    \tableauHeader{Constat} &
+    \tableauHeader{Gravité} &
+    \tableauHeader{Chapitre}
+}
+T-01 & Compte de service vulnérable au vol de ticket (facturation) &
+Critique & \ref{chap:ad} \\
+T-02 & Mot de passe administrateur local en clair dans un script partagé &
+Critique & \ref{chap:privileges} \\
+T-03 & Accès distant sans second facteur & Élevée & \ref{chap:vulnerabilites} \\
+T-05 & Accès indirect aux colis d'autrui (portail) & Élevée &
+\ref{chap:injections} \\
+T-06 & Protocole de partage ancien et vulnérable & Élevée &
+\ref{chap:exploitation} \\
+T-09 & Exécution de code sur l'ancien portail & Élevée &
+\ref{chap:exploitation} \\
+T-04 & Identifiants par défaut sur des équipements & Moyenne &
+\ref{chap:sansfil} \\
+T-07 & Signature de partage non exigée et résolutions locales actives &
+Moyenne & \ref{chap:reseau} \\
+T-08 & Comptes d'administration utilisés sur des postes ordinaires & Moyenne
+& \ref{chap:post} \\
+T-10 & Service de test exposé sur l'Internet & Moyenne & \ref{chap:nuage} \\
+T-11 & Taux de clic élevé à l'hameçonnage simulé & Moyenne &
+\ref{chap:social} \\
+T-12 & En-têtes de sécurité HTTP absents & Faible & \ref{chap:web} \\
+T-13 & Bannières de version exposées & Faible & \ref{chap:balayage} \\
+T-14 & Délai d'expiration de session trop long & Faible & \ref{chap:web} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~22.3. Les 14 constats de l'Opération LOGONE}\end{center}
+
+L'audit des mots de passe (constat A-01, Chapitre~\ref{chap:mdp}) est
+rapporté séparément, comme mission complémentaire.
+
+\begin{boxmetier}{Pentesteur et RSSI}
+\textbf{Écrire pour l'action.} Un constat réussi est celui que le
+destinataire sait corriger sans rappeler l'auteur. La recommandation est
+concrète, vérifiable, et distingue la correction de fond du palliatif
+immédiat.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Le rapport} est le livrable~; tout le reste le prépare.
+    \item \textbf{Deux niveaux}~: synthèse pour la direction, détail pour les
+          techniciens.
+    \item \textbf{Chaque constat} est coté et hiérarchisé.
+    \item \textbf{L'anatomie}~: description, preuve, impact, gravité,
+          recommandation, détection.
+    \item \textbf{Les 14 constats de LOGONE} suivent ce modèle.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: donner la structure d'un
+rapport~; écrire à deux niveaux~; coter et hiérarchiser~; rédiger un constat
+complet~; situer chaque constat de LOGONE.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.1. Structure \niveaubase}]
+Citez les six parties d'un rapport de test d'intrusion.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.2. Deux lecteurs \niveaubase}]
+Qu'attend la direction du rapport~? Qu'attend le technicien~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.3. Répartition \niveaubase}]
+Combien de constats critiques, élevés, moyens et faibles compte LOGONE~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.4. Anatomie \niveaumoyen}]
+Rédigez le constat T-06 selon l'anatomie en sept points.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.5. Synthèse \niveaumoyen}]
+Rédigez la synthèse pour la direction de l'Opération LOGONE, en dix lignes.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.6. Priorité \niveaumoyen}]
+Justifiez pourquoi T-01 et T-02 passent avant T-12 et T-13.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.7. Mission complémentaire \niveaumoyen}]
+Pourquoi l'audit des mots de passe (A-01) est-il rapporté à part des
+14~constats~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.8. Recommandation \niveaumoyen}]
+Réécrivez une recommandation vague (« améliorer la sécurité ») en
+recommandation concrète et vérifiable.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.9. Plan de correction \niveauexpert}]
+Construisez le plan de correction de LOGONE~: ordre, responsables, échéances.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.10. Rapport complet \niveauexpert}]
+Rédigez le plan complet du rapport de LOGONE, partie par partie, avec le
+nombre de pages visé.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item PTES~\cite{ptes}~; CVSS~3.1~\cite{first2019cvss31}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Un rapport sans vérification des corrections reste
+théorique~: le Chapitre~\ref{chap:retest} traite du contre-test.
+\end{boxinfo}

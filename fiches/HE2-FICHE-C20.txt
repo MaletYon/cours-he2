@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C20
+Chapitre 20 : Équipe rouge et équipe violette
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Le test d'intrusion cherche :
+      a) Le plus de failles
+      b) Un objectif
+      c) La discrétion
+      d) Rien
+
+ 2. L'équipe rouge vise :
+      a) Toutes les failles
+      b) Un objectif, discrètement
+      c) La paie
+      d) La météo
+
+ 3. L'équipe violette fait travailler ensemble :
+      a) Deux rouges
+      b) Deux clients
+      c) Rouge et bleue
+      d) Deux juristes
+
+ 4. Un objectif convenu s'appelle :
+      a) Une facture
+      b) Un prix
+      c) Une météo
+      d) Un drapeau
+
+ 5. Les drapeaux sont définis :
+      a) À l'avance avec un cercle restreint
+      b) Après
+      c) Par le public
+      d) Jamais
+
+ 6. Un bon scénario imite :
+      a) Un outil
+      b) Un attaquant plausible
+      c) Un client
+      d) Le prix
+
+ 7. On mesure le temps jusqu'à :
+      a) La facture
+      b) La météo
+      c) La détection
+      d) La vente
+
+ 8. La phase violette rejoue les techniques :
+      a) Détectées
+      b) Facturées
+      c) Chiffrées
+      d) Non détectées
+
+ 9. L'opération MBAM visait :
+      a) La BANQUE SANAGA
+      b) LiZbiZ
+      c) NYONG
+      d) L'ANTIC
+
+10. Le flag F1 est atteint au :
+      a) 1er jour
+      b) 2e jour
+      c) 8e jour
+      d) 10e jour
+
+11. Le flag F2 (administration) est atteint au :
+      a) 2e jour
+      b) 9e jour
+      c) 8e jour
+      d) 10e jour
+
+12. Le flag F3 (paiement) est :
+      a) Atteint
+      b) Facturé
+      c) Chiffré
+      d) Non atteint
+
+13. La détection par le SOC survient au :
+      a) 9e jour
+      b) 2e jour
+      c) 1er jour
+      d) Jamais
+
+14. Combien de techniques jouées ?
+      a) 18
+      b) 30
+      c) 7
+      d) 60
+
+15. Combien détectées ?
+      a) 7
+      b) 30
+      c) 18
+      d) 0
+
+16. On s'appuie sur la connaissance des menaces et :
+      a) Le prix
+      b) La météo
+      c) La couleur
+      d) Les techniques d'ATT&CK
+
+17. La couverture de détection de MBAM est :
+      a) 60 %
+      b) 30 %
+      c) 100 %
+      d) 0 %
+
+18. La phase violette produit :
+      a) Des factures
+      b) Des règles de détection
+      c) Des exploits
+      d) De la météo
+
+19. F3 non atteint car le paiement était :
+      a) Ouvert
+      b) Chiffré
+      c) Cloisonné
+      d) Public
+
+20. La discrétion est essentielle pour :
+      a) Le test d'intrusion
+      b) L'audit
+      c) La paie
+      d) L'équipe rouge
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'équipe rouge cherche le plus de failles possibles, sans discrétion.
+      Vrai / Faux
+
+22. Les drapeaux sont choisis après l'exercice.
+      Vrai / Faux
+
+23. Un bon scénario d'équipe rouge déroule des outils au hasard.
+      Vrai / Faux
+
+24. La phase violette ne rejoue que les techniques déjà détectées.
+      Vrai / Faux
+
+25. Dans MBAM, le flag F2 est atteint au 8e jour.
+      Vrai / Faux
+
+26. Dans MBAM, le flag F3 n'a pas été atteint.
+      Vrai / Faux
+
+27. La couverture de détection de MBAM est de 60 %.
+      Vrai / Faux
+
+28. F3 a résisté parce que le système de paiement était cloisonné.
+      Vrai / Faux
+
+29. Le test d'intrusion cherche le plus de failles exploitables.
+      Vrai / Faux
+
+30. La détection par le SOC survient au 2e jour.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. L'exercice qui vise un objectif discrètement est l'équipe ______.
+
+32. L'exercice où rouge et bleue coopèrent est l'équipe ______.
+
+33. Un objectif convenu d'un exercice s'appelle un ______.
+
+34. L'opération MBAM visait la BANQUE ______.
+
+35. Le flag F2 (administration du domaine) est atteint au ______e jour.
+
+36. La couverture de détection de MBAM est de ______ %.
+
+37. Sur 30 techniques jouées, ______ ont été détectées.
+
+38. La phase violette produit des ______ de détection.
+
+39. Le flag F3 a résisté car le paiement était ______.
+
+40. On construit le scénario avec les techniques d'______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

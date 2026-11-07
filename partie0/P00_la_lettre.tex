@@ -1,0 +1,308 @@
+% ============================================================================
+% Fichier  : partie0/P00_la_lettre.tex
+% Titre    : Prologue : la Lettre d'Autorisation
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Opération LOGONE : test d'intrusion de LiZbiZ par NYONG SÉCURITÉ, du 19 au
+% 30 octobre 2026. Cas fictif, cohérent avec SEC3266 et GES4062. Adresses de
+% documentation (RFC 5737) ou fictives.
+% ============================================================================
+
+\chapter{Prologue : la Lettre d'Autorisation}
+\label{chap:prologue}
+\chaptermark{Prologue}
+
+\epigraph{%
+    « Sans lettre d'autorisation, le meilleur test d'intrusion\\
+    est une infraction. »%
+}{Principe du cours}
+
+\niveauChapitre{Fondamental}{Cours SEC3266 (Sécurité informatique).}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Lire un mandat de test d'intrusion et en repérer les éléments
+          essentiels.
+    \item Situer le test dans la vie d'une organisation~: après une crise,
+          après un audit, avant une décision.
+    \item Distinguer ce que le test prouve de ce qu'il ne prouve pas.
+    \item Séparer constatations, suppositions et opinions dans un résultat
+          de test.
+    \item Formuler les questions auxquelles le cours répond.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : que faut-il signer avant de toucher un seul système~?}
+% ============================================================================
+
+Le 12~octobre 2026, M.~ETEME signe la lettre qui autorise le cabinet NYONG
+SÉCURITÉ à attaquer le système d'information de LiZbiZ. Sept mois plus tôt,
+un attaquant avait fait la même chose sans demander la permission
+(Opération GAROUA). Cette fois, tout est écrit~: qui teste, quoi, quand,
+comment, et qui appeler si quelque chose tourne mal. Ce prologue suit la
+mission, appelée Opération LOGONE, de la signature au rapport.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Pourquoi un test, et pourquoi maintenant (section~\ref{sec:p00-pourquoi}).
+    \item La lettre d'autorisation (section~\ref{sec:p00-lettre}).
+    \item Douze jours de test (section~\ref{sec:p00-test}).
+    \item Ce que le test a montré (section~\ref{sec:p00-resultats}).
+    \item Les questions du cours (section~\ref{sec:p00-questions}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Pourquoi un Test, et Pourquoi Maintenant}
+\label{sec:p00-pourquoi}
+% ============================================================================
+
+LiZbiZ\footnote{LiZbiZ, NYONG SÉCURITÉ, la BANQUE SANAGA, l'ANPP et leurs
+personnels sont fictifs, comme les dates, les adresses et les montants du
+cours~; les techniques, les normes et les textes de loi cités sont réels.}
+a beaucoup changé depuis mars~: second facteur sur la passerelle, bastion,
+sauvegardes immuables, registre des risques, audit d'octobre. Le comité des
+risques veut savoir si ces mesures résistent à un attaquant réel, et non
+seulement à une liste de vérification. Il commande un \termecle{test
+d'intrusion}~: une attaque autorisée, bornée et restituée.
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Acteur} &
+    \tableauHeader{Rôle dans l'Opération LOGONE}
+}
+M.~ETEME & Directeur général de LiZbiZ, signataire de la lettre
+d'autorisation \\
+M.~KOUNOU & Responsable informatique, contact technique d'urgence \\
+Mme~MOUAFO & Gestionnaire des risques, commanditaire opérationnelle \\
+M.~BIKORO & Chef de mission, NYONG SÉCURITÉ \\
+Mme~NGO~MBOCK & Pentesteuse, tests internes et Active Directory \\
+M.~TAMO & Analyste, tests web et ingénierie sociale \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~0.1. Les acteurs de l'Opération LOGONE}\end{center}
+
+% ============================================================================
+\section{La Lettre d'Autorisation}
+\label{sec:p00-lettre}
+% ============================================================================
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Rubrique} &
+    \tableauHeader{Contenu de la lettre du 12 octobre}
+}
+Parties & LiZbiZ SA (M.~ETEME) et NYONG SÉCURITÉ (M.~BIKORO) \\
+Objectif & Vérifier qu'un attaquant externe ou interne ne peut pas obtenir
+les droits d'administrateur du domaine ni lire la base des clients \\
+Périmètre externe & Plage 198.51.100.0/27 et domaine lizbiz.cm \\
+Périmètre interne & Réseaux de Douala (10.10.0.0/16) et de Garoua
+(10.20.0.0/16), sauf 10.10.50.0/24 (paie, hébergée pour un tiers) \\
+Exclusions & Déni de service~; système de paie~; intrusion physique \\
+Ingénierie sociale & Courriels d'hameçonnage simulés à 60~adresses validées
+par la direction des ressources humaines \\
+Fenêtre & Du 19 au 30~octobre~; tests internes de 8~h à 18~h, sauf accord
+écrit \\
+Contacts d'urgence & M.~KOUNOU et M.~BIKORO, joignables jour et nuit~; mot
+d'arrêt convenu \\
+Données & Aucune copie de données personnelles~; preuves masquées~;
+destruction à la remise du rapport \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~0.2. Extrait de la lettre d'autorisation de l'Opération LOGONE}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Tester une adresse « voisine » du périmètre
+parce qu'elle semble appartenir au client.
+
+\smallskip
+\textbf{Règle~:} seul ce qui est écrit est autorisé. Le réseau de la paie,
+hébergé pour un tiers, n'appartient pas au signataire~: le tester, même par
+erreur, serait un accès non autorisé (Chapitre~\ref{chap:droit}).
+\end{boxalert}
+
+% ============================================================================
+\section{Douze Jours de Test}
+\label{sec:p00-test}
+% ============================================================================
+
+\begin{tableaucours}{L{2.4cm}L{9.8cm}}{%
+    \tableauHeader{Dates} &
+    \tableauHeader{Activité}
+}
+19--20~oct. & Reconnaissance externe~: sources ouvertes, sous-domaines,
+services exposés \\
+21--22~oct. & Tests externes~: passerelle, portail de suivi, messagerie \\
+23~oct. & Campagne d'hameçonnage simulée \\
+26--28~oct. & Tests internes depuis un poste fourni~: balayage, Active
+Directory, partages \\
+29~oct. & Démonstration du chemin vers les administrateurs du domaine~;
+arrêt des tests \\
+30~oct. & Réunion de restitution à chaud \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~0.3. Le calendrier de l'Opération LOGONE}\end{center}
+
+% ============================================================================
+\section{Ce que le Test a Montré}
+\label{sec:p00-resultats}
+% ============================================================================
+
+\begin{boxscenario}{Opération LOGONE. La restitution du 30 octobre}
+\textbf{Constatations.}
+\begin{itemize}
+    \item Externe~: la passerelle exige bien un second facteur~; aucun accès
+          obtenu depuis Internet.
+    \item Hameçonnage~: 14~clics sur 60~destinataires, 5~saisies de mot de
+          passe, 9~signalements au support.
+    \item Interne~: en 5~heures, depuis un poste ordinaire, Mme~NGO~MBOCK
+          obtient les droits d'administrateur du domaine en exploitant le
+          mot de passe faible d'un compte de service.
+    \item Détection~: le centre de surveillance de nuit signale le balayage
+          interne en 40~minutes, mais ne voit pas l'obtention des droits.
+    \item Bilan~: 14~constats, dont 2 critiques, 4 élevés, 5 moyens et
+          3 faibles.
+\end{itemize}
+
+\medskip
+\textbf{Analyse} (confiance élevée). La porte d'entrée de mars est fermée~;
+la maison, elle, reste ouverte à qui y entre. Le test ne prouve pas
+qu'aucune autre voie n'existe~: il prouve que celle-ci existait, à cette
+date, dans ce périmètre.
+\end{boxscenario}
+
+\begin{boxmetier}{Pentesteur}
+\textbf{Arrêter quand l'objectif est démontré.} Mme~NGO~MBOCK s'arrête
+dès qu'elle obtient les droits~: elle capture la preuve (une capture
+d'écran du groupe, sans données), prévient M.~BIKORO, qui prévient
+M.~KOUNOU. Aller plus loin n'apporterait rien et créerait un risque.
+\end{boxmetier}
+
+\begin{boxmetier}{RSSI}
+\textbf{Commander un test pour décider.} Le RSSI commande un test avec une
+question précise (« peut-on devenir administrateur du domaine~? »), et non
+pour obtenir une note. Le rapport doit l'aider à décider où investir.
+\end{boxmetier}
+
+% ============================================================================
+\section{Les Questions du Cours}
+\label{sec:p00-questions}
+% ============================================================================
+
+\begin{tableaucours}{L{3.4cm}L{6.6cm}L{2.2cm}}{%
+    \tableauHeader{Partie} &
+    \tableauHeader{Question posée par l'Opération LOGONE} &
+    \tableauHeader{Chapitres}
+}
+I. Cadre & Qu'est-ce qui rend ce test légal et utile~? & \ref{chap:ethique}
+à~\ref{chap:methodes} \\
+II. Reconnaître & Qu'a-t-on appris sans toucher aux systèmes~? &
+\ref{chap:osint} à~\ref{chap:vulnerabilites} \\
+III. Systèmes & Comment un compte de service mène-t-il au domaine~? &
+\ref{chap:exploitation} à~\ref{chap:mdp} \\
+IV. Applications & Le portail et l'API sont-ils sûrs~? & \ref{chap:web}
+à~\ref{chap:nuage} \\
+V. Au-delà & Les personnes et le SOC tiennent-ils~? & \ref{chap:sansfil}
+à~\ref{chap:detection} \\
+VI. Restituer & Comment écrire, corriger, vérifier, mesurer~? &
+\ref{chap:rapport} à~\ref{chap:mesurer} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~0.4. Les questions du cours}\end{center}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Un test d'intrusion} est une attaque autorisée, bornée et
+          restituée.
+    \item \textbf{La lettre d'autorisation} fixe parties, objectif,
+          périmètre, exclusions, fenêtre, contacts et traitement des données.
+    \item \textbf{Seul ce qui est écrit est autorisé}~; un tiers non
+          signataire est hors périmètre.
+    \item \textbf{On s'arrête} quand l'objectif est démontré.
+    \item \textbf{Un test prouve} l'existence d'une voie, pas l'absence
+          d'autres voies.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: énumérer les rubriques
+d'une lettre d'autorisation~; repérer une cible hors périmètre~; résumer
+les résultats de l'Opération LOGONE~; dire ce qu'un test prouve et ne
+prouve pas.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.1. Le taux \niveaubase}]
+Calculez le taux de clics, de saisies et de signalements de la campagne
+d'hameçonnage.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.2. Hors périmètre \niveaubase}]
+Les adresses 10.10.50.12, 10.20.3.50 et 198.51.100.40 sont-elles dans le
+périmètre de la lettre~? Justifiez.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.3. Les registres \niveaubase}]
+Classez en constatation, supposition ou opinion~: « le SOC est
+incompétent »~; « le balayage a été signalé en 40~minutes »~; « un
+attaquant réel aurait été plus discret ».
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.4. Prouver \niveaumoyen}]
+Pourquoi le test ne prouve-t-il pas que LiZbiZ est sûre depuis Internet~?
+Que peut-on en dire honnêtement~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.5. L'arrêt \niveaumoyen}]
+Mme~NGO~MBOCK aurait pu lire la base des clients après avoir obtenu les
+droits. Pourquoi s'arrête-t-elle~? Quelle preuve garde-t-elle~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.6. Le tiers \niveaumoyen}]
+Le système de paie est hébergé par LiZbiZ pour un tiers. Que faudrait-il
+pour l'inclure dans un prochain test~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.7. Les données \niveaumoyen}]
+Pourquoi la lettre interdit-elle de copier des données personnelles~? Quels
+risques courrait le cabinet sans cette clause~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.8. La détection \niveaumoyen}]
+Le SOC a vu le balayage mais pas l'obtention des droits. Qu'en concluez-vous
+pour ses règles de détection~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.9. Une lettre \niveauexpert}]
+Rédigez la lettre d'autorisation complète de l'Opération LOGONE, à partir
+du Tableau~0.2.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~0.10. La question \niveauexpert}]
+Proposez trois questions précises que la BANQUE SANAGA pourrait poser à un
+test d'intrusion, et pour chacune le périmètre nécessaire.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item NIST SP~800-115~\cite{nist800115}.
+    \item Loi n°~2010/012, articles~65 et suivants~\cite{loi2010012}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Avant les techniques, les mots et les métiers. Le
+Chapitre~\ref{chap:ethique} définit le hacking éthique et les types de
+tests.
+\end{boxinfo}

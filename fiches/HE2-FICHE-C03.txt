@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C03
+Chapitre 3 : Règles d'engagement et éthique de la mission
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Une plage d'adresses se note souvent en :
+      a) Notation CIDR
+      b) Lettres
+      c) Chiffres romains
+      d) Couleurs
+
+ 2. Si une cible redirige hors périmètre, on :
+      a) Suit la redirection
+      b) S'arrête et consulte
+      c) Ignore
+      d) Accélère
+
+ 3. Les règles d'engagement couvrent :
+      a) Le prix seul
+      b) La météo
+      c) Périmètre, horaires, actions, contacts, mot d'arrêt
+      d) Rien
+
+ 4. Le mot d'arrêt permet de :
+      a) Facturer
+      b) Gagner
+      c) Changer de cible
+      d) Stopper immédiatement l'exercice
+
+ 5. Qui peut invoquer le mot d'arrêt ?
+      a) Tout membre du cercle de confiance
+      b) Le testeur seul
+      c) Personne
+      d) Le public
+
+ 6. Une faille critique se signale :
+      a) À la fin
+      b) Immédiatement au contact d'urgence
+      c) Jamais
+      d) Au public
+
+ 7. Le SOC est prévenu :
+      a) Toujours
+      b) Jamais
+      c) Selon le type d'exercice convenu
+      d) Par le public
+
+ 8. La minimisation consiste à :
+      a) Tout collecter
+      b) Rien faire
+      c) Publier
+      d) Ne collecter que le nécessaire
+
+ 9. La minimisation protège :
+      a) Les données et limite le risque
+      b) Le testeur seul
+      c) Le prix
+      d) Personne
+
+10. Une erreur du testeur se :
+      a) Cache
+      b) Signale aussitôt, honnêtement
+      c) Nie
+      d) Facture
+
+11. Une notation /24 désigne :
+      a) Un hôte
+      b) Un port
+      c) Un ensemble d'adresses
+      d) Un service
+
+12. Les actions interdites sont :
+      a) Facultatives
+      b) Inconnues
+      c) Décidées après
+      d) Listées à l'avance
+
+13. Attendre le rapport pour une faille critique est :
+      a) Dangereux
+      b) Recommandé
+      c) Obligatoire
+      d) Neutre
+
+14. Pour une équipe rouge, le SOC est :
+      a) Toujours prévenu
+      b) Non prévenu
+      c) Supprimé
+      d) Public
+
+15. Collecter plus que nécessaire crée :
+      a) Un avantage
+      b) Rien
+      c) Un risque juridique
+      d) Une preuve
+
+16. La transparence sur une erreur prime sur :
+      a) La loi
+      b) Rien
+      c) La preuve
+      d) L'image
+
+17. Face à un dilemme risqué, on privilégie :
+      a) La prudence et la consultation
+      b) L'audace
+      c) Le silence
+      d) La vitesse
+
+18. Les horaires autorisés figurent dans :
+      a) Le contrat météo
+      b) Les règles d'engagement
+      c) Un secret
+      d) Nulle part
+
+19. Toucher une adresse hors plage est :
+      a) Permis
+      b) Recommandé
+      c) Interdit
+      d) Neutre
+
+20. Le contact d'urgence est joignable :
+      a) Aux heures de bureau
+      b) Jamais
+      c) Une fois
+      d) Jour et nuit
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. La notation CIDR désigne un seul hôte, jamais une plage.
+      Vrai / Faux
+
+22. Seul le testeur peut invoquer le mot d'arrêt.
+      Vrai / Faux
+
+23. Une faille critique attend le rapport final.
+      Vrai / Faux
+
+24. La minimisation consiste à ne collecter que le nécessaire.
+      Vrai / Faux
+
+25. Une erreur du testeur se cache.
+      Vrai / Faux
+
+26. Pour une équipe rouge, le SOC n'est pas prévenu.
+      Vrai / Faux
+
+27. Suivre une redirection hors périmètre est autorisé.
+      Vrai / Faux
+
+28. Les actions interdites sont listées à l'avance.
+      Vrai / Faux
+
+29. Face à un dilemme risqué, on privilégie la prudence.
+      Vrai / Faux
+
+30. Le contact d'urgence est joignable jour et nuit.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Une plage d'adresses se note en notation ______.
+
+32. Le signal qui stoppe l'exercice est le mot d'______.
+
+33. Ne collecter que le strict nécessaire, c'est la ______.
+
+34. Une faille critique se signale ______ au contact.
+
+35. Une erreur du testeur se signale ______.
+
+36. Pour une équipe rouge, le SOC n'est ______ prévenu.
+
+37. Les ______ d'engagement fixent périmètre et horaires.
+
+38. Face au doute, on privilégie la ______.
+
+39. Une notation /24 désigne un ______ d'adresses.
+
+40. La faille critique va au contact d'______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C13
+Chapitre 13 : Mots de passe : attaques et défenses
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Une attaque en ligne vise :
+      a) Le service directement
+      b) Une empreinte volée
+      c) Rien
+      d) La paie
+
+ 2. Une attaque hors ligne vise :
+      a) Le service
+      b) Une empreinte volée
+      c) Le DG
+      d) La météo
+
+ 3. Essayer toutes les combinaisons est :
+      a) Le dictionnaire
+      b) La pulvérisation
+      c) La force brute
+      d) Le bourrage
+
+ 4. Un ou deux mots de passe sur beaucoup de comptes est :
+      a) La force brute
+      b) Le dictionnaire
+      c) Le bourrage
+      d) La pulvérisation
+
+ 5. Réutiliser des identifiants volés ailleurs est :
+      a) Le bourrage d'identifiants
+      b) La force brute
+      c) La pulvérisation
+      d) Le dictionnaire
+
+ 6. Une empreinte NT permet :
+      a) Mille essais/s
+      b) Des milliards d'essais/s
+      c) Aucun essai
+      d) Un essai/jour
+
+ 7. Une fonction lente et salée permet :
+      a) Des milliards/s
+      b) Rien
+      c) Des milliers/s
+      d) L'infini
+
+ 8. Le sel empêche de :
+      a) Chiffrer
+      b) Hacher
+      c) Facturer
+      d) Casser tous les comptes à la fois
+
+ 9. Un audit de mots de passe exige :
+      a) Un accord écrit de la direction
+      b) Rien
+      c) La paie
+      d) La météo
+
+10. Le rapport d'audit contient :
+      a) Les mots de passe en clair
+      b) Des statistiques agrégées
+      c) Les visages
+      d) Les salaires
+
+11. Combien de mots de passe retrouvés en 24h sur 160 ?
+      a) 5
+      b) 100
+      c) 38
+      d) 160
+
+12. Le constat de l'audit des mots de passe est :
+      a) T-01
+      b) T-14
+      c) T-05
+      d) A-01
+
+13. Le NIST privilégie :
+      a) La longueur
+      b) La complexité
+      c) Le changement fréquent
+      d) Les symboles
+
+14. « Lizbiz2026! » est :
+      a) Imprévisible
+      b) Prévisible malgré la règle
+      c) Chiffré
+      d) Salé
+
+15. Argon2 est une fonction :
+      a) Rapide
+      b) Sans sel
+      c) Lente et salée
+      d) Cassée
+
+16. Les empreintes sont détruites :
+      a) Jamais
+      b) Après un an
+      c) Publiées
+      d) À la fin de l'audit
+
+17. Combien de comptes partagent un mot de passe ?
+      a) 12
+      b) 0
+      c) 38
+      d) 160
+
+18. Le NIST recommande de comparer aux listes de mots de passe :
+      a) Longs
+      b) Compromis
+      c) Chiffrés
+      d) Salés
+
+19. Le second facteur est obligatoire pour :
+      a) Rien
+      b) La météo
+      c) Les accès distants et comptes à privilèges
+      d) Les invités
+
+20. La liste nominative va :
+      a) Au public
+      b) Au concurrent
+      c) Au testeur
+      d) Au seul responsable
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Une attaque hors ligne est freinée par le verrouillage de compte.
+      Vrai / Faux
+
+22. La pulvérisation essaie toutes les combinaisons sur un seul compte.
+      Vrai / Faux
+
+23. Une empreinte NT est lente et salée, comme Argon2.
+      Vrai / Faux
+
+24. Le sel empêche de casser tous les comptes à la fois.
+      Vrai / Faux
+
+25. Le rapport d'audit contient les mots de passe en clair.
+      Vrai / Faux
+
+26. Le NIST privilégie la longueur plutôt que la complexité.
+      Vrai / Faux
+
+27. « Lizbiz2026! » est prévisible malgré la règle de complexité.
+      Vrai / Faux
+
+28. 38 mots de passe sur 160 ont été retrouvés en 24 heures.
+      Vrai / Faux
+
+29. Les empreintes sont détruites à la fin de l'audit.
+      Vrai / Faux
+
+30. Le second facteur est inutile pour les comptes à privilèges.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. L'attaque qui vise une empreinte volée est dite ______ ligne.
+
+32. Un mot de passe courant essayé sur beaucoup de comptes, c'est la ______.
+
+33. Réutiliser des identifiants volés ailleurs, c'est le ______ d'identifiants.
+
+34. La valeur unique ajoutée avant hachage est le ______.
+
+35. ______ mots de passe sur 160 retrouvés en 24 heures.
+
+36. Le constat de l'audit des mots de passe est A-______.
+
+37. Le NIST privilégie la ______ plutôt que la complexité.
+
+38. Une fonction lente et salée conçue pour les mots de passe est ______.
+
+39. La liste nominative va au seul ______.
+
+40. Le ______ facteur est obligatoire pour les accès distants.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

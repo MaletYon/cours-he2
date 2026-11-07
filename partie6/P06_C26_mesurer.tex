@@ -1,0 +1,244 @@
+% ============================================================================
+% Fichier  : partie6/P06_C26_mesurer.tex
+% Titre    : Mesurer la Sécurité Offensive
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : cadre de verdict OUI / NON / NEK de l'auditologie (MINKA) ;
+% indicateurs de sécurité offensive. Opérations LOGONE et MBAM : cas fictifs.
+% ============================================================================
+
+\chapter{Mesurer la Sécurité Offensive}
+\label{chap:mesurer}
+\chaptermark{Mesurer la sécurité offensive}
+
+\epigraph{%
+    « Un test qui ne se mesure pas ne s'améliore pas~;\\
+    et ce qui ne peut être tranché doit être dit indéterminé. »%
+}{Principe du cours}
+
+\niveauChapitre{Avancé}{L'ensemble du
+cours~; notions d'auditologie (cours d'audit).}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Définir ce que mesure un test d'intrusion.
+    \item Construire des indicateurs utiles et honnêtes.
+    \item Appliquer le verdict à trois valeurs \sigle{OUI}, \sigle{NON},
+          \sigle{NEK}.
+    \item Éviter les indicateurs trompeurs.
+    \item Inscrire le test dans un cycle d'amélioration.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : LiZbiZ est-elle « sûre » après le test~?}
+% ============================================================================
+
+À la fin de la mission, M.~ETEME pose la question la plus simple et la plus
+piégée~: « sommes-nous sûrs maintenant~? ». La réponse honnête n'est ni oui
+ni non en général~: elle est un ensemble de verdicts précis, et, pour ce qui
+n'a pu être tranché, un franc « indéterminé ». Ce chapitre apprend à
+mesurer sans tromper.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Ce que mesure un test (section~\ref{sec:c26-quoi}).
+    \item Des indicateurs honnêtes (section~\ref{sec:c26-indicateurs}).
+    \item Le verdict à trois valeurs (section~\ref{sec:c26-verdict}).
+    \item Les indicateurs trompeurs (section~\ref{sec:c26-trompeurs}).
+    \item Le cycle d'amélioration (section~\ref{sec:c26-cycle}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Ce que Mesure un Test}
+\label{sec:c26-quoi}
+% ============================================================================
+
+Un test d'intrusion ne mesure pas « la sécurité » en général~: il mesure la
+résistance d'un périmètre donné, à un moment donné, face à un effort donné.
+Il dit ce qu'un attaquant de niveau comparable aurait pu faire, pas ce qu'un
+attaquant quelconque fera demain.
+
+% ============================================================================
+\section{Des Indicateurs Honnêtes}
+\label{sec:c26-indicateurs}
+% ============================================================================
+
+\begin{tableaucours}{L{4.8cm}L{7.4cm}}{%
+    \tableauHeader{Indicateur} &
+    \tableauHeader{Ce qu'il dit}
+}
+Objectifs atteints sur objectifs fixés & Résistance aux scénarios visés \\
+Constats par gravité & Ampleur et priorité des faiblesses \\
+Couverture de détection & Part des techniques vues par le défenseur \\
+Temps jusqu'à la détection & Rapidité du défenseur \\
+Taux de correction au contre-test & Qualité du traitement \\
+Taux de signalement d'hameçonnage & Vigilance humaine \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~26.1. Indicateurs d'un test d'intrusion}\end{center}
+
+% ============================================================================
+\section{Le Verdict à Trois Valeurs}
+\label{sec:c26-verdict}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Verdict à trois valeurs}~: pour chaque question d'audit, la réponse
+est \sigle{OUI} (la propriété est vérifiée, avec preuve), \sigle{NON} (elle
+est réfutée, avec preuve), ou \sigle{NEK} (indéterminé~: les preuves
+manquent pour trancher). Le \sigle{NEK} n'est pas un aveu de faiblesse~:
+c'est une exigence d'honnêteté.
+\end{boxdef}
+
+\begin{tableaucours}{L{2.0cm}L{4.6cm}L{5.6cm}}{%
+    \tableauHeader{Verdict} &
+    \tableauHeader{Sens} &
+    \tableauHeader{Exemple (LOGONE)}
+}
+OUI & Propriété démontrée & « Le système de paiement cloisonné a résisté »
+(F3 non atteint, MBAM) \\
+NON & Propriété réfutée & « Un attaquant interne devient administrateur du
+domaine » (T-01) \\
+NEK & Indéterminé & « La résistance du nuage au-delà du périmètre testé » (hors
+mandat) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~26.2. Le verdict OUI / NON / NEK appliqué~\cite{minka2026auditologie}}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Conclure \sigle{OUI} (« c'est sûr ») faute
+d'avoir trouvé une faille, alors qu'on n'a pas cherché.
+
+\smallskip
+\textbf{Règle~:} l'absence de preuve n'est pas une preuve d'absence. Ce qui
+n'a pas été testé, ou n'a pu être tranché, est \sigle{NEK}, pas \sigle{OUI}.
+Le \sigle{NEK} dit au client où porter l'effort suivant.
+\end{boxalert}
+
+% ============================================================================
+\section{Les Indicateurs Trompeurs}
+\label{sec:c26-trompeurs}
+% ============================================================================
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Indicateur trompeur} &
+    \tableauHeader{Pourquoi il trompe}
+}
+Nombre brut de failles & Dépend de l'outil, pas du risque \\
+« Zéro faille trouvée » & Peut signifier « rien cherché » \\
+Note globale unique & Masque les constats critiques dans la moyenne \\
+Temps passé & Mesure l'effort, pas le résultat \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~26.3. Indicateurs à manier avec prudence}\end{center}
+
+% ============================================================================
+\section{Le Cycle d'Amélioration}
+\label{sec:c26-cycle}
+% ============================================================================
+
+Un test n'est pas une fin~: c'est une étape d'un cycle. Les constats
+alimentent les corrections~; le contre-test les vérifie~; la phase violette
+nourrit la détection~; le test suivant repart des \sigle{NEK} et des zones
+non couvertes. La sécurité offensive sert la défense, et se mesure à ce
+qu'elle lui apporte.
+
+\begin{boxmetier}{RSSI, auditeur de sécurité, pentesteur}
+\textbf{Dire le vrai, y compris le NEK.} Le professionnel ne cède pas à la
+pression du \sigle{OUI} rassurant. Il distingue ce qu'il a démontré, ce qu'il
+a réfuté, et ce qu'il n'a pu trancher~: c'est à ce triple langage qu'on
+reconnaît un rapport honnête.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Un test} mesure une résistance, à un moment, face à un
+          effort donné.
+    \item \textbf{Les bons indicateurs} relient objectif, gravité, détection,
+          correction.
+    \item \textbf{Le verdict} est \sigle{OUI}, \sigle{NON} ou \sigle{NEK}.
+    \item \textbf{L'absence de preuve} n'est pas preuve d'absence~: c'est
+          \sigle{NEK}.
+    \item \textbf{Le test} sert un cycle d'amélioration continue de la
+          défense.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: dire ce que mesure un
+test~; construire des indicateurs honnêtes~; appliquer OUI / NON / NEK~;
+reconnaître les indicateurs trompeurs~; inscrire le test dans un cycle.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.1. Ce que mesure un test \niveaubase}]
+Un test mesure-t-il « la sécurité » en général~? Que mesure-t-il~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.2. Trois valeurs \niveaubase}]
+Donnez le sens de OUI, NON et NEK.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.3. Trompeur \niveaubase}]
+Pourquoi « zéro faille trouvée » peut-il tromper~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.4. Absence de preuve \niveaumoyen}]
+Expliquez « l'absence de preuve n'est pas une preuve d'absence » sur un
+exemple de LOGONE.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.5. Classer \niveaumoyen}]
+Attribuez OUI, NON ou NEK~: le système de paiement de MBAM~; l'accès
+administrateur de LiZbiZ~; la sécurité du nuage hors périmètre.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.6. Note unique \niveaumoyen}]
+Pourquoi une note globale unique est-elle dangereuse~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.7. Indicateurs \niveaumoyen}]
+Choisissez trois indicateurs pour le tableau de bord de LiZbiZ et justifiez.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.8. Répondre au DG \niveaumoyen}]
+Rédigez la réponse honnête à « sommes-nous sûrs maintenant~? », en OUI / NON
+/ NEK.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.9. Cycle \niveauexpert}]
+Décrivez le cycle d'amélioration reliant test, correction, contre-test,
+détection et test suivant.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~26.10. Tableau de bord \niveauexpert}]
+Construisez le tableau de bord de sécurité offensive que LiZbiZ devrait
+suivre d'une année sur l'autre, verdicts NEK compris.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item Cadre d'auditologie et verdict à trois valeurs~\cite{minka2026auditologie}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Fin du cours.} De la lettre d'autorisation au verdict mesuré, le
+test d'intrusion aura montré qu'autoriser, reconnaître, tester et restituer
+forment un même service~: défendre, en pensant comme l'attaquant, sans
+jamais le devenir.
+\end{boxinfo}

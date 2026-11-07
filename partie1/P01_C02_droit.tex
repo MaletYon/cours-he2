@@ -1,0 +1,297 @@
+% ============================================================================
+% Fichier  : partie1/P01_C02_droit.tex
+% Titre    : Le Cadre Juridique Camerounais
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : loi n° 2010/012 du 21 décembre 2010 (texte officiel : art. 65,
+% 66, 68, 69, 70, 71) ; loi n° 2024/017 (principes seulement).
+% ============================================================================
+
+\chapter{Le Cadre Juridique Camerounais}
+\label{chap:droit}
+\chaptermark{Le cadre juridique}
+
+\epigraph{%
+    « La curiosité n'est pas une autorisation. »%
+}{Principe du cours}
+
+\niveauChapitre{Fondamental}{Chapitre~\ref{chap:ethique}~; cours SEC3266,
+chapitre sur le droit.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Citer les infractions de la loi n°~2010/012 qui concernent le
+          testeur.
+    \item Expliquer pourquoi l'autorisation écrite fait la différence entre
+          un test et une infraction.
+    \item Identifier qui peut autoriser un test, et qui ne le peut pas.
+    \item Repérer les risques juridiques propres aux données personnelles,
+          aux tiers et aux outils.
+    \item Adopter les réflexes qui protègent le testeur et son client.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : qu'est-ce qui sépare Mme NGO MBOCK de l'attaquant de mars~?}
+% ============================================================================
+
+En mars, un attaquant est entré dans le système de LiZbiZ, s'y est
+maintenu et a obtenu les droits d'administrateur. En octobre, Mme~NGO~MBOCK
+a fait presque la même chose. Les gestes se ressemblent~; les qualifications
+juridiques sont opposées. La différence tient en une feuille signée. Ce
+chapitre en explique la portée.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les infractions qui concernent le testeur (section~\ref{sec:c02-infractions}).
+    \item L'autorisation (section~\ref{sec:c02-autorisation}).
+    \item Les données, les tiers, les outils (section~\ref{sec:c02-risques}).
+    \item Les réflexes du testeur (section~\ref{sec:c02-reflexes}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Les Infractions qui Concernent le Testeur}
+\label{sec:c02-infractions}
+% ============================================================================
+
+\begin{boxjuris}
+\textbf{\loicam{n°~2010/012} du 21~décembre 2010 relative à la
+cybersécurité et la cybercriminalité au Cameroun} (texte officiel)
+
+\medskip
+\textbf{Article~65, alinéa~2}~: \textit{« Est puni des peines prévues à
+l'alinéa 1 ci-dessus, tout accès non autorisé, à l'ensemble ou à une partie
+d'un réseau de communications électroniques ou d'un système d'information
+ou d'un équipement terminal. »}
+
+\medskip
+\textbf{Article~65, alinéa~4}~: \textit{« Est puni des mêmes peines prévues
+à l'alinéa 1 ci-dessus, celui qui, sans droit, permet l'accès dans un réseau
+de communications électroniques ou dans un système d'information par défi
+intellectuel. »}
+
+\medskip
+\textbf{Portée.} Les peines de l'alinéa~1 sont de cinq à dix ans
+d'emprisonnement et de 5 à 10~millions de FCFA d'amende, ou l'une de ces
+deux peines. L'alinéa~4 vise expressément le « défi intellectuel »~: la
+bonne intention ou la curiosité ne justifient pas un accès sans droit.
+\end{boxjuris}
+
+\begin{tableaucours}{L{2.0cm}L{6.0cm}L{4.2cm}}{%
+    \tableauHeader{Article} &
+    \tableauHeader{Comportement visé} &
+    \tableauHeader{Geste de test concerné}
+}
+65 (1) & Interception de données sans droit ni autorisation & Écoute du
+réseau, interception d'échanges \\
+65 (2) et (4) & Accès non autorisé~; accès permis par défi intellectuel &
+Toute connexion à un système hors mandat \\
+66 & Perturbation ou interruption du fonctionnement par l'altération des
+données & Test qui fait tomber un service \\
+68 & Accès ou maintien frauduleux avec perturbation grave & Exploitation
+qui endommage \\
+69 & Accès sans droit, en violation des mesures de sécurité, pour obtenir
+des données & Lecture de données au-delà du nécessaire \\
+70 & Attaque par saturation pour faire effondrer une ressource & Test de
+charge ou de déni de service \\
+71 & Introduction de données pour supprimer ou modifier les données &
+Modification de données de production \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.1. Les articles de la loi n°~2010/012 qui concernent le testeur}\end{center}
+
+% ============================================================================
+\section{L'Autorisation}
+\label{sec:c02-autorisation}
+% ============================================================================
+
+L'autorisation écrite rend l'accès « autorisé » au sens de l'article~65.
+Encore faut-il qu'elle émane de la personne qui a le pouvoir de la
+donner~: le propriétaire ou l'exploitant du système, par son représentant
+habilité.
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Qui peut autoriser~?} &
+    \tableauHeader{Commentaire}
+}
+Le dirigeant de l'organisation & Oui, ou son délégataire désigné par écrit \\
+Le responsable informatique & Seulement s'il a reçu délégation \\
+Un salarié qui « veut savoir » & Non \\
+L'hébergeur ou le fournisseur de nuage & Pour son infrastructure~; le
+client peut avoir besoin de son accord selon le contrat \\
+Un tiers dont les systèmes sont reliés & Non pour le système du client~;
+il autorise seulement ses propres systèmes \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.2. Le pouvoir d'autoriser}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Se contenter d'un accord oral ou d'un courriel
+d'un technicien.
+
+\smallskip
+\textbf{Règle~:} l'autorisation est écrite, signée par une personne
+habilitée, datée, et précise le périmètre et les méthodes. Le testeur en
+garde une copie sur lui pendant les tests physiques et dans son dossier.
+\end{boxalert}
+
+% ============================================================================
+\section{Les Données, les Tiers, les Outils}
+\label{sec:c02-risques}
+% ============================================================================
+
+\begin{boxinfo}
+\textbf{Les données personnelles.} Un test peut faire voir des données
+personnelles (fichier des clients, paie). La loi n°~2024/017 relative à la
+protection des données à caractère personnel s'applique à leur traitement~;
+ses articles sont à lire dans le texte publié au Journal officiel. La règle
+du cours~: ne consulter que ce qui prouve la faille, ne rien copier,
+masquer les preuves, détruire ce qui reste à la fin de la mission.
+\end{boxinfo}
+
+\begin{tableaucours}{L{3.0cm}L{9.2cm}}{%
+    \tableauHeader{Risque} &
+    \tableauHeader{Parade}
+}
+Tiers touché & Vérifier la propriété de chaque adresse avant de tester~;
+exclure ce qui appartient à d'autres \\
+Interruption de service & Exclure le déni de service~; prévenir avant
+toute action risquée~; mot d'arrêt \\
+Outils & Utiliser des outils de provenance sûre, sur des postes dédiés~;
+ne pas diffuser d'outil offensif hors cadre \\
+Preuves & Tracer chaque action (horodatage, adresse source) pour pouvoir
+prouver ce qui a été fait, et ce qui ne l'a pas été \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.3. Risques juridiques et parades}\end{center}
+
+\begin{boxscenario}{Opération LOGONE. L'incident évité}
+\textbf{Constatation.} Le 26~octobre, M.~TAMO s'apprête à balayer la plage
+10.10.0.0/16 entière. Mme~NGO~MBOCK lui rappelle l'exclusion de
+10.10.50.0/24 (paie, hébergée pour un tiers). La commande est corrigée avant
+d'être lancée~; l'incident est consigné.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le balayage aurait touché un système
+dont LiZbiZ n'est pas propriétaire~: un accès non autorisé au sens de
+l'article~65, et une faute contractuelle du cabinet.
+\end{boxscenario}
+
+% ============================================================================
+\section{Les Réflexes du Testeur}
+\label{sec:c02-reflexes}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Avant, pendant, après}
+\begin{enumerate}
+    \item \textbf{Avant}~: lettre signée par une personne habilitée~;
+          périmètre vérifié adresse par adresse~; contrat avec clause de
+          responsabilité et assurance du cabinet.
+    \item \textbf{Pendant}~: rester dans le périmètre et la fenêtre~;
+          journaliser chaque action~; s'arrêter et prévenir au moindre
+          doute ou incident.
+    \item \textbf{Après}~: remettre le rapport au seul client~; détruire les
+          données et les accès créés~; conserver le journal des actions.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxmetier}{Auditeur de sécurité}
+\textbf{Vérifier le mandat avant le premier geste.} L'auditeur qui intègre
+des tests techniques vérifie lui-même la lettre, le périmètre et le
+pouvoir du signataire~; il ne se fie pas à ce que lui dit l'audité.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{L'article~65} réprime l'accès non autorisé, y compris
+          « par défi intellectuel ».
+    \item \textbf{Les articles~66 à~71} visent la perturbation, le maintien
+          frauduleux, l'obtention de données, la saturation, la modification.
+    \item \textbf{L'autorisation} est écrite, signée par une personne
+          habilitée, précise.
+    \item \textbf{Données, tiers, outils, preuves}~: quatre risques à
+          maîtriser.
+    \item \textbf{Avant, pendant, après}~: les réflexes qui protègent le
+          testeur et le client.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: citer l'article~65 et ses
+alinéas~2 et~4~; relier un geste de test à un article~; dire qui peut
+autoriser~; énumérer les réflexes avant, pendant et après.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.1. Quel article~? \niveaubase}]
+Quel article vise~: un test de charge qui fait tomber un site~; la lecture
+de données clients au-delà du nécessaire~; un accès « pour voir »~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.2. Défi intellectuel \niveaubase}]
+Que signifie, pour un étudiant passionné, l'alinéa~4 de l'article~65~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.3. Les peines \niveaubase}]
+Quelles sont les peines prévues à l'article~65, alinéa~1~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.4. Qui autorise~? \niveaumoyen}]
+Un administrateur de la BANQUE SANAGA vous envoie un courriel « vous pouvez
+tester notre serveur ». Que faites-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.5. Le nuage \niveaumoyen}]
+LiZbiZ veut faire tester sa messagerie en ligne. Quelles autorisations
+faut-il vérifier~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.6. Les données \niveaumoyen}]
+Pendant un test, vous accédez au fichier des clients. Que faites-vous,
+étape par étape~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.7. L'incident évité \niveaumoyen}]
+Rédigez l'entrée du journal de mission sur l'incident évité du 26~octobre.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.8. L'outil \niveaumoyen}]
+Un collègue veut publier sur Internet l'outil qu'il a écrit pendant une
+mission. Quels risques juridiques et contractuels voyez-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.9. Le contrat \niveauexpert}]
+Rédigez les clauses juridiques d'un contrat de test d'intrusion~:
+autorisation, responsabilité, assurance, données, confidentialité.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.10. Comparer \niveauexpert}]
+Comparez la situation de l'attaquant de mars et celle de Mme~NGO~MBOCK
+au regard des articles~65, 68 et~69~: éléments matériels, autorisation,
+conséquences.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item Loi n°~2010/012~\cite{loi2010012}~; loi n°~2024/017~\cite{loi2024017}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} L'autorisation se traduit en règles concrètes~: les
+règles d'engagement, objet du Chapitre~\ref{chap:engagement}.
+\end{boxinfo}

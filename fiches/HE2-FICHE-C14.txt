@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C14
+Chapitre 14 : Tester une application web
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. La règle fondatrice du test web est :
+      a) Tout ce qui vient du client est contrôlable
+      b) Le serveur a toujours raison
+      c) Le client est sûr
+      d) Rien
+
+ 2. Un contrôle fait en JavaScript seul :
+      a) Protège le serveur
+      b) Ne protège pas le serveur
+      c) Est obligatoire
+      d) Chiffre
+
+ 3. La session est conservée par :
+      a) Un exploit
+      b) Le prix
+      c) Un cookie souvent
+      d) La météo
+
+ 4. Le WSTG organise le test en :
+      a) Factures
+      b) Couleurs
+      c) Prix
+      d) Catégories
+
+ 5. On parcourt les catégories WSTG :
+      a) Selon le périmètre et le temps
+      b) Toutes, toujours
+      c) Au hasard
+      d) Jamais
+
+ 6. On cartographie en parcourant l'application avec :
+      a) Un seul rôle
+      b) Chaque rôle
+      c) Aucun rôle
+      d) Le DG
+
+ 7. La matrice rôle par page prépare :
+      a) La facture
+      b) La météo
+      c) Les tests de contrôle d'accès
+      d) La vente
+
+ 8. Un message distinguant « compte inconnu » permet :
+      a) Rien
+      b) Le chiffrement
+      c) La paie
+      d) L'énumération des comptes
+
+ 9. Un cookie de session devrait être :
+      a) Réservé au canal chiffré et indisponible au script
+      b) Public
+      c) En clair
+      d) Partagé
+
+10. Le délai de session trop long est le constat :
+      a) T-01
+      b) T-14
+      c) T-05
+      d) T-09
+
+11. Un paramètre numérique d'objet est :
+      a) Normal
+      b) Un secret
+      c) À tester pour l'accès indirect
+      d) Une facture
+
+12. Le Top 10 de l'OWASP sert à :
+      a) Facturer
+      b) Chiffrer
+      c) Vendre
+      d) Ranger les constats
+
+13. La requête HTTP contient :
+      a) Méthode, chemin, en-têtes, corps
+      b) Le prix
+      c) La météo
+      d) Rien
+
+14. La catégorie contrôle d'accès vérifie :
+      a) Le prix
+      b) Si un rôle atteint les données d'un autre
+      c) La météo
+      d) La couleur
+
+15. L'exploration automatique sur la pré-production :
+      a) Se lance sans prévenir
+      b) Est interdite
+      c) Se fait avec cadence convenue et prévenue
+      d) Est inutile
+
+16. La réinitialisation de mot de passe est faible si le jeton est :
+      a) Long
+      b) Salé
+      c) Chiffré
+      d) Prévisible
+
+17. Les en-têtes de sécurité HTTP absents forment :
+      a) T-12
+      b) T-01
+      c) T-05
+      d) T-09
+
+18. Un code 500 révèle :
+      a) Le prix
+      b) Une erreur serveur parfois bavarde
+      c) La météo
+      d) La couleur
+
+19. Le Top 10 parle surtout aux :
+      a) Comptables
+      b) Clients
+      c) Développeurs
+      d) Juristes
+
+20. Le testeur observe et modifie :
+      a) Rien
+      b) Le prix
+      c) La météo
+      d) Chaque requête avant envoi
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Ce que le navigateur envoie est toujours digne de confiance.
+      Vrai / Faux
+
+22. Un contrôle fait uniquement en JavaScript protège le serveur.
+      Vrai / Faux
+
+23. Le WSTG est une loi camerounaise.
+      Vrai / Faux
+
+24. La matrice rôle par page sert à facturer la mission.
+      Vrai / Faux
+
+25. Un cookie de session devrait être réservé au canal chiffré.
+      Vrai / Faux
+
+26. T-14 concerne un délai d'expiration de session trop long.
+      Vrai / Faux
+
+27. Un paramètre numérique d'objet est à tester pour l'accès indirect.
+      Vrai / Faux
+
+28. Le Top 10 de l'OWASP sert à ranger les constats.
+      Vrai / Faux
+
+29. Un message distinguant « compte inconnu » empêche l'énumération.
+      Vrai / Faux
+
+30. T-12 concerne l'absence d'en-têtes de sécurité HTTP.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La règle fondatrice : tout ce qui vient du ______ est contrôlable.
+
+32. Le guide de test web de l'OWASP s'abrège ______.
+
+33. Le délai d'expiration de session trop long est le constat T-______.
+
+34. Les en-têtes de sécurité HTTP absents forment le constat T-______.
+
+35. La matrice ______ par page prépare les tests d'accès.
+
+36. Un cookie de session devrait être réservé au canal ______.
+
+37. Un code ______ révèle une erreur serveur.
+
+38. Le classement des risques web s'appelle le Top ______.
+
+39. La ______ HTTP contient méthode, chemin, en-têtes et corps.
+
+40. Un message qui distingue « compte inconnu » permet l'______ des comptes.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

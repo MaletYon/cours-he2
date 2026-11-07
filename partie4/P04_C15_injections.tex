@@ -1,0 +1,267 @@
+% ============================================================================
+% Fichier  : partie4/P04_C15_injections.tex
+% Titre    : Injections et Contrôle d'Accès
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : OWASP Top 10:2021 (A01 Broken Access Control, A03 Injection) ;
+% OWASP WSTG. Portail de suivi de LiZbiZ (constat T-05) : cas fictif.
+% ============================================================================
+
+\chapter{Injections et Contrôle d'Accès}
+\label{chap:injections}
+\chaptermark{Injections et contrôle d'accès}
+
+\epigraph{%
+    « L'injection confond la donnée et la commande~;\\
+    le défaut d'accès confond l'identité et le droit. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire à expert}{Chapitre~\ref{chap:web}~; cours
+SEC3266, chapitre sur la sécurité applicative.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Expliquer le mécanisme commun à toutes les injections.
+    \item Reconnaître l'injection de requête de base de données et l'exécution
+          de script dans le navigateur.
+    \item Comprendre la référence directe non contrôlée à un objet.
+    \item Distinguer contrôle d'accès horizontal et vertical.
+    \item Tester sans endommager ni divulguer de données réelles.
+    \item Rédiger les constats et leurs corrections.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : pourquoi changer un seul chiffre dans une adresse donne-t-il accès au colis d'un autre client~?}
+% ============================================================================
+
+Sur le portail de suivi, M.~TAMO, connecté avec le compte client de test,
+remarque que l'adresse d'une page contient le numéro de son colis. Il
+remplace ce numéro par un autre~: le portail affiche le colis d'un autre
+client, nom et adresse compris. Aucune injection, aucun outil~: un simple
+défaut de contrôle d'accès. C'est le constat T-05.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Le mécanisme de l'injection (section~\ref{sec:c15-mecanisme}).
+    \item Injection de requête et script dans le navigateur
+          (section~\ref{sec:c15-familles}).
+    \item La référence directe à un objet (section~\ref{sec:c15-idor}).
+    \item Horizontal et vertical (section~\ref{sec:c15-acces}).
+    \item Tester sans nuire (section~\ref{sec:c15-prudence}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Le Mécanisme de l'Injection}
+\label{sec:c15-mecanisme}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Injection}~: faille par laquelle une donnée fournie par
+l'utilisateur est interprétée comme une commande par un système en aval
+(base de données, interpréteur, navigateur), faute de séparation entre la
+donnée et la commande.
+\end{boxdef}
+
+La parade est toujours la même~: séparer la donnée de la commande
+(requêtes préparées, échappement selon le contexte, validation stricte des
+entrées). Le testeur, lui, cherche les endroits où cette séparation
+manque.
+
+% ============================================================================
+\section{Injection de Requête et Script dans le Navigateur}
+\label{sec:c15-familles}
+% ============================================================================
+
+\begin{tableaucours}{L{3.6cm}L{4.4cm}L{4.2cm}}{%
+    \tableauHeader{Famille} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Parade}
+}
+Injection de requête de base de données & Une entrée modifie la requête
+exécutée & Requêtes préparées, paramètres liés \\
+Script dans le navigateur & Une entrée renvoyée par la page s'exécute chez
+un autre visiteur & Échappement à la sortie, politique de contenu \\
+Injection de commande système & Une entrée atteint un interpréteur du
+serveur & Éviter l'appel système, listes blanches \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~15.1. Trois familles d'injection}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Prouver une injection de base de données par
+une commande destructrice.
+
+\smallskip
+\textbf{Règle~:} on démontre la faille par une preuve inoffensive (délai,
+valeur calculée, erreur contrôlée), jamais par une modification ou une
+suppression de données. On ne lit pas non plus les données réelles au-delà
+de ce qui prouve la faille.
+\end{boxalert}
+
+% ============================================================================
+\section{La Référence Directe à un Objet}
+\label{sec:c15-idor}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Référence directe non contrôlée à un objet}~: l'application
+désigne un objet (colis, compte, facture) par un identifiant visible, et ne
+vérifie pas que l'utilisateur a le droit d'y accéder. Changer l'identifiant
+donne accès à l'objet d'autrui.
+\end{boxdef}
+
+\begin{boxscenario}{Opération LOGONE. Le colis du voisin}
+\textbf{Constatation.} Le portail affiche un colis à partir de son numéro,
+passé dans l'adresse, sans vérifier qu'il appartient au client connecté. En
+incrémentant le numéro, on accède aux colis d'autres clients~: nom,
+téléphone, adresse de livraison.
+
+\medskip
+\textbf{Analyse} (confiance élevée). La preuve est faite sur trois colis du
+compte de test et un colis voisin, puis arrêtée. L'impact théorique porte
+sur l'ensemble des expéditions. C'est le constat T-05, de gravité élevée.
+\end{boxscenario}
+
+\begin{boxobjet}{T-05 · Accès indirect aux colis d'autrui}
+\textbf{Description~:} le portail ne vérifie pas la propriété du colis
+désigné par son numéro. \textbf{Preuve~:} requêtes sur quatre numéros,
+captures masquées. \textbf{Gravité~:} élevée. \textbf{Impact~:} divulgation
+des données de livraison de tous les clients. \textbf{Recommandation~:}
+vérifier, à chaque accès, que l'objet appartient à l'utilisateur
+(contrôle côté serveur)~; identifiants non devinables.
+\textbf{Détection~:} un compte qui consulte de nombreux colis qui ne sont
+pas les siens.
+\end{boxobjet}
+
+% ============================================================================
+\section{Horizontal et Vertical}
+\label{sec:c15-acces}
+% ============================================================================
+
+\begin{tableaucours}{L{3.6cm}L{8.8cm}}{%
+    \tableauHeader{Défaut d'accès} &
+    \tableauHeader{Exemple au portail}
+}
+Horizontal & Un client accède aux données d'un autre client (T-05) \\
+Vertical & Un client accède à une fonction réservée aux agents (mise à jour
+d'un colis) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~15.2. Deux défauts de contrôle d'accès}\end{center}
+
+% ============================================================================
+\section{Tester sans Nuire}
+\label{sec:c15-prudence}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Tester une référence directe à un objet, proprement}
+\begin{enumerate}
+    \item Repérer l'identifiant d'objet dans l'adresse ou le corps.
+    \item Avec un second compte de test, vérifier d'abord sur ses propres
+          objets.
+    \item Tenter l'accès à un objet voisin~; s'arrêter à la première preuve.
+    \item Ne pas parcourir l'ensemble~: la preuve suffit.
+    \item Masquer les données réelles dans le rapport.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxmetier}{Pentesteur et auditeur de sécurité}
+\textbf{La preuve minimale.} Une faille d'accès se prouve avec deux comptes
+et un objet voisin. L'auditeur qui télécharge toute la base pour « mesurer
+l'impact » dépasse son mandat et crée un risque~; l'impact se décrit, il ne
+se collecte pas.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{L'injection} confond donnée et commande~; la parade est de
+          les séparer.
+    \item \textbf{Requête, script, commande}~: trois familles.
+    \item \textbf{La référence directe à un objet} donne accès à l'objet
+          d'autrui.
+    \item \textbf{Horizontal} (autre utilisateur) et \textbf{vertical}
+          (fonction réservée).
+    \item \textbf{La preuve minimale}~: deux comptes, un objet voisin, puis
+          on s'arrête.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: expliquer le mécanisme
+d'injection~; nommer les trois familles~; définir la référence directe à un
+objet~; distinguer accès horizontal et vertical~; tester sans nuire.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.1. Mécanisme \niveaubase}]
+En une phrase, qu'ont en commun toutes les injections~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.2. Familles \niveaubase}]
+Associez à chaque famille sa parade principale.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.3. T-05 \niveaubase}]
+Pourquoi T-05 n'est-il pas une injection~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.4. Preuve inoffensive \niveaumoyen}]
+Comment prouver une injection de base de données sans modifier ni lire de
+données réelles~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.5. Horizontal ou vertical \niveaumoyen}]
+Classez~: un client lit le colis d'un autre~; un client met à jour un colis
+alors que seuls les agents le peuvent.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.6. Correction \niveaumoyen}]
+Rédigez la correction de T-05 pour l'équipe de développement.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.7. Détection \niveaumoyen}]
+Quelle règle de détection signalerait l'exploitation de T-05 en
+production~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.8. Script \niveaumoyen}]
+Pourquoi un script renvoyé par la page met-il en danger un autre visiteur,
+et non le serveur~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.9. Procédure \niveauexpert}]
+Adaptez la procédure de test de référence directe au cas des factures d'un
+portail comptable.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~15.10. Mandat \niveauexpert}]
+Un client demande « la preuve que toutes les données sont exposées ».
+Rédigez une réponse qui respecte le principe de la preuve minimale.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item OWASP Top~10~\cite{owasptop10}~; OWASP WSTG~\cite{owaspwstg}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les applications modernes exposent des interfaces de
+programmation et des applications mobiles~: le Chapitre~\ref{chap:api} leur
+est consacré.
+\end{boxinfo}

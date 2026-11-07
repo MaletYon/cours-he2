@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C19
+Chapitre 19 : Ingénierie sociale
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. L'ingénierie sociale exploite :
+      a) La confiance, l'autorité, l'urgence
+      b) Le code
+      c) Le chiffrement
+      d) La paie
+
+ 2. « La direction exige » exploite :
+      a) L'urgence
+      b) L'autorité
+      c) La peur
+      d) L'appât
+
+ 3. « Compte fermé dans une heure » exploite :
+      a) L'autorité
+      b) La serviabilité
+      c) L'urgence
+      d) L'appât
+
+ 4. Un courriel personnalisé visant une personne est :
+      a) De masse
+      b) Vocal
+      c) Par message
+      d) Ciblé
+
+ 5. Un appel téléphonique trompeur est l'hameçonnage :
+      a) Vocal
+      b) De masse
+      c) Ciblé
+      d) Par message
+
+ 6. Une campagne exige :
+      a) Rien
+      b) Un accord de la direction et l'information du personnel
+      c) La paie
+      d) La météo
+
+ 7. La page d'atterrissage doit être :
+      a) Culpabilisante
+      b) Secrète
+      c) Pédagogique
+      d) Payante
+
+ 8. On ne collecte jamais :
+      a) Le taux de clic
+      b) Le taux de signalement
+      c) Rien
+      d) Les mots de passe réels
+
+ 9. La campagne LOGONE a envoyé :
+      a) 60 courriels
+      b) 6 courriels
+      c) 600 courriels
+      d) 0 courriel
+
+10. Combien de personnes ont cliqué ?
+      a) 5
+      b) 14
+      c) 60
+      d) 9
+
+11. Le taux de clic élevé forme le constat :
+      a) T-01
+      b) T-05
+      c) T-11
+      d) T-14
+
+12. Le meilleur indicateur à faire progresser est :
+      a) Le taux de clic
+      b) Le prix
+      c) La météo
+      d) Le taux de signalement
+
+13. « Un faux collègue demande de l'aide » exploite :
+      a) La serviabilité
+      b) L'autorité
+      c) La peur
+      d) L'appât
+
+14. Un courriel identique envoyé à beaucoup est :
+      a) Ciblé
+      b) De masse
+      c) Vocal
+      d) Par message
+
+15. Les résultats sont :
+      a) Nominatifs
+      b) Publics
+      c) Agrégés
+      d) Vendus
+
+16. Combien ont signalé le courriel ?
+      a) 5
+      b) 14
+      c) 60
+      d) 9
+
+17. Le taux de clic de LOGONE est :
+      a) 23,3 %
+      b) 5 %
+      c) 60 %
+      d) 100 %
+
+18. Un bouton de signalement fait de chaque salarié :
+      a) Un fautif
+      b) Un capteur
+      c) Un client
+      d) Un testeur
+
+19. On mesure un dispositif, pas :
+      a) Le réseau
+      b) Le prix
+      c) Des individus
+      d) La météo
+
+20. On évite les thèmes :
+      a) Simples
+      b) Clairs
+      c) Courts
+      d) Sensibles
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'ingénierie sociale exploite uniquement des failles logicielles.
+      Vrai / Faux
+
+22. Un hameçonnage ciblé envoie le même message à tout le monde.
+      Vrai / Faux
+
+23. La page d'atterrissage doit culpabiliser la personne qui a cliqué.
+      Vrai / Faux
+
+24. On conserve les mots de passe réels saisis pour le rapport.
+      Vrai / Faux
+
+25. T-11 concerne un taux de clic élevé à l'hameçonnage simulé.
+      Vrai / Faux
+
+26. Le taux de signalement est le meilleur indicateur à faire progresser.
+      Vrai / Faux
+
+27. 14 personnes sur 60 ont cliqué.
+      Vrai / Faux
+
+28. Les résultats d'une campagne sont nominatifs et publics.
+      Vrai / Faux
+
+29. Un bouton de signalement fait de chaque salarié un capteur.
+      Vrai / Faux
+
+30. Une campagne mesure un dispositif, pas des individus.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. « Compte fermé dans une heure » exploite l'______.
+
+32. Un courriel personnalisé visant une personne est un hameçonnage ______.
+
+33. La page d'atterrissage doit être ______.
+
+34. La campagne LOGONE a envoyé ______ courriels.
+
+35. ______ personnes sur 60 ont cliqué.
+
+36. Le taux de clic élevé forme le constat T-______.
+
+37. Le meilleur indicateur à faire progresser est le taux de ______.
+
+38. Le taux de clic de LOGONE est de 23,______ %.
+
+39. On ne collecte jamais les ______ de passe réels.
+
+40. On évite les thèmes ______ dans un scénario.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C07
+Chapitre 7 : Analyser et prioriser les vulnérabilités
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Un scanner rend :
+      a) Beaucoup de résultats bruts à trier
+      b) Peu de résultats sûrs
+      c) Rien
+      d) Des factures
+
+ 2. Un faux positif est :
+      a) Une faille réelle
+      b) Une alerte sans vulnérabilité réelle
+      c) Un succès
+      d) Un correctif
+
+ 3. Un faux négatif est :
+      a) Une alerte inutile
+      b) Un succès
+      c) Une faille réelle non signalée
+      d) Un correctif
+
+ 4. CVSS note les vulnérabilités de :
+      a) 0 à 100
+      b) A à F
+      c) 1 à 5
+      d) 0 à 10
+
+ 5. Une CVE identifie :
+      a) Une vulnérabilité publiée
+      b) Un client
+      c) Un prix
+      d) Un outil
+
+ 6. On priorise par :
+      a) La note brute seule
+      b) Gravité, exploitabilité et impact métier
+      c) Le hasard
+      d) L'ordre alphabétique
+
+ 7. Un balayage authentifié voit :
+      a) Moins
+      b) Rien
+      c) Plus, y compris les manques internes
+      d) La météo
+
+ 8. SMBv1 (T-06) se priorise :
+      a) Bas
+      b) Jamais
+      c) Au hasard
+      d) Haut, car exploitable à distance
+
+ 9. On regroupe les vulnérabilités par :
+      a) Cause commune
+      b) Couleur
+      c) Prix
+      d) Date de scan
+
+10. On mesure la gestion par :
+      a) Le prix
+      b) Le délai de correction et la part des critiques traitées
+      c) La météo
+      d) Le nombre de scans
+
+11. Le tri des résultats se fait :
+      a) Après le rapport
+      b) Jamais
+      c) Avant de rapporter
+      d) Par le client
+
+12. Un faux positif non vérifié :
+      a) Renforce le rapport
+      b) Est utile
+      c) Est un succès
+      d) Décrédibilise le rapport
+
+13. Le plus dangereux est :
+      a) Le faux négatif
+      b) Le faux positif
+      c) Le vrai positif
+      d) Le vrai négatif
+
+14. La gravité CVSS combine :
+      a) Le prix
+      b) Exploitabilité et impact
+      c) La couleur
+      d) La date
+
+15. Une référence éditeur donne :
+      a) Le prix
+      b) La météo
+      c) Le correctif
+      d) Le client
+
+16. Le catalogue des failles activement exploitées aide à :
+      a) Facturer
+      b) Chiffrer
+      c) Vendre
+      d) Prioriser
+
+17. Les deux types de balayage sont :
+      a) Complémentaires
+      b) Concurrents
+      c) Identiques
+      d) Illégaux
+
+18. La note CVSS de T-06 se relie à :
+      a) Rien
+      b) L'exposition réelle
+      c) Le prix
+      d) La couleur
+
+19. Regrouper par cause permet des corrections :
+      a) Infinies
+      b) Nulles
+      c) De fond
+      d) Chères
+
+20. Un bon indicateur est le ______ moyen de correction :
+      a) Prix
+      b) Nombre de scans
+      c) Poids
+      d) Délai
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Tous les résultats d'un scanner sont des failles réelles et exploitables.
+      Vrai / Faux
+
+22. Un faux positif est une faille réelle non signalée.
+      Vrai / Faux
+
+23. Un faux négatif est sans conséquence.
+      Vrai / Faux
+
+24. CVSS note les vulnérabilités de 0 à 100.
+      Vrai / Faux
+
+25. On priorise seulement par la note brute du scanner.
+      Vrai / Faux
+
+26. Un balayage authentifié voit plus qu'un balayage non authentifié.
+      Vrai / Faux
+
+27. T-06 (SMBv1) se priorise haut car exploitable à distance.
+      Vrai / Faux
+
+28. On regroupe les vulnérabilités par cause commune.
+      Vrai / Faux
+
+29. Un faux positif non vérifié décrédibilise le rapport.
+      Vrai / Faux
+
+30. Une CVE identifie une vulnérabilité publiée.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le système commun de notation des vulnérabilités s'abrège ______.
+
+32. Une alerte sans vulnérabilité réelle est un faux ______.
+
+33. Une faille réelle non signalée est un faux ______.
+
+34. L'identifiant public d'une vulnérabilité s'abrège ______.
+
+35. On priorise par gravité, exploitabilité et impact ______.
+
+36. SMBv1 correspond au constat T-______.
+
+37. On regroupe les vulnérabilités par ______ commune.
+
+38. Un indicateur clé est le ______ de correction.
+
+39. Un balayage ______ voit les manques de correctifs internes.
+
+40. La version du CVSS utilisée dans le cours est 3.______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

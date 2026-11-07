@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-P00
+Chapitre 0 : Prologue : la lettre d'autorisation
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Qu'est-ce qui distingue un test d'intrusion d'une attaque illégale ?
+      a) L'autorisation écrite, le périmètre et l'absence de dommage
+      b) Les outils utilisés
+      c) La compétence du testeur
+      d) La durée de l'opération
+
+ 2. Qui peut autoriser un test d'intrusion ?
+      a) N'importe quel employé
+      b) Le responsable habilité du système
+      c) Le testeur lui-même
+      d) Un fournisseur
+
+ 3. Une lettre d'autorisation doit préciser :
+      a) Seulement la date
+      b) Seulement le prix
+      c) Parties, périmètre, dates, règles, contacts, signataire
+      d) Seulement les outils
+
+ 4. Agir sur un système hors du périmètre convenu est :
+      a) Permis si c'est facile
+      b) Permis la nuit
+      c) Recommandé
+      d) Interdit, même si techniquement possible
+
+ 5. Un système hébergé chez un tiers exige :
+      a) L'accord du tiers aussi
+      b) Rien de plus
+      c) Seulement l'accord du client
+      d) L'accord du testeur
+
+ 6. On prouve un accès par :
+      a) Une copie de toute la base
+      b) Une preuve minimale et masquée
+      c) Une suppression de données
+      d) Une capture non masquée
+
+ 7. Le registre des actions sert à :
+      a) Rien
+      b) Facturer plus
+      c) La restitution et la preuve du respect du mandat
+      d) Impressionner le client
+
+ 8. Quand on a démontré l'objectif, on :
+      a) Continue toujours
+      b) Supprime les traces
+      c) Change de cible
+      d) S'arrête et on prévient
+
+ 9. En combien de temps l'attaquant interne devient-il administrateur du domaine ?
+      a) 5 heures
+      b) 5 minutes
+      c) 5 jours
+      d) 5 semaines
+
+10. Le commanditaire signataire de la lettre est :
+      a) M. KOUNOU
+      b) M. ETEME
+      c) Mme NGO MBOCK
+      d) M. TAMO
+
+11. Les données personnelles vues pendant le test sont :
+      a) Copiées
+      b) Publiées
+      c) Ni copiées ni diffusées, puis détruites
+      d) Vendues
+
+12. La loi applicable à la protection des données personnelles est :
+      a) 2010/012
+      b) 2016/007
+      c) Aucune
+      d) 2024/017
+
+13. La détection par le défenseur fait partie :
+      a) De la mesure du test
+      b) D'une faute du testeur
+      c) D'un secret
+      d) D'un hasard
+
+14. Rester discret pendant un test sert à :
+      a) Se vanter
+      b) Mesurer la détection
+      c) Nuire
+      d) Gagner du temps
+
+15. Dans LOGONE, qui est le chef de mission du prestataire ?
+      a) M. ETEME
+      b) M. KOUNOU
+      c) M. BIKORO
+      d) Mme MOUAFO
+
+16. Le prestataire du test s'appelle :
+      a) LiZbiZ
+      b) BANQUE SANAGA
+      c) ANTIC
+      d) NYONG SÉCURITÉ
+
+17. Le but d'un test d'intrusion est de :
+      a) Aider à défendre
+      b) Prouver sa supériorité
+      c) Punir les salariés
+      d) Détruire des données
+
+18. Face à un doute sur le périmètre, on :
+      a) Continue
+      b) S'arrête et on consulte le contact
+      c) Devine
+      d) Ignore
+
+19. « Sommes-nous sûrs ? » se répond par :
+      a) Oui en général
+      b) Non en général
+      c) Un ensemble de verdicts précis
+      d) Un chiffre unique
+
+20. Le prologue annonce un test qui va surtout produire :
+      a) Un exploit
+      b) Une démonstration de force
+      c) Un outil
+      d) Un rapport utile
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Une bonne intention remplace l'autorisation écrite.
+      Vrai / Faux
+
+22. Le périmètre peut être défini après le test.
+      Vrai / Faux
+
+23. On peut supprimer des données pour prouver un accès.
+      Vrai / Faux
+
+24. Le registre des actions est horodaté.
+      Vrai / Faux
+
+25. L'attaquant interne est parti d'un poste ordinaire.
+      Vrai / Faux
+
+26. Les preuves contenant des données personnelles sont masquées.
+      Vrai / Faux
+
+27. Un test discret ne se préoccupe jamais de la détection.
+      Vrai / Faux
+
+28. Le livrable final d'un test est le rapport.
+      Vrai / Faux
+
+29. M. KOUNOU est le responsable informatique de LiZbiZ.
+      Vrai / Faux
+
+30. Un chiffre unique répond bien à « sommes-nous sûrs ».
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Les trois conditions du test éthique : autorisation écrite, périmètre défini, absence de ______.
+
+32. L'attaquant interne devient administrateur du domaine en ______ heures.
+
+33. La loi de 2024 sur les données personnelles porte le numéro 2024/______.
+
+34. On apporte une preuve ______ de la faille, sans copier les données.
+
+35. On note si et quand le ______ a vu l'action.
+
+36. Le document qui ouvre la mission est la lettre d'______.
+
+37. Le prestataire du test est le cabinet NYONG ______.
+
+38. Le but du test est d'aider à ______.
+
+39. Le ______ des actions sert à la restitution.
+
+40. La réponse honnête distingue OUI, NON et ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

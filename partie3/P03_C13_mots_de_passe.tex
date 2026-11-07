@@ -1,0 +1,278 @@
+% ============================================================================
+% Fichier  : partie3/P03_C13_mots_de_passe.tex
+% Titre    : Mots de Passe : Attaques et Défenses
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : NIST SP 800-63B ; MITRE ATT&CK (T1110 Brute Force et ses
+% sous-techniques). Audit des mots de passe de l'Opération LOGONE : cas
+% fictif, chiffres cohérents entre eux.
+% ============================================================================
+
+\chapter{Mots de Passe : Attaques et Défenses}
+\label{chap:mdp}
+\chaptermark{Mots de passe}
+
+\epigraph{%
+    « Un mot de passe que l'on retient facilement\\
+    se devine facilement. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitre~\ref{chap:ad}~; cours SEC3266,
+chapitre sur les identités.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Distinguer les attaques en ligne et hors ligne.
+    \item Expliquer la force brute, le dictionnaire, la pulvérisation et le
+          bourrage d'identifiants.
+    \item Comprendre pourquoi le hachage et sa lenteur comptent.
+    \item Conduire un audit de mots de passe autorisé et en rendre compte
+          sans exposer personne.
+    \item Proposer une politique conforme au NIST SP~800-63B.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : combien de mots de passe de LiZbiZ un attaquant retrouverait-il en un jour~?}
+% ============================================================================
+
+Après T-01, M.~ETEME demande un audit des mots de passe de l'annuaire, avec
+un accord écrit et sous contrôle de Mme~NKENG. NYONG SÉCURITÉ obtient une
+copie des empreintes et tente, pendant 24~heures, de retrouver les mots de
+passe par des listes de mots courants et des règles de transformation. Le
+résultat est un chiffre, et une politique à revoir.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item En ligne ou hors ligne (section~\ref{sec:c13-ligne}).
+    \item Les attaques (section~\ref{sec:c13-attaques}).
+    \item Le hachage (section~\ref{sec:c13-hachage}).
+    \item L'audit de mots de passe (section~\ref{sec:c13-audit}).
+    \item La politique (section~\ref{sec:c13-politique}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{En Ligne ou Hors Ligne}
+\label{sec:c13-ligne}
+% ============================================================================
+
+\begin{tableaucours}{L{2.6cm}L{4.8cm}L{4.8cm}}{%
+    \tableauHeader{Attaque} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Limite}
+}
+En ligne & Essais contre le service (portail, messagerie) & Lente,
+visible, freinée par le verrouillage et le second facteur \\
+Hors ligne & Essais contre une empreinte volée (base, ticket Kerberos) &
+Limitée seulement par la puissance de calcul et la lenteur du hachage \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.1. Deux familles d'attaques}\end{center}
+
+% ============================================================================
+\section{Les Attaques}
+\label{sec:c13-attaques}
+% ============================================================================
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Attaque (ATT\&CK T1110)} &
+    \tableauHeader{Principe}
+}
+Force brute & Toutes les combinaisons jusqu'à une longueur donnée \\
+Dictionnaire et règles & Mots courants, noms, années, transformés
+(majuscule, chiffre, symbole) \\
+Pulvérisation & Un ou deux mots de passe courants essayés sur de nombreux
+comptes, pour éviter le verrouillage \\
+Bourrage d'identifiants & Couples identifiant et mot de passe volés
+ailleurs, réutilisés \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.2. Les attaques sur les mots de passe~\cite{mitreattack}}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Croire qu'une règle de complexité (majuscule,
+chiffre, symbole) rend un mot de passe fort.
+
+\smallskip
+\textbf{Règle~:} « Lizbiz2026! » respecte la règle et figure dans tout
+dictionnaire bien conçu. La longueur et l'imprévisibilité comptent~; les
+règles de transformation des attaquants connaissent les habitudes humaines.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Hachage}
+\label{sec:c13-hachage}
+% ============================================================================
+
+Un système stocke une \emph{empreinte} du mot de passe, pas le mot de passe.
+La vitesse à laquelle l'attaquant peut essayer dépend de la fonction de
+hachage~: une fonction rapide (comme l'empreinte NT de Windows) permet des
+milliards d'essais par seconde sur du matériel courant~; une fonction lente
+et salée, conçue pour les mots de passe (bcrypt, scrypt, Argon2), en permet
+des milliers. Le sel empêche de casser tous les comptes à la fois.
+
+% ============================================================================
+\section{L'Audit de Mots de Passe}
+\label{sec:c13-audit}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Conduire un audit de mots de passe}
+\begin{enumerate}
+    \item Accord écrit de la direction~; information du délégué du personnel
+          selon les règles internes.
+    \item Extraction des empreintes par l'administrateur, sur un poste isolé~;
+          copie chiffrée.
+    \item Cassage hors ligne, durée et méthodes fixées à l'avance.
+    \item Résultats agrégés~; aucun mot de passe en clair dans le rapport~;
+          liste nominative remise au seul responsable, pour réinitialisation.
+    \item Destruction des empreintes et des résultats à la fin.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxscenario}{Opération LOGONE. Vingt-quatre heures de cassage}
+\textbf{Constatations.} 160~comptes actifs après la revue de mars. En
+24~heures~: 38~mots de passe retrouvés (23,75~\%), dont 31 dans la
+première heure. 12~comptes partagent un même mot de passe avec au moins un
+autre compte. 9~mots de passe retrouvés contiennent « lizbiz ». Aucun compte
+d'administration n'est retrouvé, sauf celui de T-01, déjà connu.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Un attaquant qui volerait les
+empreintes ouvrirait près d'un compte sur quatre en une journée. Les
+mots de passe retrouvés respectent tous la règle de complexité en vigueur.
+\end{boxscenario}
+
+\begin{boxobjet}{A-01 · Mots de passe prévisibles malgré la règle de complexité}
+\textbf{Mission complémentaire~:} ce constat relève de l'audit des mots de
+passe, rapporté à part des quatorze constats du test (Chapitre~\ref{chap:rapport}).
+\textbf{Description~:} 38~mots de passe sur 160 retrouvés en 24~heures.
+\textbf{Preuve~:} statistiques agrégées~; liste nominative remise à
+M.~KOUNOU. \textbf{Gravité~:} moyenne (élevée en cas de vol des empreintes).
+\textbf{Recommandation~:} longueur minimale de 12 à 15~caractères, liste de
+mots interdits (nom de l'entreprise, années), contrôle contre les listes
+divulguées, second facteur, réinitialisation des 38~comptes.
+\textbf{Détection~:} échecs de connexion répartis sur de nombreux comptes
+(pulvérisation).
+\end{boxobjet}
+
+% ============================================================================
+\section{La Politique}
+\label{sec:c13-politique}
+% ============================================================================
+
+\begin{tableaucours}{L{5.0cm}L{7.2cm}}{%
+    \tableauHeader{Recommandation (NIST SP~800-63B)} &
+    \tableauHeader{Application chez LiZbiZ}
+}
+Longueur plutôt que complexité & 12~caractères au moins, phrases de passe
+acceptées \\
+Comparer aux listes de mots de passe compromis & Contrôle à chaque
+changement \\
+Pas de changement périodique imposé sans motif & Changement en cas de
+soupçon de compromission \\
+Limiter les essais & Verrouillage progressif, surveillance \\
+Second facteur & Obligatoire pour les accès distants et les comptes à
+privilèges \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.3. Une politique conforme au NIST SP~800-63B~\cite{nist80063b}}\end{center}
+
+\begin{boxmetier}{RSSI}
+\textbf{Rendre compte sans désigner.} Le RSSI présente l'audit en chiffres
+agrégés au comité~; les personnes concernées reçoivent une demande de
+changement, accompagnée de conseils, et non un reproche.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{En ligne}~: lent et visible~; \textbf{hors ligne}~: limité
+          par le calcul et le hachage.
+    \item \textbf{Force brute, dictionnaire, pulvérisation, bourrage}~: quatre
+          attaques.
+    \item \textbf{Un hachage lent et salé} freine le cassage.
+    \item \textbf{Un audit de mots de passe} est autorisé, agrégé, détruit
+          à la fin.
+    \item \textbf{Longueur, listes de compromis, second facteur}~: la
+          politique du NIST.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer attaques en
+ligne et hors ligne~; nommer les quatre attaques~; expliquer le rôle du
+hachage et du sel~; conduire un audit de mots de passe~; rédiger une
+politique conforme.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.1. Le taux \niveaubase}]
+Calculez le taux de mots de passe retrouvés en une heure et en 24~heures.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.2. Quelle attaque~? \niveaubase}]
+Nommez l'attaque~: « Ete2026! » essayé sur 160~comptes~; les identifiants
+d'un site piraté essayés sur la messagerie de LiZbiZ.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.3. Le sel \niveaubase}]
+À quoi sert le sel dans le hachage d'un mot de passe~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.4. Complexité \niveaumoyen}]
+Pourquoi « Lizbiz2026! » respecte-t-il la règle de complexité et se
+casse-t-il vite~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.5. Pulvérisation \niveaumoyen}]
+Pourquoi la pulvérisation échappe-t-elle au verrouillage de compte~?
+Comment la détecter~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.6. Rapport \niveaumoyen}]
+Rédigez la section du rapport sur l'audit de mots de passe, sans exposer
+personne.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.7. Réutilisation \niveaumoyen}]
+12~comptes partagent un mot de passe. Quel risque~? Que faire~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.8. Hachage \niveaumoyen}]
+Comparez l'empreinte NT et Argon2 du point de vue d'un attaquant hors
+ligne.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.9. L'accord \niveauexpert}]
+Rédigez l'accord écrit d'audit des mots de passe~: objet, méthodes, durée,
+données, destruction, information des salariés.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.10. Politique \niveauexpert}]
+Rédigez la nouvelle politique de mots de passe de LiZbiZ et le plan de sa
+mise en œuvre.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item NIST SP~800-63B~\cite{nist80063b}~; MITRE ATT\&CK~\cite{mitreattack}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La Partie~IV passe des systèmes aux applications~: le
+Chapitre~\ref{chap:web} apprend à tester une application web.
+\end{boxinfo}

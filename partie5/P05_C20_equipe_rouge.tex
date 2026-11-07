@@ -1,0 +1,269 @@
+% ============================================================================
+% Fichier  : partie5/P05_C20_equipe_rouge.tex
+% Titre    : Équipe Rouge et Équipe Violette
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : MITRE ATT&CK ; cadre de l'évaluation fondée sur les menaces ;
+% distinction test d'intrusion / équipe rouge. Opération MBAM (septembre
+% 2026, BANQUE SANAGA) : cas fictif, chiffres cohérents. Deux séances
+% (S23 et S24).
+% ============================================================================
+
+\chapter{Équipe Rouge et Équipe Violette}
+\label{chap:rouge}
+\chaptermark{Équipe rouge et équipe violette}
+
+\epigraph{%
+    « L'équipe rouge ne cherche pas toutes les failles~;\\
+    elle cherche à atteindre un objectif sans se faire voir. »%
+}{Principe du cours}
+
+\niveauChapitre{Expert}{Toute la Partie~III et la
+Partie~IV~; Chapitre~\ref{chap:social}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Distinguer test d'intrusion, équipe rouge et équipe violette.
+    \item Décrire le déroulement d'un exercice d'équipe rouge par objectifs.
+    \item Comprendre la notion de scénario fondé sur une menace.
+    \item Mesurer la détection et le temps de réaction du défenseur.
+    \item Conduire une restitution conjointe qui améliore la défense.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : la BANQUE SANAGA voit-elle une attaque discrète, et en combien de temps~?}
+% ============================================================================
+
+En septembre, avant le test de LiZbiZ, NYONG SÉCURITÉ mène pour la BANQUE
+SANAGA l'Opération MBAM, un exercice d'équipe rouge par objectifs. La
+question n'est plus « combien de failles~? » mais « l'attaquant atteint-il
+l'objectif, et le défenseur le voit-il~? ». Cet exercice sert de référence
+au cours.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Trois exercices distincts (section~\ref{sec:c20-distinction}).
+    \item L'exercice par objectifs (section~\ref{sec:c20-objectifs}).
+    \item Le scénario fondé sur une menace (section~\ref{sec:c20-menace}).
+    \item Mesurer la détection (section~\ref{sec:c20-detection}).
+    \item L'équipe violette (section~\ref{sec:c20-violette}).
+    \item L'Opération MBAM (section~\ref{sec:c20-mbam}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Trois Exercices Distincts}
+\label{sec:c20-distinction}
+% ============================================================================
+
+\begin{tableaucours}{L{3.2cm}L{4.6cm}L{4.4cm}}{%
+    \tableauHeader{Exercice} &
+    \tableauHeader{But} &
+    \tableauHeader{Discrétion}
+}
+Test d'intrusion & Trouver le plus de failles exploitables & Peu importe \\
+Équipe rouge & Atteindre un objectif précis comme le ferait un attaquant &
+Essentielle \\
+Équipe violette & Rouge et bleue travaillent ensemble pour améliorer la
+détection & Transparente \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~20.1. Trois types d'exercice offensif}\end{center}
+
+% ============================================================================
+\section{L'Exercice par Objectifs}
+\label{sec:c20-objectifs}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Équipe rouge}~: exercice où une équipe offensive cherche à
+atteindre un objectif convenu (un « drapeau »), par tous les moyens du
+périmètre, en restant discrète, pour évaluer la capacité de détection et de
+réaction de l'organisation.
+\end{boxdef}
+
+Les objectifs, ou \termecle{drapeaux}, sont définis à l'avance avec un cercle
+restreint de responsables~: atteindre un système critique, obtenir un droit
+d'administration, accéder à une donnée précise. Le reste de l'organisation
+n'est pas prévenu, pour mesurer une détection réelle.
+
+% ============================================================================
+\section{Le Scénario Fondé sur une Menace}
+\label{sec:c20-menace}
+% ============================================================================
+
+Un bon exercice d'équipe rouge imite un attaquant plausible pour
+l'organisation~: ses techniques, sa patience, ses objectifs. On s'appuie sur
+la connaissance des menaces et sur les techniques d'ATT\&CK pour construire
+un scénario réaliste, plutôt que de dérouler des outils au hasard.
+
+\begin{boxalert}
+\textbf{Violation typique.} Transformer l'exercice en démonstration de
+force qui perturbe la production.
+
+\smallskip
+\textbf{Règle~:} l'équipe rouge garde un cercle de confiance qui peut tout
+arrêter, respecte des lignes à ne pas franchir (pas d'arrêt de service, pas
+de données réelles exfiltrées), et consigne chaque action avec son horaire
+pour la restitution.
+\end{boxalert}
+
+% ============================================================================
+\section{Mesurer la Détection}
+\label{sec:c20-detection}
+% ============================================================================
+
+\begin{tableaucours}{L{4.8cm}L{7.4cm}}{%
+    \tableauHeader{Indicateur} &
+    \tableauHeader{Ce qu'il mesure}
+}
+Temps jusqu'au premier objectif & Rapidité de l'attaquant \\
+Temps jusqu'à la détection & Rapidité du défenseur à voir \\
+Temps jusqu'à la réaction & Rapidité à contenir \\
+Techniques détectées sur techniques jouées & Couverture de la détection \\
+Techniques bloquées & Efficacité des parades \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~20.2. Indicateurs d'un exercice d'équipe rouge}\end{center}
+
+% ============================================================================
+\section{L'Équipe Violette}
+\label{sec:c20-violette}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Équipe violette}~: démarche où l'équipe offensive (rouge) et
+l'équipe de défense (bleue) travaillent ensemble, en transparence~: la rouge
+joue une technique, la bleue vérifie si elle la détecte, et l'on corrige
+aussitôt la détection manquante.
+\end{boxdef}
+
+C'est souvent la suite la plus utile d'un exercice rouge~: on rejoue les
+techniques non détectées, on écrit les règles manquantes, on vérifie qu'elles
+fonctionnent. Le lab HE2-LAB-09 fait construire cette matrice de couverture.
+
+% ============================================================================
+\section{L'Opération MBAM}
+\label{sec:c20-mbam}
+% ============================================================================
+
+\begin{boxscenario}{Opération MBAM. Huit jours à la BANQUE SANAGA}
+\textbf{Constatations} (septembre 2026). Objectifs~: F1 (accès au réseau
+interne), F2 (administration du domaine), F3 (accès au système de paiement).
+\begin{itemize}
+    \item F1 atteint au 2\textsuperscript{e} jour, après un hameçonnage ciblé de
+          12~employés (2~clics).
+    \item F2 atteint au 8\textsuperscript{e} jour (administration du domaine).
+    \item F3 non atteint~: le système de paiement, cloisonné, a résisté.
+    \item Détection par le SOC au 9\textsuperscript{e} jour~; confinement au 10\textsuperscript{e}.
+    \item 30~techniques d'ATT\&CK jouées~: 18~détectées (dont 11 après coup
+          dans les journaux), 7~bloquées.
+\end{itemize}
+
+\medskip
+\textbf{Analyse} (confiance élevée). La banque a résisté là où elle avait
+cloisonné (F3)~; elle a vu tard (9~jours). La couverture de détection est de
+60~\% (18 sur 30), mais une part n'a été vue qu'a posteriori. La valeur de
+l'exercice tient à la phase violette qui a suivi~: les 12~techniques non
+détectées en direct ont donné 12~règles nouvelles.
+\end{boxscenario}
+
+\begin{boxmetier}{Analyste SOC / Red Team et RSSI}
+\textbf{La vraie livraison, c'est la détection.} Un exercice d'équipe rouge
+réussi ne se mesure pas au nombre de drapeaux pris, mais aux règles de
+détection écrites ensuite. Le RSSI valorise la phase violette autant que
+l'intrusion.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Test d'intrusion} (toutes les failles), \textbf{équipe
+          rouge} (un objectif, discrètement), \textbf{équipe violette}
+          (ensemble).
+    \item \textbf{Les drapeaux} sont définis à l'avance avec un cercle
+          restreint.
+    \item \textbf{Le scénario} imite une menace plausible.
+    \item \textbf{On mesure} temps jusqu'à l'objectif, jusqu'à la détection,
+          couverture.
+    \item \textbf{La phase violette} transforme l'exercice en règles de
+          détection.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer les trois
+exercices~; décrire un exercice par objectifs~; expliquer le scénario fondé
+sur une menace~; citer les indicateurs~; expliquer la valeur de l'équipe
+violette.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.1. Distinction \niveaubase}]
+En quoi un exercice d'équipe rouge diffère-t-il d'un test d'intrusion~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.2. Drapeaux \niveaubase}]
+Qu'est-ce qu'un drapeau~? Qui le définit~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.3. Couverture \niveaubase}]
+Calculez la couverture de détection de l'Opération MBAM.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.4. F3 \niveaumoyen}]
+Pourquoi le drapeau F3 n'a-t-il pas été atteint~? Quelle leçon en tirer~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.5. Détecté après coup \niveaumoyen}]
+Quelle différence entre une technique détectée en direct et une technique
+retrouvée après coup dans les journaux~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.6. Cercle de confiance \niveaumoyen}]
+Pourquoi un cercle restreint doit-il pouvoir arrêter l'exercice à tout
+moment~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.7. Lignes rouges \niveaumoyen}]
+Citez trois lignes à ne pas franchir pendant un exercice d'équipe rouge.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.8. Violette \niveaumoyen}]
+Décrivez le déroulement d'une séance d'équipe violette à partir des
+techniques non détectées de MBAM.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.9. Scénario \niveauexpert}]
+Construisez un scénario d'équipe rouge fondé sur une menace plausible pour
+LiZbiZ, avec trois drapeaux.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.10. Tableau de bord \niveauexpert}]
+Proposez le tableau de bord d'indicateurs que la BANQUE SANAGA devrait
+suivre d'un exercice à l'autre.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item MITRE ATT\&CK~\cite{mitreattack}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} L'exercice rouge n'a de valeur que par la défense qu'il
+nourrit~: le Chapitre~\ref{chap:detection} prend le point de vue du
+défenseur.
+\end{boxinfo}

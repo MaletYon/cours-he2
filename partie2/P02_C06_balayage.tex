@@ -1,0 +1,259 @@
+% ============================================================================
+% Fichier  : partie2/P02_C06_balayage.tex
+% Titre    : Balayage et Énumération
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : RFC 9293 (TCP) ; NIST SP 800-115 (découverte) ; documentation de
+% l'outil Nmap. Résultats de l'Opération LOGONE : cas fictif.
+% ============================================================================
+
+\chapter{Balayage et Énumération}
+\label{chap:balayage}
+\chaptermark{Balayage et énumération}
+
+\epigraph{%
+    « Un port ouvert est une question~:\\
+    qui répond, et pourquoi est-il là~? »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitre~\ref{chap:osint}~; cours SEC3266,
+chapitres sur les réseaux.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Expliquer la découverte d'hôtes et le balayage de ports TCP et UDP.
+    \item Interpréter les états d'un port~: ouvert, fermé, filtré.
+    \item Identifier les services et leurs versions, et énumérer leurs
+          informations.
+    \item Conduire un balayage maîtrisé, sans perturber la production.
+    \item Relier le balayage à sa détection par le défenseur.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : combien de portes ouvertes comptait vraiment LiZbiZ~?}
+% ============================================================================
+
+Le 21~octobre, M.~TAMO balaye la plage externe de LiZbiZ~; le 26, depuis le
+poste fourni, Mme~NGO~MBOCK balaye les réseaux de Garoua. Les résultats
+mettent en regard ce qui devrait être ouvert, selon la matrice des flux du
+cours SEC3266, et ce qui l'est.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Découvrir les hôtes (section~\ref{sec:c06-decouverte}).
+    \item Balayer les ports (section~\ref{sec:c06-ports}).
+    \item Identifier les services (section~\ref{sec:c06-services}).
+    \item Balayer sans nuire (section~\ref{sec:c06-maitrise}).
+    \item Ce que voit le défenseur (section~\ref{sec:c06-defenseur}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Découvrir les Hôtes}
+\label{sec:c06-decouverte}
+% ============================================================================
+
+La découverte cherche les adresses qui répondent~: requêtes ICMP, requêtes
+ARP sur le réseau local, tentatives de connexion TCP vers des ports
+courants. Un hôte qui ne répond pas au « ping » n'est pas forcément éteint~:
+un pare-feu peut filtrer l'ICMP.
+
+\begin{boxdef}
+\termecle{Énumération}~: étape qui, après la découverte, extrait d'un
+service les informations qu'il livre (noms de partages, comptes, versions,
+bannières, configuration).
+\end{boxdef}
+
+% ============================================================================
+\section{Balayer les Ports}
+\label{sec:c06-ports}
+% ============================================================================
+
+TCP établit une connexion en trois temps (SYN, SYN-ACK, ACK) défini par la
+RFC~9293~\cite{rfc9293}. Le balayage exploite les réponses à un SYN.
+
+\begin{tableaucours}{L{2.4cm}L{4.6cm}L{5.2cm}}{%
+    \tableauHeader{État} &
+    \tableauHeader{Réponse observée} &
+    \tableauHeader{Signification}
+}
+Ouvert & SYN-ACK & Un service écoute \\
+Fermé & RST & L'hôte répond, aucun service \\
+Filtré & Aucune réponse ou message ICMP d'interdiction & Un filtrage
+intercepte \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~6.1. Les états d'un port TCP}\end{center}
+
+Le balayage UDP est plus lent et plus incertain~: un service UDP ouvert ne
+répond souvent rien, ce qui le confond avec un port filtré. On le réserve
+aux ports utiles (DNS, SNMP, NTP).
+
+% ============================================================================
+\section{Identifier les Services}
+\label{sec:c06-services}
+% ============================================================================
+
+\begin{boxscenario}{Opération LOGONE. Prévu et constaté}
+\textbf{Constatations.} Externe~: 7~hôtes actifs sur 32~adresses, 18~ports
+ouverts, dont 4 non prévus par la matrice des flux (dont l'ancienne
+passerelle, constat T-03). Interne, Garoua~: 214~hôtes actifs~; le
+protocole de partage de fichiers SMBv1 est actif sur deux serveurs~; une
+imprimante expose son interface d'administration avec le mot de passe par
+défaut (constat déjà signalé en mars, cours SEC3266).
+
+\medskip
+\textbf{Analyse} (confiance élevée). Les écarts entre la matrice et la
+réalité sont autant de constats~: un service non prévu n'est ni surveillé,
+ni corrigé.
+\end{boxscenario}
+
+\begin{tableaucours}{L{2.0cm}L{3.0cm}L{7.2cm}}{%
+    \tableauHeader{Port} &
+    \tableauHeader{Service} &
+    \tableauHeader{Information à énumérer}
+}
+22 & SSH & Version, méthodes d'authentification acceptées \\
+80, 443 & HTTP, HTTPS & Serveur, application, certificat, pages \\
+445 & SMB & Version du protocole, partages accessibles, signature \\
+389 & LDAP & Annuaire~: domaine, possibilité d'interrogation anonyme \\
+161 (UDP) & SNMP & Communauté par défaut, informations système \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~6.2. Ports courants et énumération}\end{center}
+
+% ============================================================================
+\section{Balayer sans Nuire}
+\label{sec:c06-maitrise}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Un balayage maîtrisé}
+\begin{enumerate}
+    \item Vérifier le périmètre et les exclusions (Chapitre~\ref{chap:engagement}).
+    \item Commencer par la découverte, puis les ports courants, puis le reste.
+    \item Limiter le débit sur les réseaux fragiles (automates, imprimantes,
+          liaisons lentes).
+    \item Éviter les scripts intrusifs sur la production sans accord.
+    \item Enregistrer les résultats bruts, horodatés, dans le journal.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Lancer un balayage complet à plein débit sur
+une liaison inter-sites lente.
+
+\smallskip
+\textbf{Règle~:} un balayage peut saturer un équipement ou une liaison et
+interrompre un service~: c'est la conséquence que réprime l'article~66 si
+elle n'est pas maîtrisée. On adapte le débit au réseau.
+\end{boxalert}
+
+% ============================================================================
+\section{Ce que Voit le Défenseur}
+\label{sec:c06-defenseur}
+% ============================================================================
+
+Un balayage est bruyant~: une source qui contacte de nombreux ports ou de
+nombreux hôtes en peu de temps est un motif classique (cours SEC3266). Le
+SOC de LiZbiZ a détecté le balayage interne en 40~minutes.
+
+\begin{boxmetier}{Analyste SOC et équipe rouge}
+\textbf{Corréler les balayages internes.} Une règle simple~: alerte si une
+même source interne contacte plus de 100~ports ou 50~hôtes en dix minutes.
+Elle aurait vu PC-GAR-07 en mars (SEC3266) et le testeur en octobre.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Découverte, balayage, énumération}~: trois étapes.
+    \item \textbf{Ouvert, fermé, filtré}~: trois états d'un port TCP~; UDP est
+          plus incertain.
+    \item \textbf{Comparer la réalité à la matrice des flux}~: chaque écart
+          est un constat.
+    \item \textbf{Balayer sans nuire}~: périmètre, progressivité, débit,
+          scripts prudents.
+    \item \textbf{Le balayage est bruyant}~: le SOC doit le voir.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: expliquer la découverte
+d'hôtes~; interpréter l'état d'un port~; choisir quoi énumérer selon le
+service~; conduire un balayage maîtrisé~; écrire une règle de détection
+simple.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.1. Les états \niveaubase}]
+Quel état attribuer à un port qui répond par RST~? par SYN-ACK~? qui ne
+répond pas~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.2. Le ping \niveaubase}]
+Pourquoi un hôte qui ne répond pas au « ping » peut-il être actif~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.3. Les écarts \niveaubase}]
+Sur les 18~ports ouverts à l'externe, combien étaient prévus par la
+matrice des flux~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.4. UDP \niveaumoyen}]
+Pourquoi un balayage UDP est-il plus lent et plus incertain qu'un balayage
+TCP~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.5. SMBv1 \niveaumoyen}]
+Rédigez la fiche de constat « SMBv1 actif sur deux serveurs ».
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.6. L'imprimante \niveaumoyen}]
+L'imprimante avait déjà été signalée en mars. Que révèle sa présence en
+octobre sur la gestion des corrections~? (cours GES4062)
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.7. Le débit \niveaumoyen}]
+Proposez un plan de balayage des 214~hôtes de Garoua qui ne sature pas la
+liaison avec Douala.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.8. Détecter \niveaumoyen}]
+Le SOC a mis 40~minutes à voir le balayage. Proposez deux améliorations
+pour réduire ce délai.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.9. Énumération \niveauexpert}]
+Pour chacun des ports du Tableau~6.2, dites quelle mesure défensive
+réduit l'information livrée à un attaquant.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.10. Inventaire continu \niveauexpert}]
+Concevez un processus de balayage interne mensuel, autorisé, qui alimente
+l'inventaire et la matrice des flux de LiZbiZ.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item RFC~9293 (TCP)~\cite{rfc9293}~; NIST SP~800-115~\cite{nist800115}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Un service identifié doit être confronté aux failles
+connues~: le Chapitre~\ref{chap:vulnerabilites} apprend à les analyser et
+à les prioriser.
+\end{boxinfo}

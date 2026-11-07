@@ -1,0 +1,341 @@
+% ============================================================================
+% Fichier  : partie3/P03_C10_active_directory.tex
+% Titre    : Active Directory
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : RFC 4120 (Kerberos) ; documentation publique de Microsoft (comptes
+% de service gérés, modèle d'administration par niveaux, LAPS, groupe
+% Protected Users) ; MITRE ATT&CK (T1558.003 Kerberoasting, T1558.004 AS-REP
+% Roasting). Opération LOGONE : cas fictif, aucun code d'attaque.
+% ============================================================================
+
+\chapter{Active Directory}
+\label{chap:ad}
+\chaptermark{Active Directory}
+
+\epigraph{%
+    « Dans un domaine, l'attaquant ne cherche pas la faille~;\\
+    il cherche le chemin. »%
+}{Principe du cours}
+
+\niveauChapitre{Expert}{Chapitre~\ref{chap:reseau}~; cours SEC3266,
+chapitre sur les identités.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Décrire les objets d'un annuaire Active Directory et les groupes à
+          privilèges.
+    \item Expliquer l'obtention de tickets Kerberos et ses détournements
+          (kerberoasting, AS-REP roasting).
+    \item Raisonner en chemins d'attaque dans un graphe de droits.
+    \item Appliquer le modèle d'administration par niveaux.
+    \item Détecter et corriger les faiblesses les plus exploitées.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : comment un compte d'utilisateur ordinaire devient-il administrateur du domaine en cinq heures~?}
+% ============================================================================
+
+Le 28~octobre, Mme~NGO~MBOCK part du compte d'utilisateur ordinaire fourni
+par LiZbiZ. Elle n'exploite aucune faille logicielle. Elle interroge
+l'annuaire, comme tout utilisateur peut le faire, demande un ticket pour un
+service, casse hors ligne le mot de passe d'un compte de service, et
+découvre que ce compte est administrateur du domaine. Ce chapitre, sur deux
+séances, déroule ce chemin et ses parades.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item L'annuaire et ses privilèges (section~\ref{sec:c10-annuaire}).
+    \item Kerberos en bref (section~\ref{sec:c10-kerberos}).
+    \item Le kerberoasting (section~\ref{sec:c10-kerberoasting}).
+    \item L'AS-REP roasting (section~\ref{sec:c10-asrep}).
+    \item Les chemins d'attaque (section~\ref{sec:c10-chemins}).
+    \item Le modèle par niveaux et les défenses (section~\ref{sec:c10-defense}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{L'Annuaire et ses Privilèges}
+\label{sec:c10-annuaire}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Active Directory}~: service d'annuaire de Microsoft qui gère, dans
+un \emph{domaine}, les comptes, les groupes, les ordinateurs et les
+stratégies, et qui authentifie les utilisateurs par Kerberos. Les
+\termecle{contrôleurs de domaine} en hébergent la base.
+\end{boxdef}
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Objet ou groupe} &
+    \tableauHeader{Pourquoi il intéresse l'attaquant}
+}
+Admins du domaine & Contrôle total du domaine \\
+Administrateurs de l'entreprise & Contrôle de toute la forêt \\
+Opérateurs de sauvegarde, de serveur & Accès étendu, souvent oublié \\
+Comptes de service & Mots de passe rarement changés, droits souvent
+excessifs \\
+Stratégies de groupe & Exécution de code sur toutes les machines liées \\
+Listes de contrôle d'accès & Un droit d'écriture sur un objet peut suffire à
+en prendre le contrôle \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~10.1. Ce que vise l'attaquant dans l'annuaire}\end{center}
+
+Tout utilisateur authentifié peut, par défaut, lire l'essentiel de
+l'annuaire~: comptes, groupes, attributs. C'est utile au fonctionnement, et
+c'est ce qui rend la reconnaissance interne si facile.
+
+% ============================================================================
+\section{Kerberos en Bref}
+\label{sec:c10-kerberos}
+% ============================================================================
+
+\begin{tableaucours}{cL{5.8cm}L{5.2cm}}{%
+    \tableauHeader{Étape} &
+    \tableauHeader{Échange} &
+    \tableauHeader{Secret utilisé}
+}
+1 & L'utilisateur demande un ticket d'accès général (TGT) au centre de
+distribution & Clé dérivée du mot de passe de l'utilisateur
+(pré-authentification) \\
+2 & Il présente le TGT et demande un ticket de service pour un nom de
+service (SPN) & Clé du centre de distribution \\
+3 & Le centre renvoie un ticket de service chiffré & Clé dérivée du mot de
+passe du \emph{compte de service} \\
+4 & L'utilisateur présente le ticket au service & Le service le déchiffre \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~10.2. Les échanges Kerberos (d'après la RFC~4120)}\end{center}
+
+% ============================================================================
+\section{Le Kerberoasting}
+\label{sec:c10-kerberoasting}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Kerberoasting}~: technique (ATT\&CK T1558.003) par laquelle un
+utilisateur authentifié demande des tickets de service pour des comptes
+associés à un SPN, puis tente de retrouver hors ligne leur mot de passe à
+partir du ticket chiffré.
+\end{boxdef}
+
+Demander un ticket de service est un geste normal~: n'importe quel
+utilisateur le fait. La faiblesse est ailleurs~: un compte de service dont
+le mot de passe est court ou prévisible se casse hors ligne, sans laisser de
+trace d'échec.
+
+\begin{boxscenario}{Opération LOGONE. Le compte de la facturation}
+\textbf{Constatations} (28~octobre).
+\begin{itemize}
+    \item 9~h~10~: interrogation de l'annuaire~; 6~comptes ont un SPN.
+    \item 9~h~25~: tickets de service demandés pour ces 6~comptes.
+    \item 11~h~40~: le mot de passe de « svc\_sql\_facturation » est retrouvé
+          hors ligne~: 11~caractères, formé du nom de l'application, d'un
+          symbole et d'une année.
+    \item 14~h~05~: ce compte est membre des Admins du domaine (déjà relevé
+          à la revue des comptes de mars, cours SEC3266).
+    \item 14~h~10~: preuve capturée, test arrêté, contacts prévenus.
+\end{itemize}
+
+\medskip
+\textbf{Analyse} (confiance élevée). Aucune faille logicielle~: trois
+faiblesses de configuration se combinent (mot de passe faible, mot de passe
+jamais changé, droits excessifs). Le SOC n'a rien vu~: aucune règle ne
+surveillait les demandes de tickets.
+\end{boxscenario}
+
+% ============================================================================
+\section{L'AS-REP Roasting}
+\label{sec:c10-asrep}
+% ============================================================================
+
+Lorsqu'un compte a la \emph{pré-authentification Kerberos désactivée},
+n'importe qui peut demander pour lui une réponse chiffrée avec une clé
+dérivée de son mot de passe, et tenter de la casser hors ligne (ATT\&CK
+T1558.004). Cette option, parfois activée pour d'anciennes applications,
+devrait être exceptionnelle et tracée. Chez LiZbiZ, deux comptes l'avaient
+encore, dont un compte de test oublié.
+
+% ============================================================================
+\section{Les Chemins d'Attaque}
+\label{sec:c10-chemins}
+% ============================================================================
+
+L'annuaire forme un \termecle{graphe}~: des utilisateurs membres de groupes,
+des groupes ayant des droits sur des objets, des sessions ouvertes sur des
+machines. Un chemin d'attaque est une suite d'arêtes qui mène d'un compte
+ordinaire à un groupe à privilèges. Des outils publics de cartographie
+calculent ces chemins~; les défenseurs les utilisent pour les couper.
+
+\begin{tableaucours}{L{1.0cm}L{5.6cm}L{5.6cm}}{%
+    \tableauHeader{Arête} &
+    \tableauHeader{Relation} &
+    \tableauHeader{Exemple chez LiZbiZ}
+}
+1 & Membre de & svc\_sql\_facturation \(\rightarrow\) Admins du domaine \\
+2 & Session ouverte sur & Un administrateur connecté sur PC-GAR-12 \\
+3 & Administrateur local de & Le groupe « Support Garoua » sur tous les
+postes de Garoua \\
+4 & Droit d'écriture sur & Le groupe « Support Garoua » peut modifier le
+groupe « Admins serveurs » \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~10.3. Des relations qui forment des chemins}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Corriger le seul compte exploité et déclarer le
+problème résolu.
+
+\smallskip
+\textbf{Règle~:} le test a montré \emph{un} chemin. La correction consiste à
+cartographier tous les chemins vers les groupes à privilèges et à couper les
+plus courts, puis à refaire la cartographie.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Modèle par Niveaux et les Défenses}
+\label{sec:c10-defense}
+% ============================================================================
+
+Le \termecle{modèle d'administration par niveaux} sépare les comptes et les
+machines en niveaux (contrôleurs de domaine et identités~; serveurs~;
+postes)~: un compte d'un niveau ne s'ouvre jamais sur une machine d'un
+niveau inférieur, pour que ses secrets n'y soient jamais exposés.
+
+\begin{tableaucours}{L{4.6cm}L{7.6cm}}{%
+    \tableauHeader{Défense} &
+    \tableauHeader{Effet}
+}
+Comptes de service gérés & Mots de passe longs, aléatoires, changés
+automatiquement~: le kerberoasting devient inutile \\
+Mots de passe de 25~caractères au moins pour les autres comptes de service
+& Rend le cassage hors ligne irréaliste \\
+Retrait des droits excessifs & Un compte de service n'est pas
+administrateur du domaine \\
+Pré-authentification obligatoire & Supprime l'AS-REP roasting \\
+Mot de passe administrateur local unique (LAPS) & Bloque le mouvement
+latéral (cours SEC3266) \\
+Groupe Protected Users, modèle par niveaux & Limite l'exposition des
+secrets à privilèges \\
+Détection & Événements de demande de ticket inhabituels (nombreux SPN en
+peu de temps, chiffrement faible demandé) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~10.4. Les défenses de l'annuaire}\end{center}
+
+\begin{boxobjet}{T-01 · Compte de service à privilèges et mot de passe faible}
+\textbf{Description~:} « svc\_sql\_facturation » a un SPN, un mot de passe de
+11~caractères prévisible, jamais changé, et appartient aux Admins du
+domaine. \textbf{Preuve~:} appartenance au groupe (capture du 28~octobre,
+14~h~08), mot de passe non reproduit. \textbf{Gravité~:} critique.
+\textbf{Impact~:} contrôle total du domaine par tout utilisateur
+authentifié. \textbf{Recommandation~:} retirer le compte des Admins du
+domaine, le convertir en compte de service géré, cartographier les autres
+chemins. \textbf{Détection~:} alerte sur les demandes de tickets en rafale.
+\end{boxobjet}
+
+\begin{boxmetier}{Analyste SOC et équipe rouge}
+\textbf{Placer un compte « appât ».} Un compte de service fictif, avec un
+SPN et aucun usage légitime~: toute demande de ticket le concernant signale
+une tentative de kerberoasting.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{L'annuaire} est lisible par tout utilisateur~; les
+          groupes à privilèges, les comptes de service et les droits sont
+          les cibles.
+    \item \textbf{Kerberos} chiffre le ticket de service avec le secret du
+          compte de service~: d'où le kerberoasting.
+    \item \textbf{AS-REP roasting}~: la pré-authentification désactivée
+          expose le compte.
+    \item \textbf{On raisonne en chemins}~; on cartographie et on coupe les
+          plus courts.
+    \item \textbf{Comptes de service gérés, moindre privilège, niveaux,
+          détection}~: les défenses.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: nommer les groupes à
+privilèges~; décrire les quatre échanges Kerberos~; expliquer le
+kerberoasting et l'AS-REP roasting~; lire un chemin d'attaque~; proposer
+les défenses et une détection.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.1. Les groupes \niveaubase}]
+Citez trois groupes ou types de comptes d'un domaine qui intéressent en
+priorité l'attaquant, et pourquoi.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.2. Le secret \niveaubase}]
+Avec quel secret le ticket de service est-il chiffré~? Pourquoi est-ce la
+source du kerberoasting~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.3. Chronologie \niveaubase}]
+Combien de temps s'écoule entre l'interrogation de l'annuaire et la preuve
+d'accès aux Admins du domaine~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.4. Les trois faiblesses \niveaumoyen}]
+Identifiez les trois faiblesses de configuration combinées dans T-01, et la
+mesure qui supprime chacune.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.5. Pourquoi le SOC n'a rien vu \niveaumoyen}]
+Pourquoi le kerberoasting est-il discret~? Quelle règle aurait pu le voir~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.6. Le chemin \niveaumoyen}]
+À partir du Tableau~10.3, décrivez un second chemin, sans le compte de la
+facturation, qui mène un membre de « Support Garoua » vers des droits
+élevés.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.7. Niveaux \niveaumoyen}]
+Un administrateur du domaine lit ses courriels sur PC-GAR-12. Quelle règle
+du modèle par niveaux viole-t-il~? Quel risque crée-t-il~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.8. AS-REP \niveaumoyen}]
+Comment recenser les comptes dont la pré-authentification est désactivée~?
+Que faire de chacun~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.9. Le plan \niveauexpert}]
+Rédigez le plan de durcissement de l'annuaire de LiZbiZ sur trois mois, à
+partir du Tableau~10.4.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.10. Mesurer les chemins \niveauexpert}]
+Proposez un indicateur fondé sur les chemins d'attaque (nombre, longueur)
+et un objectif pour le comité des risques.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item RFC~4120~\cite{rfc4120}~; MITRE ATT\&CK~\cite{mitreattack}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Sur une machine, l'attaquant cherche aussi à passer
+d'un compte limité à un compte d'administration~: le
+Chapitre~\ref{chap:privileges} traite de l'élévation de privilèges.
+\end{boxinfo}

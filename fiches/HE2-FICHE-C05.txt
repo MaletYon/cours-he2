@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C05
+Chapitre 5 : Reconnaissance passive et OSINT
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. La reconnaissance passive :
+      a) Ne sollicite pas la cible
+      b) Interroge la cible
+      c) Attaque
+      d) Détruit
+
+ 2. La reconnaissance active :
+      a) Est invisible
+      b) Sollicite directement la cible
+      c) Est illégale toujours
+      d) Ne sert à rien
+
+ 3. OSINT signifie renseignement :
+      a) Secret
+      b) Militaire
+      c) De source ouverte
+      d) Payant
+
+ 4. Les journaux de transparence des certificats révèlent :
+      a) Des mots de passe
+      b) Des factures
+      c) Des salaires
+      d) Des sous-domaines
+
+ 5. Une offre d'emploi peut révéler :
+      a) Les technologies employées
+      b) Les salaires de tous
+      c) Les clients
+      d) Les codes
+
+ 6. Un service oublié exposé est :
+      a) Normal
+      b) Un indice à noter
+      c) Un secret
+      d) Une facture
+
+ 7. Un identifiant publié par erreur se :
+      a) Utilise
+      b) Vend
+      c) Signale sans l'utiliser
+      d) Ignore
+
+ 8. La reconnaissance sur les personnes se limite à :
+      a) Tout
+      b) La vie privée
+      c) Les proches
+      d) L'information professionnelle publique et le besoin
+
+ 9. Un portail d'accès distant sans second facteur fonde le constat :
+      a) T-03
+      b) T-01
+      c) T-05
+      d) T-09
+
+10. La recommandation pour T-03 est :
+      a) Supprimer le portail
+      b) Ajouter un second facteur
+      c) Rien
+      d) Changer la couleur
+
+11. La procédure OSINT commence par :
+      a) Attaquer
+      b) Publier
+      c) Définir les besoins
+      d) Chiffrer
+
+12. En OSINT, on trace :
+      a) Rien
+      b) Le prix
+      c) La météo
+      d) L'origine des informations
+
+13. La reconnaissance passive correspond à la tactique :
+      a) Reconnaissance
+      b) Impact
+      c) Exfiltration
+      d) Persistance
+
+14. La reconnaissance la plus discrète est :
+      a) Active
+      b) Passive
+      c) Destructrice
+      d) Bruyante
+
+15. OSINT s'appuie sur des sources :
+      a) Privées
+      b) Volées
+      c) Publiques
+      d) Chiffrées
+
+16. La transparence des certificats est définie par :
+      a) La RFC 6962
+      b) Un scanner
+      c) CVSS
+      d) La loi
+
+17. Un document interne exposé se :
+      a) Note sans y accéder frauduleusement
+      b) Télécharge
+      c) Vend
+      d) Publie
+
+18. La reconnaissance sur les personnes respecte :
+      a) Rien
+      b) La vie privée et la loi 2024/017
+      c) Le concurrent
+      d) Le prix
+
+19. En OSINT, on collecte sans :
+      a) Tracer
+      b) Réfléchir
+      c) Solliciter la cible
+      d) Autorisation
+
+20. T-03 a été repéré par :
+      a) Hasard
+      b) Un scanner payant
+      c) Un exploit
+      d) OSINT puis confirmation
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. La reconnaissance passive envoie des paquets à la cible.
+      Vrai / Faux
+
+22. OSINT s'appuie sur des sources volées.
+      Vrai / Faux
+
+23. Une offre d'emploi peut révéler les technologies employées.
+      Vrai / Faux
+
+24. Un identifiant publié par erreur peut être utilisé librement.
+      Vrai / Faux
+
+25. La reconnaissance sur les personnes respecte la vie privée.
+      Vrai / Faux
+
+26. T-03 concerne un accès distant sans second facteur.
+      Vrai / Faux
+
+27. En OSINT, on sollicite directement la cible.
+      Vrai / Faux
+
+28. Les journaux de transparence des certificats révèlent des sous-domaines.
+      Vrai / Faux
+
+29. La reconnaissance passive relève de la tactique Reconnaissance.
+      Vrai / Faux
+
+30. Un document interne exposé se télécharge entièrement.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La reconnaissance qui ne sollicite pas la cible est dite ______.
+
+32. Le renseignement de source ouverte s'abrège ______.
+
+33. Les journaux de transparence des ______ révèlent des sous-domaines.
+
+34. L'accès distant sans second facteur est le constat T-______.
+
+35. En OSINT, on collecte sans ______ la cible.
+
+36. La reconnaissance sur les personnes respecte la ______ privée.
+
+37. La reconnaissance passive relève de la tactique ______.
+
+38. La transparence des certificats est définie par la RFC ______.
+
+39. Un identifiant publié par erreur se ______ sans l'utiliser.
+
+40. La procédure OSINT commence par définir les ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

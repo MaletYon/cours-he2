@@ -1,0 +1,252 @@
+% ============================================================================
+% Fichier  : partie4/P04_C17_nuage.tex
+% Titre    : Tester le Nuage et les Conteneurs
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : CIS Benchmarks (fournisseurs de nuage, Docker, Kubernetes) ;
+% modèle de responsabilité partagée ; MITRE ATT&CK (matrices nuage et
+% conteneurs). Services en nuage de LiZbiZ : cas fictif.
+% ============================================================================
+
+\chapter{Tester le Nuage et les Conteneurs}
+\label{chap:nuage}
+\chaptermark{Tester le nuage et les conteneurs}
+
+\epigraph{%
+    « Dans le nuage, la faille n'est presque jamais celle du fournisseur~;\\
+    c'est celle de la configuration du client. »%
+}{Principe du cours}
+
+\niveauChapitre{Expert}{Chapitre~\ref{chap:api}~; notions
+d'administration système.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Expliquer le modèle de responsabilité partagée.
+    \item Reconnaître les erreurs de configuration les plus courantes dans
+          le nuage.
+    \item Comprendre le risque des secrets et des droits trop larges.
+    \item Décrire les faiblesses des conteneurs et de leur orchestration.
+    \item Tester un environnement en nuage dans les limites du contrat avec
+          le fournisseur.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : à qui appartient la faille quand le service est hébergé chez un fournisseur~?}
+% ============================================================================
+
+LiZbiZ héberge son nouveau portail et sa base chez un fournisseur de nuage.
+M.~KOUNOU pense que la sécurité « est comprise dans l'abonnement ». Le test
+montre le contraire~: le fournisseur sécurise son socle, mais la
+configuration, les droits et les secrets restent la responsabilité de
+LiZbiZ, et c'est là que sont les faiblesses.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item La responsabilité partagée (section~\ref{sec:c17-partage}).
+    \item Les erreurs de configuration (section~\ref{sec:c17-config}).
+    \item Secrets et droits (section~\ref{sec:c17-droits}).
+    \item Conteneurs et orchestration (section~\ref{sec:c17-conteneurs}).
+    \item Tester dans les limites du contrat (section~\ref{sec:c17-limites}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{La Responsabilité Partagée}
+\label{sec:c17-partage}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Modèle de responsabilité partagée}~: répartition des tâches de
+sécurité entre le fournisseur de nuage (socle matériel, virtualisation,
+services de base) et le client (configuration, droits, données,
+applications). La frontière dépend du service souscrit.
+\end{boxdef}
+
+% ============================================================================
+\section{Les Erreurs de Configuration}
+\label{sec:c17-config}
+% ============================================================================
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Erreur fréquente} &
+    \tableauHeader{Conséquence}
+}
+Espace de stockage ouvert au public & Fichiers et sauvegardes lisibles par
+tous \\
+Service d'administration exposé & Console ou base accessible depuis
+l'Internet \\
+Journalisation désactivée & Aucune trace en cas d'incident \\
+Chiffrement non activé & Données au repos en clair \\
+Réseau trop ouvert & Règles de filtrage permissives \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~17.1. Erreurs de configuration courantes}\end{center}
+
+% ============================================================================
+\section{Secrets et Droits}
+\label{sec:c17-droits}
+% ============================================================================
+
+Deux risques dominent le nuage~: les \termecle{secrets} (clés d'accès, jetons)
+laissés dans le code, les images ou les dépôts~; et les \termecle{droits}
+trop larges accordés à un compte ou à une machine, qui permettent, depuis
+une ressource compromise, d'atteindre tout l'environnement.
+
+\begin{boxalert}
+\textbf{Violation typique.} Utiliser une clé d'accès trouvée pour agir
+au-delà du périmètre.
+
+\smallskip
+\textbf{Règle~:} une clé découverte se signale et se démontre dans la
+limite stricte du périmètre convenu. On ne crée pas de ressources, on ne
+touche pas aux données des autres clients du fournisseur, on respecte les
+règles de test de celui-ci.
+\end{boxalert}
+
+% ============================================================================
+\section{Conteneurs et Orchestration}
+\label{sec:c17-conteneurs}
+% ============================================================================
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Faiblesse} &
+    \tableauHeader{Risque}
+}
+Image non à jour & Vulnérabilités connues embarquées \\
+Conteneur privilégié & Sortie du conteneur vers l'hôte \\
+Secret dans l'image & Clé lisible par qui tire l'image \\
+Tableau de bord d'orchestration exposé & Contrôle du groupe de conteneurs \\
+Absence de limites & Un conteneur épuise l'hôte \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~17.2. Faiblesses des conteneurs}\end{center}
+
+% ============================================================================
+\section{Tester dans les Limites du Contrat}
+\label{sec:c17-limites}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Avant un test en nuage}
+\begin{enumerate}
+    \item Lire les règles de test du fournisseur~; certaines actions sont
+          interdites ou exigent une déclaration.
+    \item Délimiter les comptes et ressources du périmètre.
+    \item Convenir des actions permises (lecture de configuration, oui~;
+          création de ressources, non).
+    \item Prévoir la conduite en cas de découverte d'un secret.
+    \item Vérifier que l'environnement testé n'est pas partagé avec d'autres
+          clients.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxobjet}{T-10 · Service de test exposé sur l'Internet}
+\textbf{Description~:} une interface de programmation de test, hébergée dans
+le nuage, est accessible publiquement sans authentification.
+\textbf{Preuve~:} adresse et réponse obtenue (données masquées).
+\textbf{Gravité~:} moyenne. \textbf{Impact~:} divulgation de données de test,
+parfois proches des données réelles~; point d'entrée. \textbf{Recommandation~:}
+restreindre l'accès, authentifier, retirer les environnements de test
+inutiles. \textbf{Détection~:} inventaire périodique des services exposés.
+\end{boxobjet}
+
+\begin{boxmetier}{Auditeur de sécurité et RSSI}
+\textbf{Auditer la configuration, pas le fournisseur.} L'audit du nuage
+porte sur ce que le client configure~: droits, secrets, exposition,
+journalisation. Les référentiels de configuration sécurisée (CIS) donnent la
+liste des points à vérifier.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{La responsabilité est partagée}~; la faille est presque
+          toujours côté client.
+    \item \textbf{Les erreurs de configuration} (stockage ouvert, service
+          exposé) dominent.
+    \item \textbf{Secrets et droits trop larges} sont les deux grands
+          risques.
+    \item \textbf{Les conteneurs} ajoutent leurs faiblesses propres.
+    \item \textbf{Le test en nuage} respecte les règles du fournisseur.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: expliquer la
+responsabilité partagée~; citer les erreurs de configuration~; expliquer le
+risque des secrets et des droits~; décrire les faiblesses des conteneurs~;
+préparer un test en nuage conforme.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.1. Frontière \niveaubase}]
+Qui, du fournisseur ou du client, est responsable de la configuration des
+droits d'accès~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.2. Stockage ouvert \niveaubase}]
+Pourquoi un espace de stockage ouvert au public est-il dangereux~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.3. Secret \niveaubase}]
+Citez trois endroits où un secret peut traîner dans un environnement en
+nuage.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.4. Droits larges \niveaumoyen}]
+Expliquez comment des droits trop larges transforment une ressource
+compromise en compromission de tout l'environnement.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.5. Conteneur privilégié \niveaumoyen}]
+Pourquoi un conteneur privilégié met-il en danger l'hôte~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.6. Clé trouvée \niveaumoyen}]
+Vous découvrez une clé d'accès valide. Que faites-vous, et que ne faites-vous
+pas~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.7. T-10 \niveaumoyen}]
+Rédigez le plan de correction de T-10.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.8. Règles du fournisseur \niveaumoyen}]
+Pourquoi faut-il lire les règles de test du fournisseur avant un test en
+nuage~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.9. Audit de configuration \niveauexpert}]
+Construisez une liste de contrôle de dix points pour auditer la
+configuration en nuage de LiZbiZ.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.10. Responsabilité \niveauexpert}]
+Rédigez une note qui clarifie, service par service, la frontière de
+responsabilité entre LiZbiZ et son fournisseur.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item CIS Benchmarks~\cite{cis2021controls}~; MITRE ATT\&CK~\cite{mitreattack}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La Partie~V ouvre sur les tests au-delà du système
+d'information classique~: le Chapitre~\ref{chap:sansfil} traite du sans-fil
+et des objets connectés.
+\end{boxinfo}

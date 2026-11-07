@@ -1,0 +1,268 @@
+% ============================================================================
+% Fichier  : partie3/P03_C09_reseau.tex
+% Titre    : Attaques Réseau et Authentification
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : RFC 4795 (LLMNR) ; RFC 4120 (Kerberos) ; documentation publique
+% de Microsoft sur NTLM et la signature SMB ; MITRE ATT&CK (T1557). Résultats
+% de l'Opération LOGONE : cas fictif.
+% ============================================================================
+
+\chapter{Attaques Réseau et Authentification}
+\label{chap:reseau}
+\chaptermark{Attaques réseau et authentification}
+
+\epigraph{%
+    « Un réseau qui crie ses questions à tout le monde\\
+    finit par recevoir une mauvaise réponse. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire à expert}{Chapitre~\ref{chap:exploitation}~;
+cours SEC3266, chapitres sur les réseaux et les identités.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Expliquer les protocoles d'authentification d'un réseau Windows
+          (NTLM, Kerberos).
+    \item Comprendre l'empoisonnement des résolutions de noms locales.
+    \item Comprendre le relais d'authentification et ses conditions.
+    \item Relier chaque attaque à sa détection et à sa parade.
+    \item Rédiger les constats correspondants.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : comment un poste ordinaire peut-il recueillir des secrets sans rien attaquer~?}
+% ============================================================================
+
+Le 26~octobre, depuis le poste fourni, Mme~NGO~MBOCK observe le trafic
+local de Garoua. Des postes demandent à tout le réseau « qui est
+srv-imprim~? », un serveur qui n'existe plus. Une machine qui répondrait
+« c'est moi » recevrait leur tentative d'authentification. Ce chapitre
+explique pourquoi, et comment fermer cette porte.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item NTLM et Kerberos (section~\ref{sec:c09-protocoles}).
+    \item L'empoisonnement des résolutions locales (section~\ref{sec:c09-llmnr}).
+    \item Le relais d'authentification (section~\ref{sec:c09-relais}).
+    \item Détecter et corriger (section~\ref{sec:c09-parades}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{NTLM et Kerberos}
+\label{sec:c09-protocoles}
+% ============================================================================
+
+\begin{tableaucours}{L{2.6cm}L{4.8cm}L{4.8cm}}{%
+    \tableauHeader{Protocole} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Faiblesse exploitable}
+}
+NTLM & Défi et réponse calculée à partir du haché du mot de passe & La
+réponse peut être relayée ou cassée hors ligne si le mot de passe est
+faible \\
+Kerberos & Tickets délivrés par un centre de distribution de clés
+(RFC~4120) & Tickets de service chiffrés avec le secret du compte de
+service (Chapitre~\ref{chap:ad}) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~9.1. Deux protocoles d'authentification}\end{center}
+
+Kerberos, défini par la RFC~4120, est le protocole par défaut d'un domaine
+Active Directory~\cite{rfc4120}~; NTLM subsiste pour la compatibilité, et
+c'est souvent lui que vise l'attaquant.
+
+% ============================================================================
+\section{L'Empoisonnement des Résolutions Locales}
+\label{sec:c09-llmnr}
+% ============================================================================
+
+Quand un nom ne se résout pas par le DNS, Windows peut interroger tout le
+réseau local par LLMNR (RFC~4795) ou NBT-NS~\cite{rfc4795}. N'importe quelle
+machine peut répondre. Un attaquant présent sur le réseau répond à ces
+questions et reçoit en retour une tentative d'authentification NTLM.
+
+\begin{boxdef}
+\termecle{Empoisonnement de résolution}~: réponse frauduleuse à une
+requête de résolution de nom diffusée sur le réseau local, qui détourne la
+connexion de la victime vers l'attaquant (ATT\&CK, T1557).
+\end{boxdef}
+
+\begin{boxscenario}{Opération LOGONE. Les questions sans réponse}
+\textbf{Constatation.} En une heure d'écoute passive, 37~requêtes LLMNR
+pour des noms inexistants (dont « srv-imprim », retiré en 2025), émises par
+22~postes. Avec l'accord de M.~KOUNOU, une réponse contrôlée de dix minutes
+recueille 6~réponses NTLM de 4~comptes~; aucune n'est cassée, les mots de
+passe concernés étant longs.
+
+\medskip
+\textbf{Analyse} (confiance élevée). La faille est structurelle (LLMNR et
+NBT-NS actifs)~; son impact dépend de la force des mots de passe et de la
+possibilité de relais.
+\end{boxscenario}
+
+% ============================================================================
+\section{Le Relais d'Authentification}
+\label{sec:c09-relais}
+% ============================================================================
+
+Au lieu de casser la réponse NTLM, l'attaquant peut la \emph{relayer}
+aussitôt vers un autre serveur, et s'y authentifier comme la victime. Le
+relais est possible lorsque le serveur cible n'exige pas la
+\termecle{signature} des échanges (SMB) ou la liaison au canal (HTTP,
+LDAP).
+
+\begin{tableaucours}{L{4.0cm}L{8.2cm}}{%
+    \tableauHeader{Condition} &
+    \tableauHeader{Situation chez LiZbiZ}
+}
+Requêtes diffusées détournables & LLMNR et NBT-NS actifs \\
+Serveurs sans signature SMB exigée & 31 serveurs sur 34 à Garoua \\
+Comptes à privilèges qui s'authentifient & Comptes d'administration
+utilisés depuis des postes ordinaires \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~9.2. Les conditions du relais (Opération LOGONE)}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Relayer une authentification vers un serveur de
+production sans accord.
+
+\smallskip
+\textbf{Règle~:} le relais crée une session réelle au nom d'un salarié~:
+il n'est démontré que vers une cible et un compte convenus, et la session
+est fermée aussitôt la preuve faite.
+\end{boxalert}
+
+% ============================================================================
+\section{Détecter et Corriger}
+\label{sec:c09-parades}
+% ============================================================================
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Parade} &
+    \tableauHeader{Effet}
+}
+Désactiver LLMNR et NBT-NS & Supprime les requêtes diffusées détournables \\
+Exiger la signature SMB & Empêche le relais vers SMB \\
+Protection étendue de l'authentification (LDAP, HTTP) & Lie
+l'authentification au canal \\
+Réduire NTLM au profit de Kerberos & Réduit la surface \\
+Comptes d'administration séparés, bastion & Les secrets d'administration ne
+circulent pas depuis les postes \\
+Détection & Répondant inconnu aux requêtes LLMNR~; authentifications NTLM
+d'un compte depuis une machine inhabituelle \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~9.3. Parades et détection}\end{center}
+
+\begin{boxobjet}{T-07 · Signature SMB non exigée et LLMNR actif}
+\textbf{Description~:} 31~serveurs sur 34 n'exigent pas la signature SMB~;
+LLMNR et NBT-NS sont actifs sur les postes. \textbf{Preuve~:} relevés du
+26~octobre~; réponses NTLM recueillies (masquées). \textbf{Gravité~:}
+moyenne (élevée si un compte à privilèges est capturé).
+\textbf{Recommandation~:} désactiver LLMNR et NBT-NS par stratégie de
+groupe~; exiger la signature SMB. \textbf{Détection~:} surveiller les
+réponses LLMNR d'hôtes non autorisés.
+\end{boxobjet}
+
+\begin{boxmetier}{Analyste SOC et équipe rouge}
+\textbf{Poser un piège.} Un poste « leurre » émet régulièrement une requête
+LLMNR pour un nom inexistant~: toute réponse signale un empoisonneur sur le
+réseau.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{NTLM} se relaie ou se casse si le mot de passe est faible~;
+          \textbf{Kerberos} est le protocole par défaut du domaine.
+    \item \textbf{LLMNR et NBT-NS} diffusent des questions auxquelles
+          n'importe qui peut répondre.
+    \item \textbf{Le relais} exige l'absence de signature ou de liaison au
+          canal.
+    \item \textbf{Désactiver, signer, lier, séparer, détecter}~: les parades.
+    \item \textbf{Démontrer} seulement vers une cible convenue, et fermer
+          aussitôt.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: comparer NTLM et
+Kerberos~; expliquer l'empoisonnement LLMNR~; énoncer les conditions du
+relais~; proposer les parades et une détection.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.1. LLMNR \niveaubase}]
+Pourquoi un poste envoie-t-il une requête LLMNR pour « srv-imprim »~?
+Quelle mesure d'hygiène l'aurait évité~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.2. Proportion \niveaubase}]
+Quelle part des serveurs de Garoua n'exige pas la signature SMB~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.3. Kerberos \niveaubase}]
+Quel organisme a défini Kerberos version~5 dans la RFC~4120~? Quel est le
+rôle du centre de distribution de clés~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.4. Casser ou relayer \niveaumoyen}]
+Pourquoi les réponses recueillies n'ont-elles pas été cassées~? Que
+faudrait-il pour qu'elles le soient~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.5. Les conditions \niveaumoyen}]
+Laquelle des trois conditions du Tableau~9.2 est la plus simple à
+supprimer~? Laquelle protège le mieux~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.6. Le piège \niveaumoyen}]
+Décrivez le poste « leurre » et la règle d'alerte du SOC.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.7. Effets de bord \niveaumoyen}]
+Quels risques de dysfonctionnement faut-il vérifier avant d'exiger la
+signature SMB partout~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.8. ATT\&CK \niveaumoyen}]
+Dans quelle tactique d'ATT\&CK se range l'empoisonnement de résolution~?
+Pourquoi~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.9. Plan de correction \niveauexpert}]
+Rédigez le plan de correction de T-07 en trois vagues, avec les tests de
+non-régression.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.10. Réduire NTLM \niveauexpert}]
+Proposez une démarche pour mesurer l'usage de NTLM chez LiZbiZ et le
+réduire sans interrompre les applications.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item RFC~4120 (Kerberos)~\cite{rfc4120}~; RFC~4795 (LLMNR)~\cite{rfc4795}.
+    \item MITRE ATT\&CK~\cite{mitreattack}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Kerberos et l'annuaire forment le cœur du réseau
+Windows~: le Chapitre~\ref{chap:ad} est consacré à Active Directory.
+\end{boxinfo}

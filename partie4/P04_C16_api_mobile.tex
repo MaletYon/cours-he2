@@ -1,0 +1,255 @@
+% ============================================================================
+% Fichier  : partie4/P04_C16_api_mobile.tex
+% Titre    : Interfaces de Programmation et Applications Mobiles
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : OWASP API Security Top 10:2023 ; OWASP Mobile Application
+% Security Verification Standard (MASVS). Opération MEFOU (juillet 2026) :
+% cas fictif.
+% ============================================================================
+
+\chapter{Interfaces de Programmation et Applications Mobiles}
+\label{chap:api}
+\chaptermark{Interfaces de programmation et mobiles}
+
+\epigraph{%
+    « L'application mobile n'est qu'une façade~;\\
+    le vrai test porte sur l'interface qu'elle appelle. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire à expert}{Chapitre~\ref{chap:injections}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Décrire une interface de programmation (API) du point de vue du
+          testeur.
+    \item Reconnaître les risques du Top~10 des API de l'OWASP, à commencer
+          par le défaut d'accès au niveau de l'objet.
+    \item Comprendre pourquoi l'application mobile ne protège pas le serveur.
+    \item Tester une application mobile selon le standard MASVS.
+    \item Rédiger les constats d'une mission mobile.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : l'application mobile de LiZbiZ est-elle plus sûre que son portail web~?}
+% ============================================================================
+
+En juillet, avant le test principal, LiZbiZ confie à NYONG SÉCURITÉ un test
+de son application mobile de suivi, l'Opération MEFOU. L'équipe découvre
+vite que l'application n'est qu'une fenêtre~: toute la logique est dans
+l'interface de programmation qu'elle appelle, et c'est là que se trouvent
+les faiblesses. Six constats en ressortent.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item L'interface de programmation vue par le testeur
+          (section~\ref{sec:c16-api}).
+    \item Le Top~10 des API (section~\ref{sec:c16-top10}).
+    \item La façade mobile (section~\ref{sec:c16-facade}).
+    \item Tester le mobile avec le MASVS (section~\ref{sec:c16-masvs}).
+    \item L'Opération MEFOU (section~\ref{sec:c16-mefou}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{L'Interface de Programmation vue par le Testeur}
+\label{sec:c16-api}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Interface de programmation} (API)~: ensemble de points d'entrée
+par lesquels des programmes échangent des données, le plus souvent en HTTP,
+avec des messages structurés. Le testeur l'interroge directement, sans
+passer par l'application qui s'en sert.
+\end{boxdef}
+
+Une interface de programmation reçoit souvent moins d'attention que le site
+web~: pas d'écran, pas de visiteur humain, l'illusion qu'elle est « interne ».
+C'est une erreur~: elle est aussi exposée, et porte la logique métier.
+
+% ============================================================================
+\section{Le Top 10 des API}
+\label{sec:c16-top10}
+% ============================================================================
+
+\begin{tableaucours}{L{4.6cm}L{7.6cm}}{%
+    \tableauHeader{Risque (OWASP API 2023)} &
+    \tableauHeader{Question du testeur}
+}
+Accès au niveau de l'objet & Puis-je lire ou modifier l'objet d'un autre en
+changeant son identifiant~? \\
+Authentification défaillante & Les jetons sont-ils solides, expirent-ils~? \\
+Accès au niveau d'une propriété & Puis-je lire ou écrire un champ qui ne
+m'est pas destiné~? \\
+Consommation de ressources & Puis-je épuiser le service par des appels
+massifs~? \\
+Accès au niveau de la fonction & Puis-je appeler une fonction réservée à
+un administrateur~? \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~16.1. Principaux risques des API~\cite{owaspapitop10}}\end{center}
+
+Le premier risque, le défaut d'accès au niveau de l'objet, est l'équivalent
+de la référence directe du Chapitre~\ref{chap:injections}, appliqué aux
+interfaces de programmation~: c'est le plus fréquent et le plus grave.
+
+% ============================================================================
+\section{La Façade Mobile}
+\label{sec:c16-facade}
+% ============================================================================
+
+\begin{boxalert}
+\textbf{Violation typique.} Croire qu'un contrôle présent dans
+l'application mobile protège le service.
+
+\smallskip
+\textbf{Règle~:} tout ce que fait l'application mobile, un programme peut le
+refaire en appelant directement l'interface, sans ses contrôles. Une clé
+cachée dans l'application n'est pas secrète~: elle se lit dans le paquet
+installé.
+\end{boxalert}
+
+% ============================================================================
+\section{Tester le Mobile avec le MASVS}
+\label{sec:c16-masvs}
+% ============================================================================
+
+Le \termecle{standard de vérification de la sécurité des applications
+mobiles} (MASVS) de l'OWASP fixe les exigences à vérifier~\cite{owaspmasvs}.
+
+\begin{tableaucours}{L{4.2cm}L{8.0cm}}{%
+    \tableauHeader{Domaine MASVS} &
+    \tableauHeader{Ce qu'on vérifie}
+}
+Stockage des données & Secrets, jetons, données personnelles stockés en
+clair sur l'appareil \\
+Communication réseau & Chiffrement du canal, contrôle du certificat \\
+Authentification & Jetons, biométrie, verrouillage \\
+Code et résistance & Secrets codés en dur, journaux bavards \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~16.2. Domaines du MASVS}\end{center}
+
+% ============================================================================
+\section{L'Opération MEFOU}
+\label{sec:c16-mefou}
+% ============================================================================
+
+\begin{boxscenario}{Opération MEFOU. Six constats sur le mobile}
+\textbf{Constatations} (juillet 2026). (1)~L'application stocke le jeton de
+session en clair sur l'appareil. (2)~Le service ne vérifie pas la propriété
+de l'objet demandé~: un colis d'autrui est accessible par son numéro.
+(3)~Une fonction d'administration est appelable par un compte ordinaire.
+(4)~Le canal accepte un certificat non vérifié. (5)~Une clé de service est
+codée en dur dans l'application. (6)~Les journaux de l'application contiennent
+des données personnelles.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Les constats (2) et (3), des défauts
+d'accès, sont les plus graves~; ils préfigurent le constat T-05 du test
+principal. L'application a été corrigée avant octobre, sauf le service, dont
+le défaut d'accès subsiste et devient T-05.
+\end{boxscenario}
+
+\begin{boxmetier}{Pentesteur et RSSI}
+\textbf{Tester le service, pas l'écran.} Pour une application mobile, le
+pentesteur intercepte le trafic et rejoue les appels sans l'application~; le
+RSSI retient que corriger l'application ne corrige pas le service, et que le
+service doit refaire tous les contrôles.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{L'interface de programmation} porte la logique~; on
+          l'interroge directement.
+    \item \textbf{Le défaut d'accès au niveau de l'objet} est le premier
+          risque des API.
+    \item \textbf{L'application mobile est une façade}~; ses contrôles ne
+          protègent pas le service.
+    \item \textbf{Le MASVS} structure le test mobile.
+    \item \textbf{MEFOU} a montré, dès juillet, le défaut d'accès devenu
+          T-05.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: décrire une API pour le
+test~; citer les risques du Top~10 des API~; expliquer pourquoi le mobile ne
+protège pas le service~; nommer les domaines du MASVS~; relier MEFOU à T-05.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.1. API \niveaubase}]
+Pourquoi teste-t-on une interface de programmation directement, sans
+l'application qui l'utilise~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.2. Premier risque \niveaubase}]
+Quel est le premier risque du Top~10 des API~? À quoi correspond-il dans le
+chapitre précédent~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.3. Clé cachée \niveaubase}]
+Pourquoi une clé « cachée » dans une application mobile n'est-elle pas
+secrète~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.4. Façade \niveaumoyen}]
+Un développeur affirme que l'application empêche l'accès au colis d'autrui.
+Que lui répondez-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.5. MASVS \niveaumoyen}]
+Pour chacun des six constats de MEFOU, donnez le domaine MASVS concerné.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.6. MEFOU vers T-05 \niveaumoyen}]
+Expliquez pourquoi le défaut d'accès de MEFOU se retrouve en octobre comme
+T-05.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.7. Interception \niveaumoyen}]
+Décrivez, sans outil précis, comment on observe les appels d'une application
+mobile lors d'un test autorisé.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.8. Correction \niveaumoyen}]
+Rédigez la correction du constat « fonction d'administration appelable par
+un compte ordinaire ».
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.9. Plan API \niveauexpert}]
+Établissez le plan de test de l'interface de programmation de LiZbiZ selon
+le Top~10 des API.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.10. Note au comité \niveauexpert}]
+Rédigez une note qui explique au comité pourquoi « l'application a été
+corrigée » ne suffit pas.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item OWASP API Security Top~10~\cite{owaspapitop10}~; OWASP
+          MASVS~\cite{owaspmasvs}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les services de LiZbiZ migrent vers le nuage~: le
+Chapitre~\ref{chap:nuage} traite du test des environnements en nuage et des
+conteneurs.
+\end{boxinfo}

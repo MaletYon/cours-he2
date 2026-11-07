@@ -1,0 +1,278 @@
+% ============================================================================
+% Fichier  : partie1/P01_C01_hacking_ethique.tex
+% Titre    : Le Hacking Éthique : Définitions, Métiers, Types de Tests
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : NIST SP 800-115 (2008) ; PTES ; CIS Controls v8 (contrôle 18).
+% ============================================================================
+
+\chapter{Le Hacking Éthique : Définitions, Métiers, Types de Tests}
+\label{chap:ethique}
+\chaptermark{Le hacking éthique}
+
+\epigraph{%
+    « Le testeur et l'attaquant connaissent les mêmes techniques~;\\
+    seul le premier rend compte de ce qu'il a fait. »%
+}{Principe du cours}
+
+\niveauChapitre{Fondamental}{Prologue~; cours SEC3266.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Définir le hacking éthique et le test d'intrusion.
+    \item Distinguer test d'intrusion, analyse de vulnérabilités, audit,
+          équipe rouge et programme de primes.
+    \item Choisir une approche (boîte noire, grise, blanche) et un point de
+          départ (externe, interne, présumé compromis).
+    \item Décrire les métiers de la sécurité offensive et leurs
+          compétences.
+    \item Situer la valeur et les limites d'un test.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : de quoi LiZbiZ avait-elle besoin~: un balayage, un audit ou un test d'intrusion~?}
+% ============================================================================
+
+En septembre, M.~KOUNOU propose d'acheter un scanner de vulnérabilités~;
+Mme~NKENG rappelle que l'audit d'octobre est prévu~; Mme~MOUAFO veut savoir
+si un attaquant peut encore devenir administrateur du domaine. Trois
+besoins, trois réponses différentes. Ce chapitre apprend à choisir.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Définir (section~\ref{sec:c01-definir}).
+    \item Les types d'évaluation offensive (section~\ref{sec:c01-types}).
+    \item Approches et points de départ (section~\ref{sec:c01-approches}).
+    \item Les métiers (section~\ref{sec:c01-metiers}).
+    \item Valeur et limites d'un test (section~\ref{sec:c01-limites}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Définir}
+\label{sec:c01-definir}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Hacking éthique}~: emploi des techniques des attaquants, avec
+l'autorisation écrite du propriétaire du système, dans un périmètre et une
+durée fixés, pour en révéler les faiblesses et aider à les corriger.
+\termecle{Test d'intrusion}~: évaluation dans laquelle le testeur imite un
+attaquant réel pour contourner les mesures de sécurité et démontrer
+l'impact d'une compromission~\cite{nist800115}.
+\end{boxdef}
+
+Trois conditions font le caractère éthique~: l'\emph{autorisation} (écrite,
+par qui a le pouvoir de la donner), la \emph{limitation} (périmètre,
+méthodes, fenêtre) et la \emph{restitution} (tout ce qui est trouvé est
+rapporté au client, et à lui seul). Sans l'une d'elles, le même geste devient
+une infraction ou une faute professionnelle.
+
+% ============================================================================
+\section{Les Types d'Évaluation Offensive}
+\label{sec:c01-types}
+% ============================================================================
+
+\begin{tableaucours}{L{3.2cm}L{4.6cm}L{4.4cm}}{%
+    \tableauHeader{Type} &
+    \tableauHeader{Question} &
+    \tableauHeader{Livrable}
+}
+Analyse de vulnérabilités & Quelles failles connues sont présentes~? &
+Liste priorisée, souvent automatique \\
+Test d'intrusion & Jusqu'où un attaquant peut-il aller~? & Chemins
+d'attaque démontrés, constats, recommandations \\
+Audit de sécurité & Les mesures sont-elles conformes à un référentiel~? &
+Constats d'écarts (cours INF3226) \\
+Exercice d'équipe rouge & Détecte-t-on et répond-on à un adversaire
+réaliste~? & Scénario, détections, délais \\
+Programme de primes & Des chercheurs externes trouvent-ils des failles~? &
+Rapports de chercheurs, rémunérés selon la gravité \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.1. Les évaluations offensives}\end{center}
+
+Les CIS Controls consacrent leur contrôle~18 aux tests d'intrusion~: ils
+s'adressent aux organisations qui ont déjà mis en place les mesures de
+base~; tester avant d'avoir inventorié et corrigé n'apprend rien que le
+balayage n'aurait dit~\cite{cis2021controls}.
+
+% ============================================================================
+\section{Approches et Points de Départ}
+\label{sec:c01-approches}
+% ============================================================================
+
+\begin{tableaucours}{L{3.0cm}L{4.8cm}L{4.4cm}}{%
+    \tableauHeader{Approche} &
+    \tableauHeader{Ce que sait le testeur} &
+    \tableauHeader{Intérêt}
+}
+Boîte noire & Rien, sauf le périmètre & Imite l'attaquant externe~;
+coûteuse en temps \\
+Boîte grise & Un compte, des plans partiels & Bon compromis, le plus
+fréquent \\
+Boîte blanche & Code, configurations, schémas & Couverture maximale \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.2. Les approches}\end{center}
+
+Le \termecle{point de départ} compte autant~: \emph{externe} (depuis
+Internet), \emph{interne} (depuis un poste du réseau) ou \emph{présumé
+compromis} (on suppose qu'un poste est déjà aux mains de l'attaquant, comme
+après l'hameçonnage de février). Ce dernier scénario, dit d'\emph{intrusion
+présumée}, mesure la défense en profondeur.
+
+\begin{boxscenario}{Opération LOGONE. Le choix de l'approche}
+\textbf{Décision} (septembre). Boîte grise~: un compte d'utilisateur
+ordinaire et un poste fourni pour l'interne~; les schémas réseau sont
+communiqués. Deux points de départ~: externe, et intrusion présumée.
+
+\medskip
+\textbf{Analyse} (confiance élevée). La boîte noire aurait consacré des jours
+à retrouver ce que LiZbiZ sait déjà~; l'intrusion présumée répond à la vraie
+question~: que se passe-t-il quand le prochain hameçonnage réussit~?
+\end{boxscenario}
+
+% ============================================================================
+\section{Les Métiers}
+\label{sec:c01-metiers}
+% ============================================================================
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Métier} &
+    \tableauHeader{Activité}
+}
+Pentesteur & Conduit les tests, démontre les chemins d'attaque, rédige les
+constats \\
+Auditeur de sécurité & Vérifie la conformité aux référentiels, peut
+intégrer des tests techniques \\
+Analyste SOC et équipe rouge & L'un détecte et répond, l'autre émule
+l'adversaire~; ensemble, ils forment l'équipe violette \\
+RSSI & Commande, cadre, arbitre les corrections, rend compte à la direction \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.3. Les métiers visés par le cours}\end{center}
+
+\begin{boxmetier}{Pentesteur}
+\textbf{Trois compétences au même niveau.} La technique (systèmes, réseaux,
+applications), la méthode (périmètre, traçabilité, arrêt) et l'écrit (un
+constat qu'un directeur comprend et qu'un administrateur sait corriger).
+\end{boxmetier}
+
+% ============================================================================
+\section{Valeur et Limites d'un Test}
+\label{sec:c01-limites}
+% ============================================================================
+
+\begin{boxalert}
+\textbf{Violation typique.} Présenter un test sans constat critique comme
+une preuve de sécurité.
+
+\smallskip
+\textbf{Règle~:} un test est borné dans le temps, le périmètre et les
+méthodes~; il prouve l'existence des failles trouvées, pas l'absence des
+autres. Le rapport dit ce qui n'a pas été testé.
+\end{boxalert}
+
+\begin{boxobjet}{T-00 · Modèle de fiche de constat}
+\textbf{Description~:} ce qui a été trouvé, en une phrase. \textbf{Preuve~:}
+la trace (capture, requête, horodatage), sans données sensibles.
+\textbf{Gravité~:} score CVSS et contexte. \textbf{Impact~:} ce qu'un
+attaquant pourrait faire. \textbf{Recommandation~:} la correction et sa
+vérification. \textbf{Détection~:} ce qui aurait dû alerter.
+\end{boxobjet}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Hacking éthique}~: autorisation, limitation, restitution.
+    \item \textbf{Cinq évaluations offensives} répondent à des questions
+          différentes.
+    \item \textbf{Boîte noire, grise, blanche}~; départ externe, interne ou
+          présumé compromis.
+    \item \textbf{Quatre métiers}~; l'équipe violette réunit attaque et
+          défense.
+    \item \textbf{Un test} prouve l'existence d'une faille, pas l'absence des
+          autres.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: définir le hacking éthique
+et le test d'intrusion~; choisir un type d'évaluation pour une question
+donnée~; choisir une approche et un point de départ~; décrire les métiers~;
+énoncer les limites d'un test.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.1. Quel type~? \niveaubase}]
+Quel type d'évaluation répond à~: « nos serveurs ont-ils des correctifs en
+retard~? »~; « notre SOC verrait-il un attaquant~? »~; « sommes-nous
+conformes à l'ISO/IEC~27001~? »
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.2. Les trois conditions \niveaubase}]
+Un étudiant teste le site de son école « pour l'aider ». Quelles conditions
+du hacking éthique manquent~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.3. Approche \niveaubase}]
+Quelle approche choisir pour l'ANPP, qui fournit le code de son portail~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.4. Intrusion présumée \niveaumoyen}]
+Expliquez en quoi le point de départ « présumé compromis » répond mieux à la
+question de LiZbiZ qu'un test externe seul.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.5. Contrôle 18 \niveaumoyen}]
+Pourquoi les CIS Controls placent-ils les tests d'intrusion en dernier~?
+Que doit faire une organisation avant~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.6. Violette \niveaumoyen}]
+Qu'apporte une équipe violette par rapport à un test d'intrusion classique~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.7. Primes \niveaumoyen}]
+Quels prérequis une organisation doit-elle réunir avant d'ouvrir un
+programme de primes aux failles~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.8. Limites \niveaumoyen}]
+Rédigez le paragraphe « limites » du rapport de l'Opération LOGONE.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.9. Un programme \niveauexpert}]
+Proposez à la BANQUE SANAGA un programme d'évaluations offensives sur deux
+ans, en combinant les types du Tableau~1.1.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.10. Le profil \niveauexpert}]
+Rédigez la fiche de poste d'un pentesteur junior pour NYONG SÉCURITÉ~:
+missions, compétences, éthique, progression.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item NIST SP~800-115~\cite{nist800115}~; CIS Controls~\cite{cis2021controls}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} L'autorisation n'est pas une formalité~: c'est elle
+que la loi regarde. Le Chapitre~\ref{chap:droit} présente le droit
+camerounais.
+\end{boxinfo}

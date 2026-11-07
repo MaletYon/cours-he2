@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C10
+Chapitre 10 : Active Directory
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Active Directory est :
+      a) L'annuaire des réseaux Windows
+      b) Un pare-feu
+      c) Un scanner
+      d) Une loi
+
+ 2. Les contrôleurs de domaine hébergent :
+      a) Le site web
+      b) L'annuaire et l'authentification
+      c) La paie
+      d) La météo
+
+ 3. Le groupe le plus puissant d'un domaine est :
+      a) Utilisateurs
+      b) Invités
+      c) Admins du domaine
+      d) Imprimantes
+
+ 4. Le kerberoasting vise :
+      a) Les imprimantes
+      b) Les invités
+      c) Les postes
+      d) Les comptes de service
+
+ 5. Le ticket de service est chiffré avec :
+      a) Le secret du compte de service
+      b) La clé publique
+      c) Rien
+      d) Le mot de passe du DG
+
+ 6. Le kerberoasting réussit si le mot de passe du service est :
+      a) Long
+      b) Faible
+      c) Salé
+      d) Chiffré
+
+ 7. Le vol de ticket du compte de facturation est le constat :
+      a) T-01
+      b) T-09
+      c) T-05
+      d) T-14
+
+ 8. Le grillage AS-REP vise les comptes :
+      a) Avec second facteur
+      b) Chiffrés
+      c) Invités
+      d) Sans pré-authentification Kerberos
+
+ 9. Le modèle par niveaux interdit :
+      a) D'utiliser un compte à privilèges sur un poste ordinaire
+      b) Les mots de passe
+      c) Les sauvegardes
+      d) Les journaux
+
+10. L'attaquant atteint l'administration du domaine en :
+      a) 5 jours
+      b) 5 heures
+      c) 5 semaines
+      d) 5 minutes
+
+11. Un domaine regroupe :
+      a) Des clients
+      b) Des factures
+      c) Comptes, groupes, machines, droits
+      d) Des villes
+
+12. La composition des groupes à privilèges se :
+      a) Ignore
+      b) Publie
+      c) Vend
+      d) Surveille étroitement
+
+13. Le ticket volé se casse :
+      a) Hors ligne
+      b) En ligne
+      c) Jamais
+      d) Par le serveur
+
+14. La recommandation pour T-01 est :
+      a) Rien
+      b) Mot de passe long ou compte géré pour le service
+      c) Supprimer le domaine
+      d) Chiffrer le poste
+
+15. La parade à AS-REP est :
+      a) Rien
+      b) Supprimer Kerberos
+      c) Exiger la pré-authentification
+      d) Chiffrer
+
+16. Le modèle par niveaux brise :
+      a) Les sauvegardes
+      b) Le réseau
+      c) La paie
+      d) Le chemin d'attaque
+
+17. Le point de départ de l'attaque est :
+      a) Un poste ordinaire
+      b) Un serveur
+      c) Le DG
+      d) Le nuage
+
+18. Le kerberoasting apparaît dans la tactique :
+      a) Impact
+      b) Accès aux identifiants
+      c) Exfiltration
+      d) Reconnaissance
+
+19. Un compte de service a souvent un :
+      a) Nom de service (SPN)
+      b) Numéro de carte
+      c) Visage
+      d) Prix
+
+20. Administrer par le bastion limite :
+      a) Les journaux
+      b) La paie
+      c) La météo
+      d) L'exposition des secrets
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Active Directory est un pare-feu.
+      Vrai / Faux
+
+22. Le kerberoasting vise les imprimantes.
+      Vrai / Faux
+
+23. Le ticket de service est chiffré avec le mot de passe de l'utilisateur qui le demande.
+      Vrai / Faux
+
+24. T-01 concerne le vol de ticket d'un compte de service.
+      Vrai / Faux
+
+25. Le modèle par niveaux autorise un compte à privilèges sur tout poste.
+      Vrai / Faux
+
+26. Le grillage AS-REP vise les comptes sans pré-authentification.
+      Vrai / Faux
+
+27. L'attaquant atteint l'administration du domaine en cinq heures.
+      Vrai / Faux
+
+28. La composition des groupes à privilèges se surveille étroitement.
+      Vrai / Faux
+
+29. Le ticket volé se casse hors ligne.
+      Vrai / Faux
+
+30. Administrer par le bastion aggrave l'exposition des secrets.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. L'annuaire des réseaux Windows s'appelle Active ______.
+
+32. Le vol d'un ticket de service pour le casser s'appelle le ______.
+
+33. Le vol de ticket du compte de facturation est le constat T-______.
+
+34. Le grillage ______ vise les comptes sans pré-authentification.
+
+35. Le modèle d'administration par ______ brise le chemin d'attaque.
+
+36. L'attaquant part d'un poste ______.
+
+37. Le ticket se casse ______ ligne.
+
+38. Un compte de service a souvent un nom de service, abrégé ______.
+
+39. Les ______ de domaine hébergent l'annuaire et l'authentification.
+
+40. La parade à AS-REP est d'exiger la ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

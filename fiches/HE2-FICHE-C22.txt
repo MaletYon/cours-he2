@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C22
+Chapitre 22 : Le rapport de test d'intrusion
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Le livrable qui donne sa valeur au test est :
+      a) Le rapport
+      b) L'exploit
+      c) L'outil
+      d) La vitesse
+
+ 2. La synthèse pour la direction parle :
+      a) Technique
+      b) Risque et décision
+      c) Code
+      d) Météo
+
+ 3. Le détail technique parle :
+      a) Risque seul
+      b) Météo
+      c) Technique et correction
+      d) Prix
+
+ 4. La gravité combine :
+      a) Prix et couleur
+      b) Météo
+      c) Date
+      d) Facilité d'exploitation et impact
+
+ 5. Combien de constats critiques dans LOGONE ?
+      a) 4
+      b) 2
+      c) 5
+      d) 14
+
+ 6. Combien de constats au total ?
+      a) 10
+      b) 14
+      c) 20
+      d) 30
+
+ 7. Un constat complet contient description, preuve, impact, gravité, recommandation et :
+      a) Prix
+      b) Météo
+      c) Détection
+      d) Couleur
+
+ 8. T-01 et T-02 sont de gravité :
+      a) Faible
+      b) Moyenne
+      c) Nulle
+      d) Critique
+
+ 9. L'audit des mots de passe est rapporté :
+      a) À part (A-01)
+      b) Avec les 14
+      c) Jamais
+      d) Au public
+
+10. Un rapport uniquement technique est :
+      a) Parfait
+      b) Illisible pour la direction
+      c) Idéal
+      d) Court
+
+11. Le plan de correction indique :
+      a) Le prix
+      b) La météo
+      c) Actions priorisées, responsables, échéances
+      d) La couleur
+
+12. Combien de constats élevés ?
+      a) 2
+      b) 5
+      c) 3
+      d) 4
+
+13. Combien de constats moyens ?
+      a) 5
+      b) 2
+      c) 4
+      d) 3
+
+14. Combien de constats faibles ?
+      a) 2
+      b) 3
+      c) 5
+      d) 4
+
+15. La recommandation doit être :
+      a) Vague
+      b) Secrète
+      c) Concrète et vérifiable
+      d) Chère
+
+16. T-01 et T-02 passent avant T-12 car leur impact est :
+      a) Faible
+      b) Nul
+      c) Égal
+      d) Majeur
+
+17. Les annexes contiennent :
+      a) Preuves et actions horodatées
+      b) Le prix
+      c) La météo
+      d) La couleur
+
+18. Un bon constat web contient toujours :
+      a) Le prix
+      b) La requête exacte
+      c) La météo
+      d) La couleur
+
+19. La synthèse et le détail disent :
+      a) Deux vérités
+      b) Rien
+      c) La même vérité à deux niveaux
+      d) Le prix
+
+20. On peut s'appuyer, pour les failles techniques, sur :
+      a) La météo
+      b) Le prix
+      c) La couleur
+      d) CVSS 3.1
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'exploit est le livrable qui donne sa valeur au test.
+      Vrai / Faux
+
+22. LOGONE compte 5 constats critiques.
+      Vrai / Faux
+
+23. LOGONE compte 30 constats au total.
+      Vrai / Faux
+
+24. Un constat complet se limite à la description.
+      Vrai / Faux
+
+25. T-01 et T-02 sont de gravité critique.
+      Vrai / Faux
+
+26. L'audit des mots de passe est rapporté à part des 14 constats.
+      Vrai / Faux
+
+27. Un rapport uniquement technique est parfait pour la direction.
+      Vrai / Faux
+
+28. La recommandation doit être concrète et vérifiable.
+      Vrai / Faux
+
+29. LOGONE compte 4 constats élevés et 5 moyens.
+      Vrai / Faux
+
+30. Un bon constat web contient la requête exacte.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le livrable qui donne sa valeur au test est le ______.
+
+32. LOGONE compte ______ constats critiques.
+
+33. LOGONE compte ______ constats au total.
+
+34. Un constat complet se termine par la ______.
+
+35. T-01 et T-02 sont de gravité ______.
+
+36. L'audit des mots de passe est rapporté comme A-______.
+
+37. LOGONE compte ______ constats élevés.
+
+38. LOGONE compte ______ constats moyens.
+
+39. La recommandation doit être concrète et ______.
+
+40. Pour les failles techniques, on s'appuie sur ______ 3.1.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

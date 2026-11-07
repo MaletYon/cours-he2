@@ -1,0 +1,239 @@
+% ============================================================================
+% Fichier  : partie6/P06_C24_divulgation.tex
+% Titre    : La Divulgation Coordonnée
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : ISO/IEC 29147 (divulgation de vulnérabilités) ; ISO/IEC 30111
+% (traitement des vulnérabilités) ; loi camerounaise 2010/012. Cas d'une
+% faille découverte dans un produit tiers : fictif.
+% ============================================================================
+
+\chapter{La Divulgation Coordonnée}
+\label{chap:divulgation}
+\chaptermark{La divulgation coordonnée}
+
+\epigraph{%
+    « Trouver une faille crée un devoir~:\\
+    celui de la faire corriger sans nuire. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitre~\ref{chap:droit}~;
+Chapitre~\ref{chap:rapport}.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Définir la divulgation coordonnée de vulnérabilités.
+    \item Distinguer divulgation privée, coordonnée et complète.
+    \item Décrire le processus des normes ISO/IEC 29147 et 30111.
+    \item Situer la divulgation dans le cadre juridique camerounais.
+    \item Rédiger un signalement responsable.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : que faire d'une faille découverte dans un logiciel utilisé par beaucoup d'autres~?}
+% ============================================================================
+
+En testant LiZbiZ, M.~TAMO découvre que la faille de l'ancien portail (T-09)
+vient d'un composant répandu, utilisé par de nombreuses organisations. La
+corriger chez LiZbiZ ne protège pas les autres. Comment signaler la faille à
+l'éditeur sans exposer tout le monde~? C'est l'objet de la divulgation
+coordonnée.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Trois façons de divulguer (section~\ref{sec:c24-trois}).
+    \item Le processus coordonné (section~\ref{sec:c24-processus}).
+    \item Les normes 29147 et 30111 (section~\ref{sec:c24-normes}).
+    \item Le cadre juridique (section~\ref{sec:c24-droit}).
+    \item Rédiger un signalement (section~\ref{sec:c24-signalement}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Trois Façons de Divulguer}
+\label{sec:c24-trois}
+% ============================================================================
+
+\begin{tableaucours}{L{3.4cm}L{8.6cm}}{%
+    \tableauHeader{Façon} &
+    \tableauHeader{Principe et limite}
+}
+Privée & On informe le seul éditeur~; sûr, mais sans pression si l'éditeur
+n'agit pas \\
+Coordonnée & On informe l'éditeur, puis on publie après correction ou
+délai convenu \\
+Complète et immédiate & On publie tout aussitôt~; expose les utilisateurs
+avant correctif \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~24.1. Trois modes de divulgation}\end{center}
+
+La divulgation \termecle{coordonnée} est le compromis responsable~: elle
+donne à l'éditeur le temps de corriger, puis informe les utilisateurs pour
+qu'ils se protègent.
+
+% ============================================================================
+\section{Le Processus Coordonné}
+\label{sec:c24-processus}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Divulguer de façon coordonnée}
+\begin{enumerate}
+    \item Trouver le contact de sécurité de l'éditeur.
+    \item Signaler la faille par un canal sûr, avec les éléments de
+          reproduction.
+    \item Convenir d'un délai de correction raisonnable.
+    \item Laisser l'éditeur corriger et, le cas échéant, obtenir un
+          identifiant public de vulnérabilité.
+    \item Publier une description après le correctif, sans mode d'emploi
+          d'attaque inutile.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Publier la faille avec son code d'exploitation
+avant tout correctif, « pour forcer l'éditeur ».
+
+\smallskip
+\textbf{Règle~:} la divulgation vise à protéger, pas à nuire ni à se mettre
+en avant. On laisse un délai raisonnable, on ne publie pas d'arme prête à
+l'emploi, on pense d'abord aux utilisateurs exposés.
+\end{boxalert}
+
+% ============================================================================
+\section{Les Normes 29147 et 30111}
+\label{sec:c24-normes}
+% ============================================================================
+
+\begin{tableaucours}{L{4.0cm}L{8.2cm}}{%
+    \tableauHeader{Norme} &
+    \tableauHeader{Objet}
+}
+ISO/IEC 29147 & Comment \emph{recevoir} et publier les signalements de
+vulnérabilités (côté celui qui divulgue et celui qui reçoit) \\
+ISO/IEC 30111 & Comment \emph{traiter} en interne une vulnérabilité signalée
+jusqu'à sa correction \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~24.2. Deux normes complémentaires~\cite{iso29147,iso30111}}\end{center}
+
+Les deux normes sont complémentaires~: 29147 organise l'échange avec le
+monde extérieur, 30111 organise le travail interne de correction.
+
+% ============================================================================
+\section{Le Cadre Juridique}
+\label{sec:c24-droit}
+% ============================================================================
+
+\begin{boxjuris}
+La découverte d'une faille ne vaut pas autorisation d'y accéder. Au
+Cameroun, la loi 2010/012 sur la cybersécurité réprime l'accès et le
+maintien frauduleux dans un système, même sans dommage
+(Chapitre~\ref{chap:droit}). Un chercheur qui découvre une faille hors d'un
+mandat doit s'en tenir à ce qu'il a constaté sans intrusion supplémentaire,
+et signaler.
+\end{boxjuris}
+
+% ============================================================================
+\section{Rédiger un Signalement}
+\label{sec:c24-signalement}
+% ============================================================================
+
+\begin{boxmetier}{Pentesteur et RSSI}
+\textbf{Signaler avec mesure.} Un bon signalement est factuel, reproductible
+et courtois~: il décrit la faille, son impact, les conditions de
+reproduction, et propose un délai. Il n'exige rien, il coopère.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Trouver une faille} crée le devoir de la faire corriger
+          sans nuire.
+    \item \textbf{La divulgation coordonnée} donne le temps de corriger, puis
+          informe.
+    \item \textbf{29147} organise l'échange, \textbf{30111} le traitement
+          interne.
+    \item \textbf{Découvrir n'autorise pas à accéder}~: la loi 2010/012
+          s'applique.
+    \item \textbf{Un signalement} est factuel, reproductible, coopératif.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer les trois modes
+de divulgation~; dérouler le processus coordonné~; distinguer 29147 et
+30111~; rappeler le cadre juridique~; rédiger un signalement.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.1. Trois modes \niveaubase}]
+Distinguez divulgation privée, coordonnée et complète immédiate.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.2. Normes \niveaubase}]
+Quelle norme organise la réception des signalements~? Laquelle organise leur
+traitement interne~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.3. Devoir \niveaubase}]
+Pourquoi corriger T-09 chez LiZbiZ ne suffit-il pas~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.4. Délai \niveaumoyen}]
+Pourquoi laisse-t-on un délai à l'éditeur avant publication~? Qu'est-ce qu'un
+délai raisonnable~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.5. Pas d'arme \niveaumoyen}]
+Pourquoi ne publie-t-on pas le code d'exploitation prêt à l'emploi~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.6. Droit \niveaumoyen}]
+Un chercheur découvre une faille sur un site public. Que peut-il faire, que
+ne peut-il pas faire, selon la loi 2010/012~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.7. Contact \niveaumoyen}]
+Comment trouve-t-on le contact de sécurité d'un éditeur~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.8. Signalement \niveaumoyen}]
+Rédigez le signalement de la faille de composant à l'éditeur.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.9. Politique \niveauexpert}]
+Rédigez une politique de divulgation que LiZbiZ pourrait publier pour
+recevoir des signalements, inspirée de 29147.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.10. Processus interne \niveauexpert}]
+Décrivez le processus interne de traitement d'une vulnérabilité signalée,
+inspiré de 30111.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item ISO/IEC 29147~\cite{iso29147}~; ISO/IEC 30111~\cite{iso30111}.
+    \item Loi 2010/012~\cite{loi2010012}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Toutes ces compétences se cultivent dans un cadre
+d'entraînement~: le Chapitre~\ref{chap:labo} traite du laboratoire et de la
+pratique continue.
+\end{boxinfo}

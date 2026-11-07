@@ -1,0 +1,305 @@
+% ============================================================================
+% Fichier  : partie4/P04_C14_web.tex
+% Titre    : Tester une Application Web
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : OWASP Web Security Testing Guide (WSTG) ; OWASP Top 10:2021 ;
+% RFC 9110 (sémantique HTTP) ; RFC 6265 (cookies). Portail de suivi de
+% LiZbiZ et Opération LOGONE : cas fictifs. Deux séances (S17 et S18).
+% ============================================================================
+
+\chapter{Tester une Application Web}
+\label{chap:web}
+\chaptermark{Tester une application web}
+
+\epigraph{%
+    « Une application web fait confiance à ce que le navigateur lui envoie~;\\
+    le testeur, lui, n'utilise pas forcément un navigateur. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire}{Chapitre~\ref{chap:methodes}~; cours SEC3266,
+chapitre sur la sécurité applicative.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Décrire une application web du point de vue du testeur~: requêtes,
+          réponses, état, session.
+    \item Utiliser le guide de test de l'OWASP (WSTG) pour structurer une
+          campagne.
+    \item Cartographier une application~: pages, paramètres, rôles.
+    \item Tester l'authentification et la gestion de session.
+    \item Lire un historique HTTP pour y repérer une faiblesse.
+    \item Classer les constats selon le Top~10 de l'OWASP.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : par où commencer le test d'un portail que l'on ne connaît pas~?}
+% ============================================================================
+
+Le portail de suivi des colis de LiZbiZ permet aux clients de voir leurs
+expéditions et à 40~agents de les mettre à jour. M.~TAMO reçoit deux comptes
+de test, un client et un agent, et l'adresse du portail de pré-production.
+Il dispose de 48~heures. Ce chapitre montre comment cartographier, puis
+tester méthodiquement, plutôt que d'essayer au hasard.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item L'application vue par le testeur (section~\ref{sec:c14-modele}).
+    \item Le guide de test de l'OWASP (section~\ref{sec:c14-wstg}).
+    \item Cartographier (section~\ref{sec:c14-carto}).
+    \item Authentification et session (section~\ref{sec:c14-auth}).
+    \item Lire un historique HTTP (section~\ref{sec:c14-historique}).
+    \item Classer selon le Top~10 (section~\ref{sec:c14-top10}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{L'Application vue par le Testeur}
+\label{sec:c14-modele}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Requête HTTP}~: message envoyé par le client au serveur (méthode,
+chemin, en-têtes, corps). \termecle{Réponse HTTP}~: message du serveur
+(code, en-têtes, corps). \termecle{Session}~: état conservé entre requêtes,
+le plus souvent par un cookie (RFC~6265).
+\end{boxdef}
+
+Le testeur observe et modifie chaque requête avant son envoi. Un serveur
+qui se fie à un contrôle fait côté navigateur (champ masqué, menu grisé,
+vérification en JavaScript) accepte une requête forgée qui ignore ce
+contrôle. La règle fondatrice du test web~: \emph{tout ce qui vient du
+client est contrôlable par le client}.
+
+% ============================================================================
+\section{Le Guide de Test de l'OWASP}
+\label{sec:c14-wstg}
+% ============================================================================
+
+Le \termecle{Web Security Testing Guide} (WSTG) de l'OWASP organise le test
+d'une application web en catégories~\cite{owaspwstg}. On ne les parcourt pas
+toutes à chaque mission~; on choisit selon le périmètre et le temps.
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Catégorie WSTG} &
+    \tableauHeader{Ce qu'on y vérifie}
+}
+Collecte d'informations & Technologies, points d'entrée, pages cachées \\
+Configuration & En-têtes, méthodes autorisées, messages d'erreur \\
+Gestion d'identité et authentification & Création de compte, connexion,
+réinitialisation \\
+Gestion de session & Cookies, expiration, déconnexion \\
+Contrôle d'accès & Un rôle peut-il atteindre les données d'un autre~? \\
+Validation des entrées & Injections, scripts, chemins
+(Chapitre~\ref{chap:injections}) \\
+Logique métier & Enchaînements non prévus, contournement d'étapes \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~14.1. Catégories du WSTG retenues pour LiZbiZ}\end{center}
+
+% ============================================================================
+\section{Cartographier}
+\label{sec:c14-carto}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Cartographier une application web}
+\begin{enumerate}
+    \item Parcourir l'application avec chaque rôle, en enregistrant les
+          requêtes dans un relais local autorisé.
+    \item Lister les pages, les points d'entrée et leurs paramètres.
+    \item Noter les en-têtes, les cookies, les technologies détectées.
+    \item Repérer les paramètres qui désignent un objet (numéro de colis,
+          identifiant de compte).
+    \item Dresser la matrice rôle par page, pour préparer les tests de
+          contrôle d'accès.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Lancer un robot d'exploration agressif sur la
+pré-production sans prévenir.
+
+\smallskip
+\textbf{Règle~:} l'exploration automatique crée des données, envoie des
+courriels, déclenche des traitements. On fixe la cadence avec le client, on
+évite les formulaires d'envoi, on prévient l'équipe d'exploitation.
+\end{boxalert}
+
+% ============================================================================
+\section{Authentification et Session}
+\label{sec:c14-auth}
+% ============================================================================
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Point testé} &
+    \tableauHeader{Faiblesse recherchée}
+}
+Robustesse de la connexion & Verrouillage absent, énumération des comptes
+par les messages \\
+Réinitialisation de mot de passe & Jeton prévisible, lien qui n'expire
+pas \\
+Cookie de session & Absence des attributs de sécurité (indisponible au
+script, réservé au canal chiffré) \\
+Expiration & Session valide trop longtemps, pas d'invalidation à la
+déconnexion \\
+Second facteur & Absent sur les comptes sensibles \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~14.2. Tests d'authentification et de session}\end{center}
+
+\begin{boxscenario}{Opération LOGONE. Le portail qui ne ferme pas la session}
+\textbf{Constatations.} Sur le portail de suivi, le cookie de session n'a
+pas l'attribut qui le réserve au canal chiffré~; à la déconnexion, le jeton
+reste valide 8~heures. Un message de connexion distingue « compte inconnu »
+de « mot de passe erroné », ce qui permet d'énumérer les comptes.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Aucune de ces faiblesses n'est critique
+seule~; ensemble, elles facilitent le vol et la réutilisation de session.
+Elles alimentent le constat T-14 (délai de session trop long) du rapport.
+\end{boxscenario}
+
+% ============================================================================
+\section{Lire un Historique HTTP}
+\label{sec:c14-historique}
+% ============================================================================
+
+L'essentiel du test web se lit dans l'historique des requêtes et des
+réponses. Le lab HE2-LAB-08 fournit un historique exporté~; l'élève y
+cherche les points d'entrée, les paramètres d'objet, les en-têtes
+manquants et les codes de réponse révélateurs.
+
+\begin{tableaucours}{L{3.0cm}L{9.2cm}}{%
+    \tableauHeader{Indice} &
+    \tableauHeader{Ce qu'il peut révéler}
+}
+Paramètre numérique d'objet & Référence directe, à tester pour l'accès
+indirect (Chapitre~\ref{chap:injections}) \\
+Code 500 & Erreur serveur, message parfois bavard \\
+En-tête de version & Technologie et version, utile à l'attaquant \\
+Absence d'en-têtes de sécurité & Protection du navigateur non activée \\
+Réponse différente selon le compte & Énumération possible \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~14.3. Lire un historique HTTP}\end{center}
+
+% ============================================================================
+\section{Classer selon le Top 10}
+\label{sec:c14-top10}
+% ============================================================================
+
+Le \termecle{Top~10} de l'OWASP classe les grandes familles de risques des
+applications web~\cite{owasptop10}. Il sert à ranger les constats et à
+parler un langage commun avec les équipes de développement.
+
+\begin{boxobjet}{T-12 · En-têtes de sécurité HTTP absents}
+\textbf{Description~:} le portail de suivi ne renvoie pas les en-têtes de
+sécurité recommandés (politique de contenu, type de contenu strict,
+transport strict). \textbf{Preuve~:} réponses relevées dans l'historique.
+\textbf{Gravité~:} faible. \textbf{Impact~:} protections du navigateur non
+activées~; aggrave d'autres failles. \textbf{Recommandation~:} ajouter les
+en-têtes au niveau du serveur ou de l'application. \textbf{Détection~:}
+contrôle périodique des en-têtes de réponse.
+\end{boxobjet}
+
+\begin{boxmetier}{Pentesteur et développeur}
+\textbf{Rapprocher le constat du code.} Le pentesteur décrit la requête qui
+démontre la faille~; le développeur retrouve, à partir d'elle, la ligne de
+code responsable. Un bon constat web contient toujours la requête exacte.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Tout ce qui vient du client} est contrôlable par le
+          client.
+    \item \textbf{Le WSTG} structure la campagne en catégories.
+    \item \textbf{Cartographier d'abord}~: pages, paramètres, rôles.
+    \item \textbf{Authentification et session}~: verrouillage, cookies,
+          expiration.
+    \item \textbf{L'historique HTTP} contient l'essentiel des indices.
+    \item \textbf{Le Top~10} range les constats et parle aux développeurs.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: décrire requête, réponse
+et session~; choisir des catégories du WSTG~; cartographier une
+application~; tester authentification et session~; lire un historique
+HTTP~; classer un constat dans le Top~10.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.1. Confiance au client \niveaubase}]
+Pourquoi un contrôle fait uniquement en JavaScript ne protège-t-il pas le
+serveur~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.2. Catégories \niveaubase}]
+Citez trois catégories du WSTG et un test pour chacune.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.3. Cookie \niveaubase}]
+À quoi servent les attributs « réservé au canal chiffré » et « indisponible
+au script » d'un cookie de session~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.4. Énumération \niveaumoyen}]
+Pourquoi un message de connexion qui distingue « compte inconnu » de « mot
+de passe erroné » est-il une faiblesse~? Quel message proposer~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.5. Cartographie \niveaumoyen}]
+Décrivez la matrice rôle par page du portail de suivi, avec les deux comptes
+de test.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.6. Exploration prudente \niveaumoyen}]
+Quelles précautions prenez-vous avant de lancer une exploration automatique
+sur la pré-production~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.7. Historique \niveaumoyen}]
+Dans un historique, quels éléments trahissent un paramètre d'objet à
+tester~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.8. Session \niveaumoyen}]
+Rédigez le constat du cookie de session sans attribut de canal chiffré et
+sans invalidation à la déconnexion.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.9. Plan WSTG \niveauexpert}]
+Établissez le plan de test, en catégories du WSTG, pour les 48~heures
+accordées à M.~TAMO.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.10. Top 10 \niveauexpert}]
+Rattachez chacun des constats web de l'Opération LOGONE à une catégorie du
+Top~10, en justifiant.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item OWASP WSTG~\cite{owaspwstg}~; OWASP Top~10~\cite{owasptop10}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La catégorie la plus riche du test web est celle des
+entrées mal validées~: le Chapitre~\ref{chap:injections} traite les
+injections et les défauts de contrôle d'accès.
+\end{boxinfo}

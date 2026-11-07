@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C16
+Chapitre 16 : Interfaces de programmation et applications mobiles
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Une interface de programmation (API) porte souvent :
+      a) La logique métier
+      b) L'écran
+      c) La météo
+      d) Le prix
+
+ 2. On teste une API :
+      a) Via l'application
+      b) Directement
+      c) Jamais
+      d) Par courriel
+
+ 3. Le premier risque des API est :
+      a) La vitesse
+      b) Le prix
+      c) L'accès au niveau de l'objet
+      d) La couleur
+
+ 4. Le défaut d'accès à l'objet correspond à :
+      a) CVSS
+      b) La loi
+      c) Un scanner
+      d) La référence directe du web
+
+ 5. Un contrôle dans l'application mobile :
+      a) Ne protège pas le service
+      b) Protège le service
+      c) Chiffre
+      d) Facture
+
+ 6. Une clé cachée dans l'application est :
+      a) Secrète
+      b) Lisible dans le paquet
+      c) Chiffrée
+      d) Introuvable
+
+ 7. Le MASVS concerne la sécurité :
+      a) Du nuage
+      b) Du réseau
+      c) Des applications mobiles
+      d) De la paie
+
+ 8. Le stockage du jeton en clair relève du domaine :
+      a) Réseau
+      b) Code
+      c) Paie
+      d) Stockage des données
+
+ 9. L'opération MEFOU a produit :
+      a) 6 constats
+      b) 2 constats
+      c) 14 constats
+      d) 0 constat
+
+10. Le défaut d'accès de MEFOU devient :
+      a) T-01
+      b) T-05
+      c) T-09
+      d) T-14
+
+11. Une API reçoit souvent :
+      a) Trop d'attention
+      b) Aucune donnée
+      c) Moins d'attention, à tort
+      d) La paie
+
+12. L'accès au niveau de la fonction permet d'appeler :
+      a) Rien
+      b) Le prix
+      c) La météo
+      d) Une fonction réservée à un administrateur
+
+13. Tout ce que fait l'application, un programme peut :
+      a) Le refaire sans ses contrôles
+      b) Rien
+      c) Chiffrer
+      d) Facturer
+
+14. Le certificat non vérifié relève du domaine :
+      a) Stockage
+      b) Communication réseau
+      c) Code
+      d) Paie
+
+15. Les constats les plus graves de MEFOU sont :
+      a) Les journaux
+      b) Le stockage
+      c) Les défauts d'accès
+      d) Le code
+
+16. Après correction, subsiste le défaut :
+      a) Du stockage
+      b) Du code
+      c) Du réseau
+      d) Du service (accès à l'objet)
+
+17. Le service doit :
+      a) Refaire tous les contrôles
+      b) Faire confiance à l'application
+      c) Rien
+      d) Chiffrer
+
+18. Une clé codée en dur relève du domaine :
+      a) Stockage
+      b) Code et résistance
+      c) Réseau
+      d) Paie
+
+19. Le plus fréquent et le plus grave est :
+      a) La consommation
+      b) Le réseau
+      c) L'accès à l'objet
+      d) Le code
+
+20. Pour tester une API mobile, on :
+      a) Regarde l'écran
+      b) Facture
+      c) Chiffre
+      d) Intercepte et rejoue les appels
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. On ne peut tester une API qu'à travers l'application mobile.
+      Vrai / Faux
+
+22. Le premier risque des API est la couleur de l'interface.
+      Vrai / Faux
+
+23. Un contrôle présent dans l'application mobile protège le service.
+      Vrai / Faux
+
+24. Une clé cachée dans une application mobile est introuvable.
+      Vrai / Faux
+
+25. Le MASVS concerne la sécurité des applications mobiles.
+      Vrai / Faux
+
+26. L'opération MEFOU a produit six constats.
+      Vrai / Faux
+
+27. Le défaut d'accès de MEFOU devient le constat T-05.
+      Vrai / Faux
+
+28. Le service doit refaire tous les contrôles.
+      Vrai / Faux
+
+29. Le défaut d'accès à l'objet est le plus fréquent et le plus grave.
+      Vrai / Faux
+
+30. Une API est toujours interne et jamais exposée.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. L'interface par laquelle des programmes échangent s'appelle une ______.
+
+32. Le premier risque des API est l'accès au niveau de l'______.
+
+33. Une clé cachée dans une application mobile se lit dans le ______ installé.
+
+34. Le standard de sécurité des applications mobiles s'abrège ______.
+
+35. L'opération MEFOU a produit ______ constats.
+
+36. Le défaut d'accès de MEFOU devient le constat T-______.
+
+37. Le ______ doit refaire tous les contrôles.
+
+38. L'accès au niveau de la ______ permet d'appeler une fonction d'administrateur.
+
+39. Pour tester une API mobile, on intercepte et on ______ les appels.
+
+40. Le stockage du jeton en ______ relève du domaine stockage.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

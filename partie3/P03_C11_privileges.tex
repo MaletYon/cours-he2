@@ -1,0 +1,267 @@
+% ============================================================================
+% Fichier  : partie3/P03_C11_privileges.tex
+% Titre    : Élévation de Privilèges
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : MITRE ATT&CK (tactique Privilege Escalation) ; CIS Benchmarks ;
+% documentation de sudo et des capacités Linux. Opération LOGONE : cas fictif.
+% ============================================================================
+
+\chapter{Élévation de Privilèges}
+\label{chap:privileges}
+\chaptermark{Élévation de privilèges}
+
+\epigraph{%
+    « L'élévation de privilèges exploite rarement le noyau~;\\
+    elle exploite le plus souvent une négligence de configuration. »%
+}{Principe du cours}
+
+\niveauChapitre{Intermédiaire à expert}{Chapitre~\ref{chap:exploitation}~;
+cours SEC3266, chapitre sur les systèmes.}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Distinguer élévation verticale et mouvement horizontal.
+    \item Recenser les vecteurs d'élévation sous Linux et sous Windows.
+    \item Lire un relevé de configuration pour y repérer un vecteur.
+    \item Classer les vecteurs par probabilité et par risque de dommage.
+    \item Proposer la correction et la détection de chaque vecteur.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : un compte web limité peut-il devenir administrateur du serveur~?}
+% ============================================================================
+
+Après la démonstration sur l'ancien portail (Chapitre~\ref{chap:exploitation}),
+M.~TAMO dispose d'un compte web sans privilège. Plutôt que d'exploiter le
+serveur, il en lit la configuration, avec l'accord de M.~KOUNOU~: droits
+sudo, programmes SUID, tâches planifiées, fichiers modifiables. Trois
+vecteurs apparaissent~; un seul suffit.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Vertical et horizontal (section~\ref{sec:c11-types}).
+    \item Les vecteurs sous Linux (section~\ref{sec:c11-linux}).
+    \item Les vecteurs sous Windows (section~\ref{sec:c11-windows}).
+    \item Lire un relevé (section~\ref{sec:c11-releve}).
+    \item Corriger et détecter (section~\ref{sec:c11-corriger}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Vertical et Horizontal}
+\label{sec:c11-types}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Élévation de privilèges}~: obtention de droits supérieurs à ceux
+du compte de départ (verticale~: utilisateur vers administrateur).
+\termecle{Mouvement horizontal}~: passage d'un compte à un autre de même
+niveau, souvent pour atteindre des données ou une autre machine.
+\end{boxdef}
+
+% ============================================================================
+\section{Les Vecteurs sous Linux}
+\label{sec:c11-linux}
+% ============================================================================
+
+\begin{tableaucours}{L{3.6cm}L{4.6cm}L{4.0cm}}{%
+    \tableauHeader{Vecteur} &
+    \tableauHeader{Faiblesse} &
+    \tableauHeader{Correction}
+}
+sudo trop large & Commande autorisée sans mot de passe qui permet d'ouvrir
+un interpréteur & Restreindre aux commandes nécessaires \\
+Programme SUID inhabituel & S'exécute avec les droits de son propriétaire
+& Retirer le bit SUID, supprimer le fichier \\
+Tâche planifiée modifiable & Script exécuté par root, modifiable par
+d'autres & Droits stricts sur les scripts \\
+Capacités excessives & Un binaire dispose d'une capacité qui contourne les
+contrôles & Retirer la capacité \\
+Fichier sensible lisible & Clé, mot de passe dans un fichier accessible &
+Droits stricts, coffre de secrets \\
+Noyau non corrigé & Faille du noyau & Correctifs~; vecteur risqué à
+exploiter \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~11.1. Vecteurs d'élévation sous Linux}\end{center}
+
+% ============================================================================
+\section{Les Vecteurs sous Windows}
+\label{sec:c11-windows}
+% ============================================================================
+
+\begin{tableaucours}{L{3.6cm}L{4.6cm}L{4.0cm}}{%
+    \tableauHeader{Vecteur} &
+    \tableauHeader{Faiblesse} &
+    \tableauHeader{Correction}
+}
+Service mal protégé & Binaire ou configuration du service modifiable par
+un utilisateur & Droits stricts~; comptes de service dédiés \\
+Chemin de service sans guillemets & Chemin avec espaces interprété par
+morceaux & Mettre le chemin entre guillemets \\
+Installation toujours élevée & Stratégie qui installe tout paquet avec les
+droits système & Désactiver la stratégie \\
+Mot de passe en clair & Script ou fichier de configuration lisible &
+Supprimer, changer le mot de passe \\
+Administrateur local partagé & Même mot de passe sur toutes les machines
+& Mot de passe unique par machine \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~11.2. Vecteurs d'élévation sous Windows}\end{center}
+
+\begin{boxscenario}{Opération LOGONE. Le script du partage}
+\textbf{Constatation.} Sur le partage de fichiers \texttt{\textbackslash\textbackslash FS-01\textbackslash scripts},
+lisible par tous les utilisateurs, un script de déploiement contient en
+clair le mot de passe du compte administrateur local des postes de Douala.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Depuis mars, chaque poste a son propre
+mot de passe administrateur local (LAPS)~; mais ce script, antérieur, a
+servi à leur installation, et 23 postes non réinstallés gardent l'ancien
+mot de passe commun. C'est le constat critique T-02.
+\end{boxscenario}
+
+% ============================================================================
+\section{Lire un Relevé}
+\label{sec:c11-releve}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Recenser les vecteurs à partir d'un relevé}
+\begin{enumerate}
+    \item Comptes et groupes~: qui a l'UID~0 (Linux), qui est administrateur
+          local (Windows)~?
+    \item Droits délégués~: \texttt{sudo -l}~; services et leurs droits.
+    \item Programmes SUID et capacités hors des chemins du système.
+    \item Tâches planifiées et scripts qu'elles exécutent~: qui peut les
+          modifier~?
+    \item Fichiers lisibles contenant des secrets.
+    \item Version du noyau et correctifs, en dernier recours.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Commencer par une faille du noyau.
+
+\smallskip
+\textbf{Règle~:} une exploitation du noyau peut faire tomber le serveur. On
+cherche d'abord les vecteurs de configuration, sans risque et plus
+probables~; on rapporte la faille du noyau sans l'exploiter, sauf accord
+explicite.
+\end{boxalert}
+
+% ============================================================================
+\section{Corriger et Détecter}
+\label{sec:c11-corriger}
+% ============================================================================
+
+\begin{boxobjet}{T-02 · Mot de passe administrateur local en clair}
+\textbf{Description~:} un script lisible par tous sur
+\texttt{\textbackslash\textbackslash FS-01\textbackslash scripts} contient le
+mot de passe administrateur local commun de 23~postes de Douala.
+\textbf{Preuve~:} chemin et date du fichier, mot de passe masqué.
+\textbf{Gravité~:} critique. \textbf{Impact~:} administration de 23~postes
+et mouvement latéral. \textbf{Recommandation~:} supprimer le script,
+changer le mot de passe sur les 23~postes (LAPS), rechercher d'autres
+secrets dans les partages. \textbf{Détection~:} connexions avec le compte
+administrateur local depuis le réseau.
+\end{boxobjet}
+
+\begin{boxmetier}{Auditeur de sécurité}
+\textbf{Chercher les secrets là où on travaille.} L'auditeur recherche les
+mots de passe dans les partages, les scripts, les stratégies de groupe et
+les dépôts internes~: c'est souvent là, et non dans les serveurs, que se
+trouvent les clés du domaine.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Vertical} (plus de droits) et \textbf{horizontal} (autre
+          compte).
+    \item \textbf{Linux}~: sudo, SUID, tâches, capacités, fichiers, noyau.
+    \item \textbf{Windows}~: services, chemins, stratégies, mots de passe en
+          clair, administrateur local partagé.
+    \item \textbf{On lit la configuration d'abord}~; le noyau en dernier.
+    \item \textbf{Chaque vecteur} a sa correction et sa détection.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer élévation et
+mouvement horizontal~; citer les vecteurs Linux et Windows~; lire un relevé
+dans l'ordre~; rédiger un constat avec correction et détection.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.1. Vertical ou horizontal \niveaubase}]
+Classez~: passer du compte web au compte root~; utiliser le compte d'un
+collègue de même service~; devenir administrateur local d'un poste.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.2. SUID \niveaubase}]
+Pourquoi un fichier SUID appartenant à root dans \texttt{/tmp} est-il
+suspect~? (cours SEC3266, lab de durcissement)
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.3. Chemin \niveaubase}]
+Expliquez le risque d'un chemin de service non entouré de guillemets.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.4. sudo \niveaumoyen}]
+Un utilisateur peut lancer un éditeur de texte en sudo sans mot de passe.
+Pourquoi est-ce dangereux~? Que proposez-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.5. Le script \niveaumoyen}]
+Pourquoi 23~postes gardent-ils l'ancien mot de passe malgré LAPS~?
+Comment les retrouver~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.6. Ordre \niveaumoyen}]
+Justifiez l'ordre de la procédure de recensement.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.7. Tâche planifiée \niveaumoyen}]
+Une tâche exécutée par root lance un script modifiable par le groupe
+« web ». Rédigez le constat.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.8. Détecter \niveaumoyen}]
+Quels événements Windows permettent de détecter l'usage du compte
+administrateur local depuis le réseau~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.9. Recherche de secrets \niveauexpert}]
+Concevez une campagne interne, autorisée, de recherche de secrets dans les
+partages de LiZbiZ~: périmètre, méthode, traitement des résultats.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.10. Standard \niveauexpert}]
+Rédigez cinq règles d'un standard de configuration qui ferment les vecteurs
+des Tableaux~11.1 et~11.2.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item MITRE ATT\&CK~\cite{mitreattack}~; CIS Benchmarks~\cite{cis2021controls}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Une fois des droits obtenus, l'attaquant s'étend et
+s'installe~: c'est la post-exploitation, objet du Chapitre~\ref{chap:post}.
+\end{boxinfo}

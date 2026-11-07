@@ -1,0 +1,233 @@
+NDAP SUKULU · HE2 · fiche HE2-FICHE-C04
+Chapitre 4 : Méthodologies et référentiels
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Les phases d'un test sont :
+      a) Reconnaissance, balayage, exploitation, post-exploitation, restitution
+      b) Vente, achat, livraison
+      c) Analyse, synthèse
+      d) Design, test
+
+ 2. La dernière phase d'un test est :
+      a) L'exploitation
+      b) La restitution
+      c) Le balayage
+      d) La reconnaissance
+
+ 3. MITRE ATT&CK est :
+      a) Un outil de balayage
+      b) Une loi
+      c) Une base de tactiques et techniques
+      d) Un scanner
+
+ 4. ATT&CK sert à :
+      a) Facturer
+      b) Vendre
+      c) Chiffrer
+      d) Planifier et mesurer la détection
+
+ 5. Un guide de test web est :
+      a) Le WSTG de l'OWASP
+      b) PTES
+      c) La RFC 4120
+      d) CVSS
+
+ 6. NIST 800-115 est :
+      a) Une loi
+      b) Un guide technique de test
+      c) Un scanner
+      d) Un exploit
+
+ 7. PTES désigne :
+      a) Un protocole réseau
+      b) Une loi
+      c) Un standard d'exécution de test
+      d) Un outil
+
+ 8. OSSTMM est :
+      a) Une méthodologie de test
+      b) Un langage
+      c) Un port
+      d) Une loi
+
+ 9. Le contexte oriente :
+      a) Le scénario, vers une menace plausible
+      b) Le prix
+      c) La météo
+      d) Rien
+
+10. Le journal de mission consigne :
+      a) Le prix
+      b) Chaque action horodatée
+      c) La météo
+      d) Rien
+
+11. Ce qui n'a pas été testé doit être :
+      a) Caché
+      b) Inventé
+      c) Dit clairement (NEK)
+      d) Oublié
+
+12. On qualifie une mission par :
+      a) Sa couleur
+      b) Son prix
+      c) Sa durée seule
+      d) Objectif, approche, périmètre
+
+13. Après l'exploitation vient :
+      a) La post-exploitation
+      b) La reconnaissance
+      c) Le balayage
+      d) La vente
+
+14. Les tactiques décrivent :
+      a) Le prix
+      b) Les grandes étapes d'une attaque
+      c) La météo
+      d) Le code
+
+15. On applique d'un guide :
+      a) Tout, toujours
+      b) Rien
+      c) Les parties pertinentes
+      d) Au hasard
+
+16. Un test utile imite :
+      a) Un outil
+      b) Un concurrent
+      c) Un client
+      d) Un attaquant réaliste
+
+17. Le journal sert aussi de :
+      a) Jeu de test pour le défenseur
+      b) Facture
+      c) Publicité
+      d) Contrat
+
+18. L'absence de test est :
+      a) Une absence de faille
+      b) Pas une absence de faille
+      c) Une preuve
+      d) Un succès
+
+19. Mesurer la détection, c'est comparer techniques jouées et :
+      a) Prix
+      b) Heures
+      c) Techniques détectées
+      d) Outils
+
+20. Deux référentiels sont souvent :
+      a) Concurrents
+      b) Identiques
+      c) Illégaux
+      d) Complémentaires
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. La reconnaissance est la dernière phase d'un test.
+      Vrai / Faux
+
+22. ATT&CK est un outil de balayage de ports.
+      Vrai / Faux
+
+23. Le WSTG est un guide de test d'applications web.
+      Vrai / Faux
+
+24. Le journal de mission consigne chaque action horodatée.
+      Vrai / Faux
+
+25. Ce qui n'a pas été testé doit être dit clairement.
+      Vrai / Faux
+
+26. On applique toujours l'intégralité d'un guide de test.
+      Vrai / Faux
+
+27. Un test utile imite un attaquant réaliste.
+      Vrai / Faux
+
+28. L'absence de test prouve l'absence de faille.
+      Vrai / Faux
+
+29. MITRE ATT&CK est un scanner de vulnérabilités.
+      Vrai / Faux
+
+30. La post-exploitation vient après l'exploitation.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La dernière phase d'un test est la ______.
+
+32. La base des tactiques et techniques des attaquants est MITRE ______.
+
+33. Le guide de test web de l'OWASP s'abrège ______.
+
+34. Le guide technique du NIST porte le numéro 800-______.
+
+35. Le ______ de mission consigne chaque action horodatée.
+
+36. Ce qui n'a pas été tranché se note ______.
+
+37. Un test utile imite un ______ réaliste.
+
+38. On qualifie une mission par objectif, approche et ______.
+
+39. Les ______ décrivent les grandes étapes d'une attaque.
+
+40. Le standard d'exécution d'un test s'abrège ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................
