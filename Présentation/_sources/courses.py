@@ -17,7 +17,7 @@ HE2 = {
     "logo_d": "enspy",
     "n_jours": 30,
     "annee": "2026-2027",
-    "dossier": COURS + r"\SEC4062\Présentation",
+    "dossier": COURS + r"\ENSPY\SEC4062\Présentation",
     "fil_rouge": "LOGONE, MEFOU, MBAM",
     "parties": [
         ("Prologue", "La lettre d'autorisation", "P00"),
