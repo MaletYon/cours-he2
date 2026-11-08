@@ -1,0 +1,3 @@
+Fichier cron;Exécuté par;Script;Droits sur le script
+/etc/cron.d/maj;root;/opt/scripts/maj.sh;www-data peut écrire
+/etc/cron.d/rotation;root;/usr/local/bin/rotate;root seul

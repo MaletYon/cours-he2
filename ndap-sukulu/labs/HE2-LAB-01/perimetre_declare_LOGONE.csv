@@ -1,0 +1,7 @@
+Plage (CIDR);Description;Dans le périmètre
+10.20.0.0/24;Postes de Yaoundé;oui
+10.20.1.0/24;Postes de Douala;oui
+10.20.7.0/25;Serveurs de Garoua;oui
+10.20.10.0/27;Zone d'administration;oui
+192.168.50.0/24;Réseau d'un prestataire tiers;non
+10.99.0.0/24;Filiale non concernée;non

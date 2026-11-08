@@ -1,0 +1,11 @@
+Réf.;Description;CVSS 3.1;EPSS (%);Activement exploitée;Constat
+V-01;Compte de service vulnérable au vol de ticket;8.8;42;non;T-01
+V-02;Mot de passe admin local en clair (partage);9.1;5;non;T-02
+V-03;Accès distant sans second facteur;8.1;60;oui;T-03
+V-04;SMBv1 exposé;9.8;94;oui;T-06
+V-05;Exécution de code, ancien portail;9.8;97;oui;T-09
+V-06;Interface de test exposée;6.5;12;non;T-10
+V-07;En-têtes de sécurité HTTP absents;3.1;1;non;T-12
+V-08;Bannières de version exposées;2.0;0;non;T-13
+V-09;Délai de session trop long;3.5;1;non;T-14
+V-10;Identifiants par défaut (imprimante);6.8;8;non;T-04

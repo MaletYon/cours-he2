@@ -1,0 +1,9 @@
+#;Méthode;Chemin;Compte;Code;Note
+1;POST;/connexion;client01;200;connexion réussie
+2;GET;/colis?id=10427;client01;200;colis du client01
+3;GET;/colis?id=10428;client01;200;colis d'un AUTRE client
+4;GET;/colis?id=10429;client01;200;colis d'un AUTRE client
+5;POST;/connexion;inconnu99;200;message: compte inconnu
+6;POST;/connexion;client01;200;message: mot de passe erroné
+7;GET;/admin/export;client01;403;refusé
+8;GET;/suivi;client01;500;erreur serveur, trace visible

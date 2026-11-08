@@ -1,0 +1,4 @@
+# Extrait de « sudo -l » pour l'utilisateur www-data
+Utilisateur www-data peut exécuter sur srv-garoua :
+    (root) NOPASSWD: /usr/bin/vi
+    (root) NOPASSWD: /usr/bin/systemctl restart lizbiz-portail

@@ -1,0 +1,6 @@
+En-tête;État
+Content-Security-Policy;absent
+Strict-Transport-Security;absent
+X-Content-Type-Options;présent
+Set-Cookie Secure;absent
+Set-Cookie expiration;8 heures

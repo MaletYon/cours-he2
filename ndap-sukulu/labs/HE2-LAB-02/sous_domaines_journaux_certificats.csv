@@ -1,0 +1,9 @@
+Sous-domaine;Service;État
+portail.lizbiz.cm;Portail de suivi des colis;actif
+vpn.lizbiz.cm;Accès distant;actif
+vpn2.lizbiz.cm;Accès distant secondaire;actif
+test-api.lizbiz.cm;Interface de test;actif
+old-portail.lizbiz.cm;Ancien portail;actif
+mail.lizbiz.cm;Messagerie;actif
+www.lizbiz.cm;Site vitrine;actif
+preprod.lizbiz.cm;Pré-production;actif

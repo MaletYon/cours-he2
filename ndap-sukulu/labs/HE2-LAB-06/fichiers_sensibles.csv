@@ -1,0 +1,3 @@
+Chemin;Propriétaire;Observation
+/opt/scripts/maj.sh;www-data;modifiable par le groupe web
+/var/backups/id_rsa;root;lisible par tous

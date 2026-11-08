@@ -1,0 +1,1 @@
+0bc6263db7e70cae147cfa8e3bbcda4997b1a8f1061d319e7eb17544b3f1f4bb  vulnerabilites_LOGONE.csv

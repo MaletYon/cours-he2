@@ -1,0 +1,8 @@
+Compte;Type;Groupe principal;Pré-auth Kerberos;SPN (service);Mot de passe faible
+j.abena;utilisateur;Comptabilité;oui;non;non
+svc_sql_facturation;service;Opérateurs de sauvegarde;oui;oui;oui
+svc_sauvegarde;service;Admins du domaine;oui;oui;non
+a.ndo;utilisateur;Admins du domaine;non;non;non
+p.fouda;utilisateur;Support;oui;non;non
+svc_scan;service;Utilisateurs;non;oui;oui
+adm.local;utilisateur;Administrateurs locaux;oui;non;oui

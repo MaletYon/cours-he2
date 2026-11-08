@@ -1,0 +1,27 @@
+HE2-LAB-03, lire un résultat de balayage
+
+Les pièces du lab se trouvent dans le dossier preuves, en lecture seule, et
+une copie de travail modifiable dans le dossier travail (ouvert au démarrage).
+  balayage_garoua_LOGONE.csv   relevé de balayage de Garoua
+  inventaire_declare.csv       inventaire déclaré par l'exploitation
+  MANIFESTE_SHA256.txt         empreintes de référence (preuves)
+
+Marche à suivre.
+
+1. Vérifier l'intégrité avant toute analyse. Ouvrez un terminal, puis tapez :
+       cd ~/preuves
+       sha256sum -c MANIFESTE_SHA256.txt
+   Chaque fichier doit afficher OK.
+
+2. Compter les services ouverts et les hôtes découverts.
+
+3. Repérer les services sensibles (SMBv1, ancien portail, interface de test).
+
+4. Comparer à l'inventaire déclaré pour trouver la machine non prévue.
+
+5. Répondre. Saisissez vos réponses dans le volet Points de contrôle de la
+   page du lab, puis enregistrez. Nombres avec un point ou une virgule
+   décimale ; codes et listes comme indiqué dans chaque question. Quand vous
+   avez terminé, cliquez sur Terminer et corriger pour obtenir votre note.
+
+Toute votre activité dans le terminal est journalisée.

@@ -1,0 +1,5 @@
+Chemin;Propriétaire;Évaluation
+/usr/bin/passwd;root;normal
+/usr/bin/sudo;root;normal
+/tmp/backup_helper;root;suspect
+/usr/bin/find;root;detournable

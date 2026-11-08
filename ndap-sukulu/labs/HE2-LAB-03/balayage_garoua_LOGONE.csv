@@ -1,0 +1,11 @@
+Hôte;Port;Service;Version;État
+10.20.7.10;445;smb;SMBv1;ouvert
+10.20.7.10;139;netbios-ssn;-;ouvert
+10.20.7.11;445;smb;SMBv3;ouvert
+10.20.7.12;80;http;ancien-portail 1.2;ouvert
+10.20.7.12;443;https;ancien-portail 1.2;ouvert
+10.20.7.20;22;ssh;OpenSSH 8.9;ouvert
+10.20.7.21;3389;rdp;-;ouvert
+10.20.7.30;8080;http;test-api 0.4;ouvert
+10.20.7.40;631;ipp;imprimante Garoua;ouvert
+10.20.7.11;23;telnet;-;filtre

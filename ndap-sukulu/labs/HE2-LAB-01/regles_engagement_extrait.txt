@@ -1,0 +1,9 @@
+Extrait des règles d'engagement, opération LOGONE.
+(Document fictif établi pour le cours SEC4062. Noms, dates, adresses et montants fictifs.)
+
+Sont expressément EXCLUS du test, même s'ils appartiennent à une plage listée :
+  - 10.20.0.5 (passerelle de production, risque d'interruption)
+  - 203.0.113.10 (hébergement externe, hors contrôle de LiZbiZ)
+
+Toute adresse hors des plages 'oui' est hors périmètre. En cas de redirection
+vers une adresse hors périmètre, arrêter et prévenir le contact d'urgence.

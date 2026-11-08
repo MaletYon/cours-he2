@@ -1,0 +1,10 @@
+Offre d'emploi (extrait public), LiZbiZ SA.
+(Document fictif établi pour le cours SEC4062. Noms, dates, adresses et montants fictifs.)
+
+Administrateur systèmes et réseaux (H/F), Yaoundé.
+Compétences requises :
+  - Windows Server et Active Directory (domaine lizbiz.local)
+  - Partage de fichiers SMB, serveur de messagerie interne
+  - Portail web interne (ancienne version encore en service)
+  - Télémaintenance via accès distant (deux passerelles)
+Un plus : expérience de la migration d'un ancien portail non maintenu.

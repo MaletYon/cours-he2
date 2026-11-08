@@ -1,0 +1,5 @@
+Constat;AV;AC;PR;UI;Scope;C;I;A
+T-06 SMBv1 (exécution de code à distance);N;L;N;N;U;H;H;H
+T-05 Accès indirect aux colis (IDOR);N;L;L;N;U;H;N;N
+T-03 Accès distant sans second facteur;N;L;N;N;U;H;L;N
+T-12 En-têtes de sécurité absents;N;H;N;R;U;L;N;N

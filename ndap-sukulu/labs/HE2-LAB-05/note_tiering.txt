@@ -1,0 +1,6 @@
+Note interne, modèle d'administration par niveaux.
+(Document fictif établi pour le cours SEC4062. Noms, dates, adresses et montants fictifs.)
+
+Règle : un compte à privilèges (Admins du domaine) ne doit jamais ouvrir de
+session sur un poste ordinaire. Les comptes de service ne doivent pas être
+membres de groupes à privilèges et doivent avoir un mot de passe long.

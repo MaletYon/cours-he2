@@ -1,0 +1,7 @@
+Cadre de l'audit des mots de passe.
+(Document fictif établi pour le cours SEC4062. Noms, dates, adresses et montants fictifs.)
+
+Audit autorisé par écrit (M. ETEME), sous contrôle de Mme NKENG.
+Résultats agrégés uniquement. Aucun mot de passe en clair conservé.
+Liste nominative remise au seul responsable pour réinitialisation.
+Empreintes et résultats détruits en fin d'audit.

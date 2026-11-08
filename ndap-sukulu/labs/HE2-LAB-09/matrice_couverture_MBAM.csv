@@ -1,0 +1,11 @@
+Technique;Trace;Source;Règle existante;Détecté en direct
+Hameçonnage ciblé;courriel signalé;messagerie;oui;oui
+Empoisonnement LLMNR;réponse d'hôte non autorisé;réseau;non;non
+Vol de ticket (kerberoasting);demande de ticket inhabituelle;domaine;non;non
+Mouvement latéral (service distant);événement 7045;domaine;oui;oui
+Réutilisation d'empreinte;NTLM depuis machine inhabituelle;domaine;non;non
+Création de compte;événement 4720;domaine;oui;oui
+Tâche planifiée;événement 4698;domaine;oui;non
+Ajout à un groupe à privilèges;événement 4728;domaine;non;non
+Exfiltration de données;volume sortant anormal;réseau;oui;oui
+Suppression des journaux;événement 1102;domaine;oui;oui
